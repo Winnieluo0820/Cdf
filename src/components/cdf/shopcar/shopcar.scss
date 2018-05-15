@@ -26,7 +26,6 @@
         overflow-x:hidden;
         box-shadow:0px -0.133333rem 0.333333rem 0.0rem #ccc inset;
         .empty{
-            display:none;
             background-color:#fff;
             padding: 0.266667rem 0.266667rem;
             color: #666;
@@ -58,6 +57,97 @@
                 color:#fff;
             }                
         }
+        .goodCars{
+            display:none;
+            .goods{
+                li{
+                    display:flex;
+                    margin:0.266667rem 0;
+                    height: 3.0rem;
+                    overflow:hidden;
+                    background-color:#fff;
+                    .left{
+                        width: 20%;
+                        text-align:center;
+                        line-height:3.0rem;
+                        input{
+                            display:inline-block;
+                            width: 0.533333rem;
+                            height: 0.533333rem;
+                        }
+                    }
+                    .center{
+                        flex:1;
+                        position:relative;
+                        padding-left:2.666667rem;
+                        img{
+                            position:absolute;
+                            width: 180px;
+                            height:180px;
+                            left:0.133333rem;
+                            top:0.133333rem;
+                        }
+                        h1{
+                            padding-top:0.133333rem;
+                            font-size:0.346667rem;
+                            line-height:0.533333rem;
+                            font-weight:normal;
+                            color:#333;
+                        }
+                        h3{
+                            font-size:0.293333rem;
+                            font-weight:normal;
+                            color:#666;
+                            span{
+                                color:#b81c22;
+                                font-size:0.346667rem;
+                                font-weight:bold;
+                            }
+                        }
+                        del{
+                            color:#ccc;
+                            font-size:0.266667rem;
+                        }
+                        .changeQty{
+                            padding-top:0.133333rem;
+                            height: 0.8rem;
+                            button{
+                                height: 80%;
+                                width: 12%;
+                                font-size:0.32rem;
+                                border: 0 none;
+                                vertical-align:middle;
+                            }
+                            button:focus{
+                                outline:none;
+                            }
+                            span{
+                                display:inline-block;
+                                border-top:1px solid #ccc;
+                                border-bottom : 1px solid #ccc;
+                                height: 80%;
+                                width: 15%;
+                                vertical-align:middle;
+                                text-align:center;
+
+                            }
+                        }
+                    }
+                    .right{
+                        width: 10%;
+                        text-align:center;
+                        padding-top:1.0rem;
+                        button{
+                            display:inline-block;
+                            width: 80%;
+                            border: 0 none;
+                            height:0.666667rem;
+                            font-size:0.32rem;
+                        }
+                    }
+                }
+            }
+        }
     }
     .shopcar_footer{
         display:none;
@@ -72,6 +162,13 @@
             width: 20%;
             text-align:center;
             line-height:1.173333rem;
+            input{
+                display:inline-block;
+                height: 0.533333rem;
+                width: 0.533333rem;
+                margin:0.266667rem 0.066667rem;
+                vertical-align:middle;
+            }
         }
         .center{
             flex:1;
