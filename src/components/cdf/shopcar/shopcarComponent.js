@@ -58,7 +58,7 @@ export default class ShopcarComponent extends React.Component{
 
     render(){
         return(
-            <div id="cdf_shopcar" className="animate-route">
+            <div id="cdf_shopcar" className="animate2-route">
                 <div className="shopcar_header"><span className="base"></span><span className="content">我的购物袋</span></div>
                 <div className="shopcar_main">
                     <div className="empty">

@@ -1,0 +1,93 @@
+#address {
+    background-color: #F7F7F7;
+    .address_top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 1.203703rem;
+        width: 100%;
+        background-color: #FFFFFF;
+        font-size: 0.462962rem;
+        line-height: 1.203703rem;
+        a {
+            display: inline-block;
+            height: 1.203703rem;
+            width: 0.925925rem;
+            text-align: center;
+            i {
+                display: inline-block;
+                font-size: 0.555555rem;
+                font-weight: bold;
+                transform: rotateY(180deg);
+            }
+        }
+        span {
+            display: inline-block;
+            width: 0.462962rem;
+        }
+    }
+    .address_add {
+        height: 2.222222rem;
+        width: 100%;
+        margin-bottom: 0.555555rem;
+        a {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background-color: #B81C22;
+            text-align: center;
+            font-size: 0.462962rem;
+            line-height: 2.222222rem;
+            color: white;
+            span {
+                font-size: 0.531481rem;
+            }
+        }
+    }
+    .address_mian {
+        height:13.777777rem;
+        overflow-x: hidden;
+        background-color: white;
+        ul{
+            li{
+                height: 3.148148rem;
+                color: #666666;
+                font-family: "宋体";
+                width: 100%;
+                box-sizing: border-box;
+                padding-left: 0.555555rem;
+                padding-top: 0.462962rem;
+                border-bottom: 2px solid #F7F7F7;
+                
+                margin-bottom: 0.138888rem;
+                h2{
+                    font-size: 0.314814rem;
+                    span{
+                        font-size: 0.462962rem;
+                    }
+                }
+                h3{
+                    line-height: 1.203703rem;
+                    i{
+                        font-size: 0.37037rem;
+                    }
+                }
+                h4{
+                    i{
+                          font-size: 0.37037rem;
+                    }
+                    span{
+                        font-size: 0.354074rem;
+                    }
+                }
+                
+            }
+            
+            
+        }
+        
+        
+        
+        
+    }
+}

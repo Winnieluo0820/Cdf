@@ -17,13 +17,14 @@ import OwnerComponent from '../components/cdf/owner/ownerComponent.js'
 //我的中兔的组件
 import CollectionComponent from '../components/cdf/owner/collection/collectionComponent.js'
 import BrowseComponent from '../components/cdf/owner/browse/browse.js'
+import AddressComponent from '../components/cdf/owner/address/address.js'
+import CreateaddressComponent from '../components/cdf/owner/createaddress/createaddress.js'
 
 
 
 
 
-
-//后面像跳到列表页的话就新建一个路由，不要由多于2层嵌套
+//后面像跳到列表页的话就新建一个路由，不要多于2层嵌套
 const routes = (
     <Route>
         <Route path="/" component={CdfComponent}>
@@ -37,6 +38,8 @@ const routes = (
         <Route path="register" component={RegisterComponent}/>
         <Route path="owner/browse" component={BrowseComponent}/>
         <Route path="owner/collection" component={CollectionComponent}/>
+         <Route path="owner/address" component={AddressComponent}/>
+          <Route path="owner/address/createaddress" component={CreateaddressComponent}/>
     </Route>
 )
 
