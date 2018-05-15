@@ -67,7 +67,7 @@ export default class OwnerComponent extends React.Component {
             	<div className="owner_fourth">
             		<ul>
 	            		<li>
-	            			<Link to=""><i className="icon-lianxiwomendibiao iconfont "></i>
+	            			<Link to="owner/address"><i className="icon-lianxiwomendibiao iconfont "></i>
 	            				 我的提货人
 	            				<i className="icon-jiantou iconfont "></i>
 	            			</Link>
