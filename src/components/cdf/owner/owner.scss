@@ -15,19 +15,21 @@
             transform: translateY(-50%);
             transform: translateX(-50%);
             border-radius: 50%;
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 1.6rem;
+            height: 1.6rem;
             background-color: white;
             text-align: center;
             i {
                 display: inline-block;
-                line-height: 2.5rem;
-               color: #6C6C6C;
-                font-size: 1.333333rem;
+                line-height: 1.6rem;
+                color: #6C6C6C;
+                font-size:0.8rem;
             }
             p {
-                margin-top: 0.133333rem;
-              color: #6C6C6C;
+                margin-top: 0.533333rem;
+                font-size:0.4rem;
+                width: 1.773333rem;
+                color: #000;
             }
         }
         img {
@@ -45,12 +47,15 @@
             font-size: 0.425925rem;
             padding-left: 0.277777rem;
             border-bottom: 2px solid #F7F7F7;
+            padding-right: 0.266667rem;
+            font-weight:400;
             a {
                 float: right;
                 font-size: 0.37037rem;
+                color:#666;
             }
             i {
-                font-size: 0.425925rem;
+                font-size:0.453333rem;
             }
         }
         ul {
@@ -65,12 +70,12 @@
                     width: 100%;
                     padding-top: 0.416666rem;
                     i {
-                        font-size: 0.516666rem;
+                        font-size: 0.613333rem;
                         color: #6C6C6C; 
                     }
                     h5 {
                         margin-top: 10px;
-                        font-size: 0.277777rem;
+                        font-size: 0.346667rem;
                     }
                 }
             }
@@ -86,23 +91,25 @@
             height: 100%;
             li {
                 height: 1.388899rem;
-                line-height: 1.388888rem;
+                line-height: 1.388899rem;
                 a {
                     height: 100%;
-                     color: #6C6C6C;
+                    font-size:0.373333rem;
+                    color: #6C6C6C;
                     display: inline-block;
                     width: 100%;
                     padding-left: 0.138888rem;
                     i {
-                        font-size: 0.351851rem;
+                        font-size: 0.533333rem;
                         margin-right: 0.185185rem;
+                        vertical-align:middle;
                     }
                     .icon-jiantou {
                         float: right;
+                        font-size: 0.4rem;
                     }
                 }
             }
-          
             li:nth-of-type(1) {
                 border-bottom: 2px solid #F7F7F7;
             }

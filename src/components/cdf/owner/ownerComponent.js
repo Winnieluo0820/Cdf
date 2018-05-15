@@ -15,7 +15,7 @@ export default class OwnerComponent extends React.Component {
             	</div>
             	
             	<div className="owner_second">
-            		<h4> <i className="icon-dingdan iconfont"></i> 全部订单
+            		<h4> <i className="iconfont icon-wodedingdan1"></i> 全部订单
             			<Link to="">查看全部订单<i className="icon-jiantou iconfont "></i></Link>
             		</h4>
            			<ul>

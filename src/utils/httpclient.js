@@ -23,7 +23,7 @@ const HttpClient = {
         var req = request
             .get(getUrl(path))
             .query(query)
-            .set('Authorization',window.localStorage.getItem('access_token'))
+            .set('auth',window.localStorage.getItem('access_token'))
             .end((err, res) => {
                 if (err) {
                     errorHandler(err)
@@ -37,6 +37,7 @@ const HttpClient = {
         request
             .post(getUrl(path))
             .set('Content-Type','application/x-www-form-urlencoded; charset=UTF-8')
+            .set('auth',window.localStorage.getItem('access_token'))
             .query(query)
             .send(formdata)
             .end((err, res) => {

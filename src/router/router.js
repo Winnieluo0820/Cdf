@@ -12,7 +12,7 @@ import BrandComponent from '../components/cdf/brand/brandComponent.js'
 import ClassifyComponent from '../components/cdf/classify/classifyComponent.js'
 import ShopcarComponent from '../components/cdf/shopcar/shopcarComponent.js'
 import OwnerComponent from '../components/cdf/owner/ownerComponent.js'
-
+import GoodsDetailComponent from '../components/cdf/goodsDetail/goodsDetail.js'
 
 //我的中兔的组件
 import CollectionComponent from '../components/cdf/owner/collection/collectionComponent.js'
@@ -37,6 +37,7 @@ const routes = (
         <Route path="register" component={RegisterComponent}/>
         <Route path="owner/browse" component={BrowseComponent}/>
         <Route path="owner/collection" component={CollectionComponent}/>
+        <Route path="goodsDetail" component={GoodsDetailComponent}/>
     </Route>
 )
 

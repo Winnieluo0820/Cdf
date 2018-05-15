@@ -18,23 +18,23 @@ export default class BrowseComponent extends React.Component {
 								<Link to="">
 									<img src="http://pic.cdfgsanya.com/upload/1/991142/610/237571/348772_1_pic270_9552.jpg"/>
 									<p>倩碧水嫩保湿润肤套装</p>
-									<h3>免税价:<span>￥660.00</span></h3>
-									<h4>市场价:<span>￥698.00</span></h4>
+									<h3>免税价：  <span>￥660.00</span></h3>
+									<h4>市场价：  <span>￥698.00</span></h4>
 								</Link>
 							</li>
 									<li>
 								<Link to="">
 									<img src="http://pic.cdfgsanya.com/upload/1/991142/610/237571/348772_1_pic270_9552.jpg"/>
 									<p>倩碧水嫩保湿润肤套装</p>
-									<h3>免税价:<span>￥660.00</span></h3>
-									<h4>市场价:<span>￥698.00</span></h4>
+									<h3>免税价：  <span>￥660.00</span></h3>
+									<h4>市场价：  <span>￥698.00</span></h4>
 								</Link>
 							</li>	<li>
 								<Link to="">
 									<img src="http://pic.cdfgsanya.com/upload/1/991142/610/237571/348772_1_pic270_9552.jpg"/>
 									<p>倩碧水嫩保湿润肤套装</p>
-									<h3>免税价:<span>￥660.00</span></h3>
-									<h4>市场价:<span>￥698.00</span></h4>
+									<h3>免税价：  <span>￥660.00</span></h3>
+									<h4>市场价：  <span>￥698.00</span></h4>
 								</Link>
 							</li>	
 						</ul>

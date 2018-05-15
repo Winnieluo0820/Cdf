@@ -101,7 +101,7 @@ export default class LoginComponent extends React.Component{
             <div id="cdf_login" className="animate-route">
                 <header className="login_header">
                     <Link to="owner" className="login_return_back">
-                        <i className="iconfont icon-jiantou2"></i>
+                        <i className="iconfont icon-jiantou1"></i>
                     </Link>
                     <h1>登录</h1>
                 </header>
