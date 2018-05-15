@@ -1,0 +1,181 @@
+#cdf_home{
+    height: 100%;
+    display:flex;
+    flex-direction:column;
+    header{
+        height:6.5%;
+        padding:0.133333rem;
+        display:flex;
+        background-color:#b81c22;
+        h1{
+            text-indent:-100em;
+            background:url(http://www.cdfgsanya.com/mobile/resources/images/logo-white@3x.d59a5566.png);
+            width: 12%;
+            height: 0.746667rem;
+            margin: 0.053333rem 0 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 1.066667rem 0.8rem;
+        }
+        input{
+            width: 85%;
+            font-size:0.346667rem;
+            margin-left: 0.266667rem;
+            border-radius:0.053333rem;
+            color:#ccc;
+            line-height:0.8rem;
+            padding-left: 0.533333rem;
+            border:0 none;
+        }
+    }
+    .main{
+        flex:1;
+        overflow-x:hidden;
+        background-color: #eee;
+        .cdf_banner{
+            img{
+                height:6.0rem;
+            }
+            .swiper-pagination-bullet{
+                width: 15px;
+                height: 15px;
+            }
+        }
+        .cdf_home_menu{
+            height: 164px;
+            background-color: #fff;
+            ul{
+                display:flex;
+                padding:40px 40px 20px 40px;
+                li{
+                    display:flex;
+                    width: 20%;
+                    flex-direction:column;
+                    i{
+                        font-size:58px;
+                        text-align:center;
+                    }
+                    span{
+                        font-size:0.373333rem;
+                        text-align:center;
+                    }
+                }
+            }
+        }  
+        .img0{
+            display:flex;background-color: #fff;
+            justify-content:space-between;
+            img{
+                width: 49%;
+                height: 430px;
+                border-radius:4px;
+            }
+        }
+        .img1{
+            padding-top: 20px;background-color: #fff;
+            img{
+                height: 380px;
+            }
+        }
+        .floor{
+            background-color: #fff;margin-top: 20px;
+            .floor_text{
+                height: 140px;
+                display:flex;
+                .left_line{
+                    border-top:1px solid #d7d7d7;
+                    flex:1;
+                    margin-top: 70px;
+                }
+                .right_line{
+                    flex:1;
+                    border-top:1px solid #d7d7d7;
+                    width: 25%;
+                    margin-top: 70px;    
+                }
+                span{
+                    padding:0px 20px;
+                    display: block;
+                    text-align:center;
+                    line-height: 140px;  
+                    font-size:0.346667rem;              
+                }
+            }
+            .floor_pic{
+                img{
+                    width: 100%;
+                    height: 340px;
+                }
+            }    
+            .goodslist{
+                position:relative;height: 414px;
+                ul{
+                    overflow:hidden;
+                    display:flex;
+                    position:absolute;
+                    li{
+                        width: 33.333%;
+                        padding:20px;
+                        display:flex;
+                        flex-direction:column;
+                        p:nth-of-type(3){
+                            background-color: #b81c22;
+                            color:#fff;
+                            text-align:center;
+                        }
+                        img{
+                            width: 210px;
+                            height: 210px;
+                        }
+                    }
+                    .see_more{
+                        border: 1px solid #ccc;
+                        border-right:0 none;
+                    }
+                }
+            }
+        }
+        .all_buy{
+            .floor_text{
+                height: 140px;
+                display:flex;
+                .left_line{
+                    border-top:1px solid #d7d7d7;
+                    flex:1;
+                    margin-top: 70px;
+                }
+                .right_line{
+                    flex:1;
+                    border-top:1px solid #d7d7d7;
+                    width: 25%;
+                    margin-top: 70px;    
+                }
+                span{
+                    padding:0px 20px;
+                    display: block;
+                    text-align:center;
+                    line-height: 140px;  
+                    font-size:0.346667rem;              
+                }
+            }
+            .goods{
+                background-color: #fff;
+                ul{
+                    display:flex;flex-wrap:wrap;
+                    li{
+                        width: 50%;height: 488px;
+                        padding:20px;
+                        display:flex;
+                        flex-direction:column;
+                        border-right:1px solid #ccc;
+                        border-bottom:1px solid #ccc;
+                        img{
+                            height: 330px;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}

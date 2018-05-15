@@ -1,0 +1,105 @@
+#cdf_shopcar{
+    height: 100%;
+    background-color:#f7f7f7;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    .shopcar_header{
+        background-color:#fff;
+        height: 7%;
+        text-align:center;
+        .base{
+            vertical-align:middle;
+            width:0;
+            height:100%;
+            display:inline-block;
+        }
+        .content{
+            vertical-align:middle;
+            display:inline-block;
+            font-size:0.4rem;
+        }
+    }
+    .shopcar_main{
+        margin-top:0.533333rem;
+        flex:1;
+        overflow-x:hidden;
+        box-shadow:0px -0.133333rem 0.333333rem 0.0rem #ccc inset;
+        .empty{
+            display:none;
+            background-color:#fff;
+            padding: 0.266667rem 0.266667rem;
+            color: #666;
+            word-wrap: break-word;
+            font-size:0.346667rem;
+            p{
+                padding-bottom:1.333333rem;
+            }
+            .img_shop{
+                height: 5.333333rem;
+                background:url("http://www.cdfgsanya.com/mobile/resources/images/empty-warning/cart@3x.f0bd0b03.png") no-repeat;
+                background-size:cover;
+            }
+            .text{
+                text-align:center;
+                font-size:0.4rem;
+                color: #999;
+            }
+            a{
+                display:block;
+                background-color:#b81c22;
+                height: 1.066667rem;
+                width: 90%;
+                text-align:center;
+                line-height:1.066667rem;
+                margin:0.133333rem auto;
+                border-radius:0.133333rem 0.133333rem;
+                font-size:0.4rem;
+                color:#fff;
+            }                
+        }
+    }
+    .shopcar_footer{
+        display:none;
+        position:absolute;
+        width: 100%;
+        bottom:0.066667rem;
+        left:0.0rem;
+        height: 7%;
+        background-color:#fff;
+        // display:flex;
+        .left{
+            width: 20%;
+            text-align:center;
+            line-height:1.173333rem;
+        }
+        .center{
+            flex:1;
+            text-align:right;
+            p:nth-of-type(1){
+                font-size: 0.266667rem;
+                color: #999;
+                letter-spacing:0.026667rem;
+                padding-right:0.133333rem;
+            }
+            P:nth-of-type(2){
+                font-size: 0.32rem;
+                color: #b81c22;
+                padding:0.133333rem 0.133333rem;
+            }
+        }
+        .right{
+            width: 26%;
+            background-color:#b81c22;
+            text-align:center;
+            line-height:1.173333rem;
+            font-size:0.346667rem;
+            a{
+                color:#fff;
+                display:block;
+                height: 100%;
+            }
+            font-weight:bold;
+        }
+    }
+}

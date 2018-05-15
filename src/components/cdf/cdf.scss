@@ -1,0 +1,40 @@
+#cdf{
+    height: 100%;
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    #cdf_main{
+        flex:1;
+        overflow-x:hidden;
+    }
+    #cdf_footer{
+        height: 7.5%;
+        ul{
+            height: 100%;
+            display:flex;
+            li{
+                width: 20%;
+                a{
+                    height: 100%;
+                    width: 100%;
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:space-around;
+                    i,span{
+                        font-size:0.586667rem;
+                        text-align:center;
+                    }
+                    span{
+                        font-size:0.373333rem;
+                    }
+
+
+                }
+            }
+            .active{
+                .iconfont{color:#b81c22;}
+                span{color:#b81c22;}
+            }
+        }
+    }
+}

@@ -1,0 +1,153 @@
+#cdf_register{
+    height: 100%;
+    .register_header{
+        height: 6.5%;
+        border-bottom:0.013333rem solid #ddd;
+        position:relative;
+        h1{
+            height: 100%;
+            color: #444;
+            font-weight:normal;
+            font-size:0.4rem;
+            text-align:center;
+            line-height:1.146667rem;
+        }
+        .register_return_back{
+            position:absolute;
+            left:1.3%;
+            top:11.6%;
+            i{
+                display:block;
+                font-size:0.8rem;
+            }
+        }
+    }
+    .register_main{
+        padding:0.4rem;
+        .form_group{
+            margin-bottom:0.133333rem;
+            position:relative;
+            input{
+                height:0.8rem;
+                border:0 none;
+                border-bottom: 0.026667rem solid #ddd;
+                width: 100%;
+                color:#000;
+                font-size:0.293333rem;
+                padding-left:0.266667rem;
+            }
+            .tip{
+                position:absolute;
+                background: #b81c22;
+                color:#fff;
+                border-radius:50%;
+                height: 0.533333rem;
+                width: 0.533333rem;
+                line-height:0.533333rem;
+                text-align:center;
+                font-size:0.4rem;
+                right:2%;
+                top:2%;
+                display:none;
+            }
+            .form_tip{
+                z-index:100;
+                display:none;
+                right:-0.066667rem;
+                top:0.8rem;
+                position:absolute;
+                background: #b81c22;
+                color:#fff;
+                font-size:0.346667rem;
+                padding:0.066667rem;
+                border-radius:0.133333rem 0.133333rem;
+                i{
+                    display:block;
+                    position:absolute;
+                    border:0.266667rem solid transparent;
+                    border-bottom-color:#b81c22;
+                    right:0.266667rem;
+                    top:-0.466667rem;
+                }
+            }
+        }
+        .form_group:nth-of-type(1){
+            input{
+                width: 70%;
+            }
+            button{               
+                width: 20%;
+                height:0.8rem;
+                font-size:0.346667rem;
+                margin-left:20px;
+                border-radius:0.133333rem;
+                border:0 none;
+                background-color:#ccc;
+                color:#fff;              
+            }
+            button:focus{
+                outline:none;
+            }
+            .tip{
+                right:30%;
+            }
+            .form_tip{
+                right:30%;
+            }
+        }
+        .form_group:nth-of-type(5){
+            input{
+                width: 4%;
+                vertical-align:middle;
+                margin-right:1%;
+                border:0 none;
+                border-radius:50%;
+            }
+            font-size:0.346667rem;
+            margin-top:0.266667rem;
+        }
+        .form_group:nth-of-type(6){
+            button{
+                width: 100%;
+                height: 0.933333rem;
+                font-size:0.4rem;
+                border:0 none;
+                border-radius:10px;
+                background-color:#ccc;
+                color:#fff;
+            }
+            button:focus{
+                outline:none;
+            }
+            .alert{
+                z-index:100;
+                display:none;
+                right:4.0rem;
+                top:1.2rem;
+                position:absolute;
+                background: #b81c22;
+                color:#fff;
+                font-size:0.346667rem;
+                padding:0.066667rem;
+                border-radius:0.133333rem 0.133333rem;
+                i{
+                    display:block;
+                    position:absolute;
+                    border:0.266667rem solid transparent;
+                    border-bottom-color:#b81c22;
+                    right:0.266667rem;
+                    top:-0.466667rem;
+                }
+            }
+            
+        }
+        .form_group:nth-of-type(7){
+            margin-top:0.266667rem;
+            a{
+                color:red;
+            }
+        }
+
+
+    }
+}

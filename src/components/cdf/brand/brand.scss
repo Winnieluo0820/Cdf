@@ -1,0 +1,125 @@
+#cdf_brand{
+    height: 100%;
+    display:flex;
+    flex-direction:column;position:relative;
+    header{
+        height:6.5%;
+        padding:0.133333rem;
+        display:flex;
+        background-color:#fff;
+        h1{
+            text-indent:-100em;
+            background:url(http://www.cdfgsanya.com/mobile/resources/images/logo@3x.4b0359e3.png);
+            width: 12%;
+            height: 0.746667rem;
+            margin: 0.053333rem 0 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 1.066667rem 0.8rem;
+        }
+        input{
+            width: 85%;
+            font-size:0.346667rem;
+            margin-left: 0.266667rem;
+            border-radius:0.053333rem;
+            color:#ccc;
+            line-height:0.8rem;
+            padding-left: 0.533333rem;
+            outline:none;
+            background-color:#f7f7f7;
+            border:0 none;
+        }
+    }
+    .cdf_brand_main{
+        flex:1;overflow-x:hidden;
+        .cdf_brand_img{
+            ul{
+                display:flex;
+                flex-wrap:wrap;
+                justify-content:space-between;
+                li{
+                    width:49.5%;margin-bottom: 10px;
+                    img{
+                        display: block;
+                        height: 260px;
+                    }
+                }
+            }
+        }
+        .cdf_brand_cont{
+            .brand_title{
+                height: 140px;
+                display:flex;
+                .left_line{
+                    border-top:4px solid #d7d7d7;
+                    flex:1;
+                    margin-top: 70px;
+                }
+                .right_line{
+                    flex:1;
+                    border-top:4px solid #d7d7d7;
+                    width: 25%;
+                    margin-top: 70px;    
+                }
+                span{
+                    padding:0px 30px;
+                    display: block;
+                    text-align:center;
+                    line-height: 140px;  
+                    font-size:0.426667rem;              
+                }
+            }
+            .brand_all{
+                dl{
+                    margin: 0 0 20px 40px;
+                    dt{
+                        height: 40px;
+                        padding-left: 20px;
+                        border-left:10px solid #b81c22;
+                        background-color: #f7f7f7;
+                        color:#666;
+                        margin-bottom: 20px;
+                        line-height: 40px;
+                        font-size:0.426667rem;
+                        font-weight:700;
+                    }
+                    dd{
+                        height: 60px;
+                        padding-left: 30px;
+                        color:#666;
+                        line-height: 60px;
+                        font-size:0.4rem;
+                    }
+                }
+            }
+            .brand_capital{
+                position:fixed;
+                display:none;
+                right: 0;
+                top: 81px;
+                 height:15.462962rem;
+                width: 60px;
+                bottom:101px;
+                padding:10px 0;
+                background-color:rgba(0,0,0,.1);
+                z-index:1000;
+                ul{
+                    display:flex;
+                    height:15.462962rem;
+                    flex-direction:column;
+                    li{
+                        flex:1;text-align:center;
+                        a{
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+            .active{
+                display:block;
+            }
+        }
+    }
+}

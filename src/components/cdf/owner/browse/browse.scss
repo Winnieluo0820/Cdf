@@ -1,0 +1,78 @@
+#browse {
+    .browse_top {
+        display: flex;
+        justify-content: space-between;
+        background-color: #FFFFFF;
+        flex-direction: row;
+        height: 1.203703rem;
+        width: 100%;
+        line-height: 1.203703rem;
+        font-size: 0.555555rem;
+        a {
+            display: inline-block;
+            width: 1.111111rem;
+            height: 1.203703rem;
+            height: 1.203703rem;
+            text-align: center;
+            i {
+                display: inline-block;
+                font-size: 0.555555rem;
+                font-weight: bold;
+                transform: rotate(180deg);
+            }
+        }
+        span {
+            font-size: 0.324074rem;
+        }
+    }
+    .browse_mian {
+        height: 16.546296rem;
+        width: 100%;
+        background-color: #F7F7F7;
+        overflow-x: hidden;
+        ul {
+            li {
+                height: 3.129629rem;
+                margin-top: 0.555555rem;
+                background-color: white;
+                a {
+                    position: relative;
+                    display: inline-block;
+                    box-sizing: border-box;
+                    padding-top: 0.648148rem;
+                    padding-left: 0.648148rem;
+                    height: 100%;
+                    width: 100%;
+                    img {
+                        display: inline-block;
+                        height: 1.851851rem;
+                    }
+                    p {
+                        position: absolute;
+                        top: 0.648148rem;
+                        left: 2.7rem;
+                        font-size: 0.407407rem;
+                    }
+                    h3 {
+                        position: absolute;
+                        left: 2.7rem;
+                        top: 1.481481rem;
+                        font-size: 0.277777rem;
+                        span {
+                            font-size: 0.381851rem;
+                            color: #B81C22;
+                        }
+                    }
+                    h4 {
+                        position: absolute;
+                        top: 2.222222rem;
+                        color: #CCCCCC;
+                        font-size: 0.259259rem;
+                        text-decoration: line-through;
+                        left: 2.7rem;
+                    }
+                }
+            }
+        }
+    }
+}

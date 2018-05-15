@@ -1,0 +1,116 @@
+#cdf_classfy {
+    height: 100%;
+    background: #F7F7F7;
+    .classify_top {
+        box-sizing: border-box;
+        padding-top: 0.166666rem;
+        padding-left: 0.166666rem;
+        height: 1.203703rem;
+        background-color: #FFFFFF;
+        line-height: 1.203703rem;
+        img {
+            float: left;
+            height: 0.888888rem;
+            margin-right: 0.231481rem;
+        }
+        .classify_find {
+            width: 8rem;
+            height: 0.888888rem;
+            line-height: 0.888888rem;
+            background-color: #F7F7F7;
+            float: left;
+            padding: 0;
+            i {
+                font-size: 0.462962rem;
+                float: left;
+                margin-left: 0.277777rem;
+                margin-right: 0.092592rem;
+            }
+            a {
+                display: inline-block;
+                background-color: #F7F7F7;
+                height: 0.888888rem;
+                width: 7rem;
+                span {
+                    margin-right: 0.092592rem;
+                    color: #CCCCCC;
+                }
+            }
+        }
+    }
+    .classify_left {
+        width: 2.5rem;
+        float: left;
+        overflow: hidden;
+        font-family: "宋体";
+        li {
+            a {
+                display: inline-block;
+                height: 1.203703rem;
+                width: 100%;
+                background-color: white;
+                font-size: 0.277777rem;
+                text-align: center;
+                line-height: 1.203703rem;
+                border-bottom: 2px solid #EEEEEE;
+                span {
+                    width: 100%;
+                    display: inline-block;
+                    line-height: 0.277777rem;
+                }
+            }
+            .active {
+                background-color: #F7F7F7;
+                span {
+                    border-left: 5px solid #B81C22;
+                    color: #B81C22;
+                }
+            }
+        }
+    }
+    .classify_right {
+        width: 7.222222rem;
+        float: right;
+        height: 15.231481rem;
+        overflow-x: hidden;
+        background-color: white;
+        .classify_box {
+            overflow: auto;
+            background-color: white;
+            h2 {
+                height: 1.203703rem;
+                line-height: 1.203703rem;
+                background-color: #F7F7F7;
+                font-size: 0.277777rem;
+                padding-left: 35px;
+                .icon-jiantou {
+                    float: right;
+                    font-size: 0.509259rem;
+                    margin-right: 0.37037rem;
+                }
+            }
+            li {
+                height: 2.935185rem;
+                width: 2.407407rem;
+                border: none;
+                background-color: white;
+                text-align: center;
+                float: left;
+                font-size: 0.296296rem;
+                color: #D0D0D0;
+                a {
+                    display: inline-block;
+                    height: 2.935185rem;
+                    text-align: center;
+                    width: 2.407407rem;
+                    img {
+                        display: inline-block;
+                        height: 1.666666rem;
+                        margin-top: 0.185185rem;
+                        margin-bottom: 0.416666rem;
+                    }
+                }
+            }
+        }
+    }
+}
