@@ -1,7 +1,8 @@
+
 #cdf_brand{
     height: 100%;
     display:flex;
-    flex-direction:column;position:relative;
+    flex-direction:column;
     header{
         height:6.5%;
         padding:0.133333rem;
@@ -17,17 +18,28 @@
             background-repeat: no-repeat;
             background-size: 1.066667rem 0.8rem;
         }
-        input{
+        .search{
             width: 85%;
             font-size:0.346667rem;
             margin-left: 0.266667rem;
             border-radius:0.053333rem;
             color:#ccc;
             line-height:0.8rem;
-            padding-left: 0.533333rem;
-            outline:none;
-            background-color:#f7f7f7;
-            border:0 none;
+            background-color: #f7f7f7;
+            i{
+                width: 10%;
+                font-size:0.666667rem;
+                float: left;
+                margin-left: 0.2rem;
+                margin-right: 0.092592rem;
+            }
+            input{
+                width: 85%;
+                border:0 none;
+                outline:none;
+                font-size:0.346667rem;
+                background-color: #f7f7f7;
+            }
         }
     }
     .cdf_brand_main{
@@ -38,56 +50,56 @@
                 flex-wrap:wrap;
                 justify-content:space-between;
                 li{
-                    width:49.5%;margin-bottom: 10px;
+                    width:49.5%;margin-bottom:0.133333rem;
                     img{
                         display: block;
-                        height: 260px;
+                        height: 3.466667rem;
                     }
                 }
             }
         }
         .cdf_brand_cont{
             .brand_title{
-                height: 140px;
+                height:1.866667rem;
                 display:flex;
                 .left_line{
-                    border-top:4px solid #d7d7d7;
+                    border-top:0.053333rem solid #d7d7d7;
                     flex:1;
-                    margin-top: 70px;
+                    margin-top:0.933333rem;
                 }
                 .right_line{
                     flex:1;
-                    border-top:4px solid #d7d7d7;
+                    border-top:0.053333rem solid #d7d7d7;
                     width: 25%;
-                    margin-top: 70px;    
+                    margin-top:0.933333rem;    
                 }
                 span{
-                    padding:0px 30px;
+                    padding:0px 0.4rem;
                     display: block;
                     text-align:center;
-                    line-height: 140px;  
+                    line-height: 1.866667rem;  
                     font-size:0.426667rem;              
                 }
             }
             .brand_all{
                 dl{
-                    margin: 0 0 20px 40px;
+                    margin: 0 0 0.266667rem 0.533333rem;
                     dt{
-                        height: 40px;
-                        padding-left: 20px;
-                        border-left:10px solid #b81c22;
+                        height:0.533333rem;
+                        padding-left: 0.266667rem;
+                        border-left:0.133333rem solid #b81c22;
                         background-color: #f7f7f7;
                         color:#666;
-                        margin-bottom: 20px;
-                        line-height: 40px;
+                        margin-bottom: 0.266667rem;
+                        line-height: 0.533333rem;
                         font-size:0.426667rem;
                         font-weight:700;
                     }
                     dd{
-                        height: 60px;
-                        padding-left: 30px;
+                        height: 0.8rem;
+                        padding-left:0.4rem;
                         color:#666;
-                        line-height: 60px;
+                        line-height: 0.8rem;
                         font-size:0.4rem;
                     }
                 }
@@ -96,23 +108,21 @@
                 position:fixed;
                 display:none;
                 right: 0;
-                top: 81px;
-                 height:15.462962rem;
-                width: 60px;
-                bottom:101px;
-                padding:10px 0;
+                top: 1.08rem;
+                width: 0.8rem;
+                bottom:1.346667rem;
+                padding:0.133333rem 0;
                 background-color:rgba(0,0,0,.1);
+                height:15.462962rem;
                 z-index:1000;
                 ul{
-                    display:flex;
-                    height:15.462962rem;
+                    display:flex;height:15.462962rem;
                     flex-direction:column;
                     li{
                         flex:1;text-align:center;
                         a{
                             display: block;
-                            width: 100%;
-                            height: 100%;
+                            width: 100%;height: 100%;
                         }
                     }
                 }

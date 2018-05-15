@@ -42,21 +42,21 @@
         width: 2.5rem;
         float: left;
         overflow: hidden;
-        font-family: "宋体";
         li {
             a {
                 display: inline-block;
-                height: 1.203703rem;
+                height: 1.173333rem;
                 width: 100%;
                 background-color: white;
                 font-size: 0.277777rem;
                 text-align: center;
-                line-height: 1.203703rem;
+                line-height: 1.173333rem;
                 border-bottom: 2px solid #EEEEEE;
                 span {
                     width: 100%;
                     display: inline-block;
                     line-height: 0.277777rem;
+                    font-size:0.373333rem;
                 }
             }
             .active {
@@ -78,11 +78,12 @@
             overflow: auto;
             background-color: white;
             h2 {
-                height: 1.203703rem;
-                line-height: 1.203703rem;
+                height: 1.173333rem;
+                line-height: 1.173333rem;
                 background-color: #F7F7F7;
-                font-size: 0.277777rem;
+                font-size:0.373333rem;
                 padding-left: 35px;
+                color:#666;
                 .icon-jiantou {
                     float: right;
                     font-size: 0.509259rem;
@@ -103,6 +104,7 @@
                     height: 2.935185rem;
                     text-align: center;
                     width: 2.407407rem;
+                    font-size:0.32rem;
                     img {
                         display: inline-block;
                         height: 1.666666rem;

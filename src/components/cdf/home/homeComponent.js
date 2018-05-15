@@ -1,18 +1,32 @@
 import React from 'react'
+import {Link} from 'react-router';
+
 import http from '../../../utils/httpclient'
 
 import './home.scss'
-import $ from 'jquery'
-import Swiper from 'swiper'
-
-
-
+import $ from '../../../libs/jquery-3.2.1'
 export default class HomeComponent extends React.Component{
     constructor() { 
         super();
         this.state = {
-            product_nine:[]
+            product_nine:[],
+            product_bags:[],
+            product_shoushi:[],
+            product_mask:[],
+            product_sunglass:[],
+            scroll_Top:0,
+            products:[]
         };
+    }
+    toTop(){
+        var timer = setInterval(()=>{
+            var speed = parseInt(this.state.scroll_Top/5);
+            if(this.refs.main_cont.scrollTop<= 10){
+                speed = 0;
+                clearInterval(timer);
+            }
+            this.refs.main_cont.scrollTop=this.refs.main_cont.scrollTop - speed;
+        },30)
     }
     componentDidMount(){      
         var mySwiper = new Swiper ('.swiper-container', {
@@ -26,14 +40,36 @@ export default class HomeComponent extends React.Component{
               el: '.swiper-pagination'
             }
         })  
-        http.post('product_nine').then((res)=>{
+        this.refs.main_cont.addEventListener('scroll',(e)=>{
+            e.preventDefault();
+            let scrollTop=this.refs.main_cont.scrollTop;
+            if(scrollTop >= this.refs.head.offsetHeight + this.refs.cdf_banner.offsetHeight+this.refs.menu.offsetHeight+this.refs.img0.offsetHeight+this.refs.img1.offsetHeight+20){
+                this.refs.toTop.classList.add('active');
+                this.setState({
+                    scroll_Top:scrollTop
+                })
+            }else{
+                this.refs.toTop.classList.remove('active');
+            }
+        })
+        http.post('product_onQty',{qty:8,type:'太阳镜'}).then((res)=>{
+            this.setState({
+                product_sunglass:res.data
+            })
+        })
+        http.post('product_onQty',{qty:7,type:'首饰'}).then((res)=>{
+            this.setState({
+                product_shoushi:res.data
+            })
+        })
+        http.post('product_onQty',{qty:9}).then((res)=>{
             this.setState({
                 product_nine:res.data
             })
             ;(function(){
                 let uls=$('.goods_li');
                 for(let i=0;i<$('.goods_li').length;i++){
-                    $(uls[i]).width(($(uls[i].children[0]).width()+40)*$(uls[i].children.length));
+                    $(uls[i]).width(($(uls[i].children[0]).width()+50)*$(uls[i].children).length);
                     var ul_width = $(uls[i]).width();
                     var li_with = $(uls[i].children[0]).width();
                     $(uls[i].parentNode).on('touchstart',function(event){
@@ -54,18 +90,29 @@ export default class HomeComponent extends React.Component{
                 }
             })();
         })
+        http.post('product_onQty',{qty:40}).then((res)=>{
+            this.setState({
+                products:res.data
+            })
+        })
     }
     render(){
         const { prefixCls } = this.props;
         const { top, left, height, width } = this.state;  //取得实时状态机state的值
         return (
-            <div id="cdf_home" className="animate2-route">
-                <header className="cdf_home_header">
+            <div id="cdf_home">
+                <header className="cdf_home_header" ref="head">
                     <h1>cdf</h1>
-                    <input type="text" placeholder="分类 品牌 系列 商品"/>
+                    <div className="search">
+                        <i className="iconfont icon-icon-"></i>
+                        <input type="text" placeholder="分类 品牌 系列 商品"/>
+                    </div>
                 </header>
-                <div className="main">
-                    <div className="cdf_banner">
+                <div className="scrollToTop" ref="toTop" onClick={this.toTop.bind(this)}>
+                    <span className="iconfont icon-jiantoushang"></span>
+                </div>
+                <div className="main" ref="main_cont">
+                    <div className="cdf_banner" ref="cdf_banner">
                         <div className="swiper-container">
                             <div className="swiper-wrapper">
                                 <div className="swiper-slide" data-swiper-autoplay="2000">
@@ -93,7 +140,7 @@ export default class HomeComponent extends React.Component{
                             <div className="swiper-pagination"></div>
                         </div>
                     </div>
-                    <div className="cdf_home_menu">
+                    <div className="cdf_home_menu" ref="menu">
                         <ul>
                             <li>
                                 <i className="iconfont icon-paihangbang-"></i>
@@ -117,11 +164,11 @@ export default class HomeComponent extends React.Component{
                             </li>
                         </ul>
                     </div>
-                    <div className="img0">
+                    <div className="img0" ref="img0">
                         <img src="http://pic.cdfgsanya.com/mobilemall/1525397920969VptSp.jpg" />
                         <img src="http://pic.cdfgsanya.com/mobilemall/1525103670603kDiot.jpg" />
                     </div>
-                    <div className="img1">
+                    <div className="img1" ref="img1">
                         <img src="http://pic.cdfgsanya.com/mobilemall/1525103144774tLi3Y.jpg" alt=""/>
                     </div>
                     <div className="floor">
@@ -139,18 +186,22 @@ export default class HomeComponent extends React.Component{
                                     this.state.product_nine.map((item)=>{
                                         return (
                                             <li>
-                                                <img src={item.pic} />
-                                                <p>{item.name}</p>
-                                                <p>促销价：￥{item.discountPrice}</p>
-                                                <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
+                                                    <img src={item.pic} />
+                                                    <p>{item.name}</p>
+                                                    <p>促销价：￥{item.discountPrice}</p>
+                                                    <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                </Link>
                                             </li>
                                         )
                                     })
                                 }
-                            <li className="see_more" >
-                                <p>查看更多</p>
-                                <p>see</p>
-                            </li>
+                                <li>
+                                    <div className="cont_box">
+                                        <p>查看更多</p>
+                                        <p>see</p>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -169,14 +220,24 @@ export default class HomeComponent extends React.Component{
                                     this.state.product_nine.map((item)=>{
                                         return (
                                             <li>
-                                                <img src={item.pic} />
-                                                <p>{item.name}</p>
-                                                <p>促销价：￥{item.discountPrice}</p>
-                                                <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
+                                                    <img src={item.pic} />
+                                                    <p>{item.name}</p>
+                                                    <p>促销价：￥{item.discountPrice}</p>
+                                                    <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                </Link>
                                             </li>
                                         )
                                     })
                                 }
+                                <li>
+                                    <div className="cont_box">
+                                        <div className="more">
+                                            <p>查看更多</p>
+                                            <p>see more</p>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -195,14 +256,22 @@ export default class HomeComponent extends React.Component{
                                     this.state.product_nine.map((item)=>{
                                         return (
                                             <li>
-                                                <img src={item.pic} />
-                                                <p>{item.name}</p>
-                                                <p>促销价：￥{item.discountPrice}</p>
-                                                <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
+                                                    <img src={item.pic} />
+                                                    <p>{item.name}</p>
+                                                    <p>促销价：￥{item.discountPrice}</p>
+                                                    <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                </Link>
                                             </li>
                                         )
                                     })
                                 }
+                                <li>
+                                    <div className="cont_box">
+                                        <p>查看更多</p>
+                                        <p>see</p>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -218,17 +287,25 @@ export default class HomeComponent extends React.Component{
                         <div className="goodslist" >
                             <ul className="goods_li" ref="goods" >
                                {
-                                    this.state.product_nine.map((item)=>{
+                                    this.state.product_shoushi.map((item)=>{
                                         return (
                                             <li>
-                                                <img src={item.pic} />
-                                                <p>{item.name}</p>
-                                                <p>促销价：￥{item.discountPrice}</p>
-                                                <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
+                                                    <img src={item.pic} />
+                                                    <p>{item.name}</p>
+                                                    <p>促销价：￥{item.discountPrice}</p>
+                                                    <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                </Link>
                                             </li>
                                         )
                                     })
                                 }
+                                <li>
+                                    <div className="cont_box">
+                                        <p>查看更多</p>
+                                        <p>see</p>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -247,14 +324,22 @@ export default class HomeComponent extends React.Component{
                                     this.state.product_nine.map((item)=>{
                                         return (
                                             <li>
-                                                <img src={item.pic} />
-                                                <p>{item.name}</p>
-                                                <p>促销价：￥{item.discountPrice}</p>
-                                                <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
+                                                    <img src={item.pic} />
+                                                    <p>{item.name}</p>
+                                                    <p>促销价：￥{item.discountPrice}</p>
+                                                    <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                </Link>
                                             </li>
                                         )
                                     })
                                 }
+                                <li>
+                                    <div className="cont_box">
+                                        <p>查看更多</p>
+                                        <p>see</p>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -270,17 +355,25 @@ export default class HomeComponent extends React.Component{
                         <div className="goodslist" >
                             <ul className="goods_li" ref="goods" >
                                 {
-                                    this.state.product_nine.map((item)=>{
+                                    this.state.product_sunglass.map((item)=>{
                                         return (
                                             <li>
-                                                <img src={item.pic} />
-                                                <p>{item.name}</p>
-                                                <p>促销价：￥{item.discountPrice}</p>
-                                                <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
+                                                    <img src={item.pic} />
+                                                    <p>{item.name}</p>
+                                                    <p>促销价：￥{item.discountPrice}</p>
+                                                    <p>立省 ￥{item.salesPrice - item.discountPrice}</p>
+                                                </Link>
                                             </li>
                                         )
                                     })
                                 }
+                                <li>
+                                    <div className="cont_box">
+                                        <p>查看更多</p>
+                                        <p>see</p>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -322,31 +415,24 @@ export default class HomeComponent extends React.Component{
                         </div>
                         <div className="goods">
                             <ul>
-                                <li>
-                                    <img src="http://pic.cdfgsanya.com/upload/1/991142/610/237571/269970_1_pic400_3738.jpg" alt=""/>
-                                    <p>肌透修护眼部精华霜两支装</p>
-                                    <p>免税价：<span>￥ 650.00</span></p>
-                                    <p>市场价：<span>￥ 980.00</span></p>
-                                </li>
-                                <li>
-                                    <img src="http://pic.cdfgsanya.com/upload/1/991142/610/237571/269970_1_pic400_3738.jpg" alt=""/>
-                                    <p>肌透修护眼部精华霜两支装</p>
-                                    <p>免税价：<span>￥ 650.00</span></p>
-                                    <p>市场价：<span>￥ 980.00</span></p>
-                                </li>
-                                <li>
-                                    <img src="http://pic.cdfgsanya.com/upload/1/991142/610/237571/269970_1_pic400_3738.jpg" alt=""/>
-                                    <p>肌透修护眼部精华霜两支装</p>
-                                    <p>免税价：<span>￥ 650.00</span></p>
-                                    <p>市场价：<span>￥ 980.00</span></p>
-                                </li>
-                                <li>
-                                    <img src="http://pic.cdfgsanya.com/upload/1/991142/610/237571/269970_1_pic400_3738.jpg" alt=""/>
-                                    <p>肌透修护眼部精华霜两支装</p>
-                                    <p>免税价：<span>￥ 650.00</span></p>
-                                    <p>市场价：<span>￥ 980.00</span></p>
-                                </li>
+                                {
+                                    this.state.products.map((item)=>{
+                                        return (
+                                            <li>
+                                                <img src={item.pic} />
+                                                <p>{item.name}</p>
+                                                <p>免税价：<span>￥{item.discountPrice}</span></p>
+                                                <del>市场价：￥{item.salesPrice}</del>
+                                            </li>
+                                        )
+                                    })
+                                }
                             </ul>
+                        </div>
+                        <div className="no_more">
+                            <div className="left_line"></div>
+                            <span>没有更多</span>
+                            <div className="right_line"></div>
                         </div>
                     </div>
                 </div>

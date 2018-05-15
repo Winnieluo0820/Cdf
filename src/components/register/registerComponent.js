@@ -175,7 +175,7 @@ export default class RegisterComponent extends React.Component{
             <div id="cdf_register" className="animate-route">
                 <header  className="register_header">
                     <Link to="login" className="register_return_back">
-                        <i className="iconfont icon-jiantou2"></i>
+                        <i className="iconfont icon-jiantou1"></i>
                     </Link>
                     <h1>注册</h1>
                 </header>

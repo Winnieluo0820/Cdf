@@ -37,7 +37,10 @@ export default class BrandComponent extends React.Component{
             <div id="cdf_brand" className="animate2-route">
                 <header className="cdf_brand_header" ref="head">
                     <h1>cdf</h1>
-                    <input type="text" placeholder="分类 品牌 系列 商品"/>
+                    <div className="search">
+                        <i className="iconfont icon-icon-"></i>
+                        <input type="text" placeholder="分类 品牌 系列 商品"/>
+                    </div>
                 </header>
                 <div className="cdf_brand_main" ref="main_cont">
                     <div className="cdf_brand_img" ref="imgs">

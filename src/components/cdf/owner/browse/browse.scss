@@ -7,7 +7,7 @@
         height: 1.203703rem;
         width: 100%;
         line-height: 1.203703rem;
-        font-size: 0.555555rem;
+        font-size:0.426667rem;
         a {
             display: inline-block;
             width: 1.111111rem;
@@ -16,13 +16,14 @@
             text-align: center;
             i {
                 display: inline-block;
-                font-size: 0.555555rem;
+                font-size:0.453333rem;
                 font-weight: bold;
                 transform: rotate(180deg);
             }
         }
         span {
-            font-size: 0.324074rem;
+            font-size:0.426667rem;
+            margin-right:0.2rem;
         }
     }
     .browse_mian {
@@ -51,23 +52,27 @@
                         position: absolute;
                         top: 0.648148rem;
                         left: 2.7rem;
-                        font-size: 0.407407rem;
+                        font-size:0.4rem;
+                        color:#666;
                     }
                     h3 {
                         position: absolute;
                         left: 2.7rem;
                         top: 1.481481rem;
-                        font-size: 0.277777rem;
+                        font-size:0.373333rem;
+                        font-weight:400;
+                        color:#666;
                         span {
                             font-size: 0.381851rem;
                             color: #B81C22;
+                            font-weight:700;
                         }
                     }
                     h4 {
                         position: absolute;
                         top: 2.222222rem;
                         color: #CCCCCC;
-                        font-size: 0.259259rem;
+                        font-size:28px;
                         text-decoration: line-through;
                         left: 2.7rem;
                     }
