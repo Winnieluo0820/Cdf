@@ -20,13 +20,13 @@ export default class GoodsDetailComponent extends React.Component{
         return (
             <div id="cfd_goodsDetail">
                 <div className="goodsDetail_top">
-                    <i className="icon-jiantou iconfont "></i>
+                    <i className="icon-jiantou2 iconfont "></i>
                         商品详情
-                    <i className="icon-jiantou iconfont "></i>
+                    <i className="icon-gouwudai iconfont "></i>
                 </div>
                 <div className="goodsDetail_content">
-                    <div className="goodsDetail_banner">
-                    </div>
+                    <div className="img"><img src="" alt="" /></div>
+                    
                 </div>
                 <div className="goodsDetail_footer">
                     <button>立即购买</button>

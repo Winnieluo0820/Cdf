@@ -157,7 +157,9 @@ export default class RegisterComponent extends React.Component{
                 if(res.status){
                     _alert.style.display = 'inline-block'
                     _alert.children[1].innerText = '注册成功！跳转登陆界面...'
-                    // setTimeOut(function(){},1000)
+                    var timer = setTimeout(function(){
+                        self.props.router.push('login')
+                    },1000)
                 } else {
                     _alert.style.display = 'inline-block'
                     _alert.children[1].innerText = '注册失败！用户名已存在'
