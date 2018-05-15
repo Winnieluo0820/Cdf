@@ -39,9 +39,16 @@ export default class ShopcarComponent extends React.Component{
             changeObj[this.state.goodsData[i]._id] = true;
             this.setState({checkbox:changeObj})           
         }
-
+        
+        if(this.state.goodsData.length > 0){
+            document.querySelector('#cdf_shopcar .shopcar_main .empty').style.display = 'none'
+            document.querySelector('#cdf_shopcar .shopcar_main .goodCars').style.display = 'block'
+            document.querySelector('#cdf_shopcar .shopcar_footer').style.display = 'flex'
+        }
    
     }
+
+
     changeCheckbox(id,event){
         let res = !this.state.checkbox[id];
         let changeObj = this.state.checkbox;
@@ -72,8 +79,8 @@ export default class ShopcarComponent extends React.Component{
                                             <div className="center">
                                                 <img src={item.pic}/>
                                                 <h1>{item.name}</h1>
-                                                <h3>免税价：<span>￥{item.discountPrice}0</span></h3>
-                                                <del><span>市场价：￥{item.salesPrice}0</span></del>
+                                                <h3>免税价：<span>￥{item.discountPrice}</span></h3>
+                                                <del><span>市场价：￥{item.salesPrice}</span></del>
                                                 <div className="changeQty">
                                                     <button>-</button><span>1</span><button>+</button>
                                                 </div>
@@ -94,8 +101,8 @@ export default class ShopcarComponent extends React.Component{
                         <span>全选</span>
                     </div>
                     <div className="center">
-                        <p>总价￥<span className="totalPrice"></span>.00-优惠￥<span className="discountPrice"></span>.00</p>
-                        <p>应付金额：￥<span className="resultPrice"></span>.00</p>
+                        <p>总价￥<span className="totalPrice"></span>-优惠￥<span className="discountPrice"></span></p>
+                        <p>应付金额：￥<span className="resultPrice"></span></p>
                     </div>
                     <div className="right">
                         <Link to="">去结算(<span>0</span>)</Link>
