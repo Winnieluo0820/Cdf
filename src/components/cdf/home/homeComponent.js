@@ -419,10 +419,12 @@ export default class HomeComponent extends React.Component{
                                     this.state.products.map((item)=>{
                                         return (
                                             <li>
-                                                <img src={item.pic} />
-                                                <p>{item.name}</p>
-                                                <p>免税价：<span>￥{item.discountPrice}</span></p>
-                                                <del>市场价：￥{item.salesPrice}</del>
+                                                <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
+                                                    <img src={item.pic} />
+                                                    <p>{item.name}</p>
+                                                    <p>免税价：<span>￥{item.discountPrice}</span></p>
+                                                    <del>市场价：￥{item.salesPrice}</del>
+                                                </Link>
                                             </li>
                                         )
                                     })

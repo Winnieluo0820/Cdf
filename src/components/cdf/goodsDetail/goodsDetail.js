@@ -9,12 +9,7 @@ export default class GoodsDetailComponent extends React.Component{
         }
     }
     componentDidMount(){
-        let id=this.props.location.query.id;
-        http.post('query_product',{product_id:id}).then((res)=>{
-            this.setState({
-                products_detail:res
-            })
-        })
+        
     }
     render(){
         return (
