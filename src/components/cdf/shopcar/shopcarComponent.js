@@ -2,51 +2,39 @@ import React from 'react'
 import {Link} from 'react-router'
 
 import './shopcar.scss'
+import http from '../../../utils/httpclient.js'
+import jQuery from 'jquery'
 
 export default class ShopcarComponent extends React.Component{
     state = {
         checkbox:{'all':true},
-        goodsData:[
-            {
-                "_id" : "5af668f89b28cc116acb2565",
-                "id" : 1,
-                "name" : "圣罗兰新妍活青春精华液",
-                "brandName" : "YSL 圣罗兰",
-                "type" : "护肤",
-                "salesPrice" : 905.0,
-                "discountPrice" : 769.5,
-                "pic" : "http://pic.cdfgsanya.com/upload/601/603/225510/228586/228593/288906_1_pic400_5734.jpg",
-                "imgs" : []
-            },
-            {
-                "_id" : "5af950680292fbb5a5bc8fe7",
-                "id" : 2,
-                "name" : "施华洛世奇水晶手表1094379",
-                "brandName" : "SWAROVSKI 施华洛世奇",
-                "type" : "腕表",
-                "salesPrice" : 4900.0,
-                "discountPrice" : 3330.0,
-                "pic" : "http://pic.cdfgsanya.com/upload/601/603/225511/228634/228636/284739_1_pic400_4204.JPG",
-                "imgs" : []
-            }
-        ]
+        goodsData:[]
     }
 
     componentDidMount(){
-        let self = this;
-        let changeObj = {};
-        for(let i=0; i<this.state.goodsData.length;i++){
-            changeObj[this.state.goodsData[i]._id] = true;
-            this.setState({checkbox:changeObj})           
-        }
-        
-        if(this.state.goodsData.length > 0){
-            document.querySelector('#cdf_shopcar .shopcar_main .empty').style.display = 'none'
-            document.querySelector('#cdf_shopcar .shopcar_main .goodCars').style.display = 'block'
-            document.querySelector('#cdf_shopcar .shopcar_footer').style.display = 'flex'
-        }
-   
+        let self = this;        
+        jQuery(function($){
+            http.post('showShopcart').then((res) => {
+                self.setState({goodsData: res.data})
+
+                let changeObj = {};
+                for(let i=0; i<self.state.goodsData.length;i++){
+                    changeObj[self.state.goodsData[i]._id] = true;
+                    self.setState({checkbox:changeObj})           
+                }
+
+                if(self.state.goodsData.length > 0){
+                    $('#cdf_shopcar .shopcar_main .goodCars').css('display','block')
+                    $('#cdf_shopcar .shopcar_footer').css('display','flex')
+                } else {
+                    $('#cdf_shopcar .shopcar_main .empty').css('display','block')
+                } 
+            })
+        })
+
+ 
     }
+
 
 
     changeCheckbox(id,event){
@@ -58,7 +46,7 @@ export default class ShopcarComponent extends React.Component{
 
     render(){
         return(
-            <div id="cdf_shopcar" className="animate2-route">
+            <div id="cdf_shopcar" className="animate-route">
                 <div className="shopcar_header"><span className="base"></span><span className="content">我的购物袋</span></div>
                 <div className="shopcar_main">
                     <div className="empty">
@@ -82,7 +70,7 @@ export default class ShopcarComponent extends React.Component{
                                                 <h3>免税价：<span>￥{item.discountPrice}</span></h3>
                                                 <del><span>市场价：￥{item.salesPrice}</span></del>
                                                 <div className="changeQty">
-                                                    <button>-</button><span>1</span><button>+</button>
+                                                    <button>-</button><span>{item.qty}</span><button>+</button>
                                                 </div>
                                             </div>
                                             <div className="right">

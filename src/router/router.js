@@ -38,11 +38,9 @@ const routes = (
         <Route path="register" component={RegisterComponent}/>
         <Route path="owner/browse" component={BrowseComponent}/>
         <Route path="owner/collection" component={CollectionComponent}/>
-
         <Route path="goodsDetail" component={GoodsDetailComponent}/>
-
-         <Route path="owner/address" component={AddressComponent}/>
-          <Route path="owner/address/createaddress" component={CreateaddressComponent}/>
+        <Route path="owner/address" component={AddressComponent}/>
+        <Route path="owner/address/createaddress" component={CreateaddressComponent}/>
 
     </Route>
 )

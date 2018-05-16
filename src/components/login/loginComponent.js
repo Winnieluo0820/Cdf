@@ -23,6 +23,11 @@ export default class LoginComponent extends React.Component{
         var form_tips = document.querySelectorAll('#cdf_login .form_tip')
         var btn_login = document.querySelector('#btn_login')
         var _alert = btn_login.nextElementSibling;
+        var returnBack = document.querySelector('#cdf_login .login_return_back')
+
+        returnBack.onclick =function(){
+            window.history.back();
+        }
 
         log_ipNumber.onchange = function(){
             var text = this.value.trim()*1;
@@ -100,7 +105,7 @@ export default class LoginComponent extends React.Component{
         return(
             <div id="cdf_login" className="animate-route">
                 <header className="login_header">
-                    <Link to="owner" className="login_return_back">
+                    <Link className="login_return_back">
                         <i className="iconfont icon-jiantou1"></i>
                     </Link>
                     <h1>登录</h1>

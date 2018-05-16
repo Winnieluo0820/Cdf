@@ -100,7 +100,7 @@ export default class HomeComponent extends React.Component{
         const { prefixCls } = this.props;
         const { top, left, height, width } = this.state;  //取得实时状态机state的值
         return (
-            <div id="cdf_home">
+            <div id="cdf_home" className="animate-route">
                 <header className="cdf_home_header" ref="head">
                     <h1>cdf</h1>
                     <div className="search">

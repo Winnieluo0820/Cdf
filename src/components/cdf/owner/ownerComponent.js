@@ -6,7 +6,7 @@ export default class OwnerComponent extends React.Component {
 
 	render() {
 		return(
-			<div id="cdf_owner" className="animate2-route">
+			<div id="cdf_owner" className="animate-route">
             	<div className="owner_top">
             		<Link to="login"><i className="icon-wode iconfont "></i>
             		<p>注册/登录</p>
