@@ -16,7 +16,7 @@ export default class CreateaddressComponent extends React.Component {
 			[target]: content
 		})
 	}
-	componentDidMount(){
+	componentDidMount() {
 		var self = this;
 		var log_ipNumber = document.querySelector('#log_ipNumber');
 		var form_tips = document.querySelectorAll('#createbox .form_tip');
@@ -88,7 +88,8 @@ export default class CreateaddressComponent extends React.Component {
 		btn_login.onclick = function() {
 			var _ipNumber = log_ipNumber.value * 1;
 			var _adderss = log_address.value;
-			var _userName = log_ipName.value
+			var _userName = log_ipName.value;
+			console.log(1+_adderss)
 
 			var tips = document.querySelectorAll('.login_main .tip');
 
@@ -101,15 +102,18 @@ export default class CreateaddressComponent extends React.Component {
 					_alert.style.display = 'none'
 				}
 			}
-			console.log(_ipNumber, _adderss, _userName)
 
-//			http.post('addAddress', {
-//				userName: _userName,
-//				ipNumber: _ipNumber,
-//				adderss: _adderss
-//			}).then((res) => {
-//				console.log(res)
-//			})
+
+			http.post('addAddress', {
+				userName: _userName,
+				ipNumber: _ipNumber,
+				address: _adderss
+			}).then((res) => {
+				if(res.status){
+					self.props.router.push('owner/address')
+				}
+			
+			})
 		}
 
 	}

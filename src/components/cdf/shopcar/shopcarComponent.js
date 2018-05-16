@@ -93,7 +93,7 @@ export default class ShopcarComponent extends React.Component{
                         <p>应付金额：￥<span className="resultPrice"></span></p>
                     </div>
                     <div className="right">
-                        <Link to="">去结算(<span>0</span>)</Link>
+                        <Link to="shopcar/orders">去结算(<span>0</span>)</Link>
                     </div>
                 </div>
             </div>
