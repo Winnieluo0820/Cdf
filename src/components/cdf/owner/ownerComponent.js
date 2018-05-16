@@ -2,16 +2,46 @@ import React from 'react'
 
 import './owner.scss'
 import { Link } from 'react-router';
+import http from '../../../utils/httpclient'
+
 export default class OwnerComponent extends React.Component {
+	state = {
+		username: '注册/登录'
+	}
+
+	componentDidMount() {
+		//进来就判断是否有登录，获取登录人的信息
+		//如果有就添加到登录的框，然后添加到名字框
+		var self = this;
+		let loginout = document.querySelector('.icon-tuichu');
+		
+		http.post('islogin').then((res) => {
+			if(res.status) {
+				this.setState({
+					username: res.data
+				})
+				loginout.style.display='block'
+			}
+		})
+		
+		loginout.onclick =function(){
+			window.localStorage.setItem('access_token','') 
+			 self.props.router.push('/')
+		}
+		
+		
+		
+	}
 
 	render() {
 		return(
-			<div id="cdf_owner" className="animate2-route">
+			<div id="cdf_owner" className="animate-route">
             	<div className="owner_top">
             		<Link to="login"><i className="icon-wode iconfont "></i>
-            		<p>注册/登录</p>
+            		<p>{this.state.username}</p>
             		</Link>
             		<img src="http://pic.cdfgsanya.com/upload/2016/8/2/20160802095348455.jpg"/>
+            		<i className="icon-tuichu iconfont"></i>
             	</div>
             	
             	<div className="owner_second">

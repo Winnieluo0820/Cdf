@@ -42,7 +42,7 @@ export default class ClassfyComponent extends React.Component {
 
 	render() {
 		return(
-			<div id="cdf_classfy"  className="animate2-route">
+			<div id="cdf_classfy"  className="animate-route">
                 <div className="classify_top">
                     <img src="http://www.cdfgsanya.com/mobile/resources/images/logo@3x.4b0359e3.png"/>
                     <div className="classify_find">

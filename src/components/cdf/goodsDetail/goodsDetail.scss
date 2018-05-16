@@ -2,21 +2,184 @@
     height: 100%;
     display:flex;
     flex-direction:column;
+    background-color:#f7f7f7;
     .goodsDetail_top{
+        text-align:center;
         height:6.5%;
         background-color:#fff;
+        font-size:0.4rem;
+        position:relative;
+        i{
+            font-size:0.586667rem;
+            position:absolute;
+        }
+        i:nth-of-type(1){
+            left:2%;
+            top:20%;
+        }
+        i:nth-of-type(2){
+            right:2%;
+            top:20%;
+        }
+    }
+    .goodsDetail_top::before{
+        content:"";
+        display:inline-block;
+        height: 100%;
+        vertical-align:middle;
     }
     .goodsDetail_content{
          flex:1;overflow-x:hidden;
-         .goodsDetail_banner{
-            margin-top: 40px;
-         }
+        .img{
+            margin:0.533333rem 0;
+            height: 10.0rem;
+            width: 100%;
+            background:#fff;
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+        .contents{
+            background-color:#fff;
+            position:relative;
+            padding:0.533333rem;
+            i{
+                position:absolute;
+                right:8%;
+                top:0.5rem;
+                font-size:0.533333rem;
+            }
+            .active{
+                color:#b81c22;
+            }
+            p{
+                font-size:0.4rem;
+                line-height:40px;
+                padding-bottom:0.533333rem;
+                color:#666;
+            }
+            .left{
+                display:inline-block;
+                font-size:0.32rem;
+                span{
+                    font-size:0.533333rem;
+                    color:red;
+                }
+            }
+            .right{
+                display:inline-block;
+                color:#ccc;
+                font-size:0.266667rem;
+                margin-left:40%;
+            }
+        }
     }
     .goodsDetail_footer{
-        height: 88px;
+        height: 1.173333rem;
         display:flex;
+        border-top:0.013333rem solid red;
         button{
             flex:1;
+            border:0 none;
+        }
+        button:nth-of-type(1){
+            background-color:#fff;
+            font-size:0.35rem;
+        }
+        button:nth-of-type(2){
+            background-color:#b81c22;
+            color:#fff;
+            font-size:0.35rem;
+        }
+    }
+    .overlay{
+        display:none;
+        background-color:#000;
+        opacity:.5;
+        position:absolute;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        z-index:10;
+    }
+    .detail{
+        display:none;
+        background-color:#fff;
+        position:absolute;
+        bottom:0;
+        height: 31%;
+        width: 100%;
+        z-index:100;
+        bottom:-31%;
+        .cont{
+            position:relative;
+            padding:0.666667rem 0 0.666667rem 3.266667rem;
+            border-bottom:0.013333rem solid #ccc;
+            .cancel{
+                display:block;
+                position:absolute;
+                right:10%;
+                top:-0.266667rem;
+                font-size:0.4rem;
+                background-color:#fff;
+                border-radius:50%;
+                width: 0.666667rem;
+                height: 0.666667rem;
+                text-align:center;
+                line-height:0.666667rem;
+                border:0.013333rem solid #ccc;
+            }
+            img{
+                position:absolute;
+                width: 2rem;
+                height: 2rem;
+                left:4%;
+            }
+            p{
+                font-size:0.4rem;
+                padding-bottom:0.266667rem;
+            }
+            .discount{
+                font-size:0.266667rem;
+                padding-bottom:0.133333rem;
+                span{
+                    color:#000;
+                    font-size:0.4rem;
+                }
+            }
+            .xiangou{
+                color:red;
+            }
+        }
+        .select{
+            .counts{
+                padding:0.266667rem 0 0 0.266667rem;
+                button{
+                    display:inline-block;
+                    width: 0.466667rem;
+                    height: 0.466667rem;
+                    font-size:0.32rem;
+                    border: 0 none;
+                }
+                span{
+                    display:inline-block;
+                    width: 50px;
+                    text-align:center;
+                }
+            }
+            #confirm{
+                display:block;
+                background:#b81c22;
+                width: 90%;
+                margin:0.2rem auto;
+                border:0 none;
+                height: 1.066667rem;
+                font-size:0.4rem;
+                color:#fff;
+                border-radius:0.133333rem 0.133333rem;
+            }
         }
     }
 }

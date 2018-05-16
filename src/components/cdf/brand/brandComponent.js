@@ -34,7 +34,7 @@ export default class BrandComponent extends React.Component{
     }
     render(){
         return(
-            <div id="cdf_brand" className="animate2-route">
+            <div id="cdf_brand" className="animate-route">
                 <header className="cdf_brand_header" ref="head">
                     <h1>cdf</h1>
                     <div className="search">

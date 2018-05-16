@@ -1,6 +1,7 @@
 import React from 'react'
 import './createaddress.scss'
 import { Link } from 'react-router'
+import http from '../../../../utils/httpclient'
 
 export default class CreateaddressComponent extends React.Component {
 	state = {
@@ -16,7 +17,6 @@ export default class CreateaddressComponent extends React.Component {
 		})
 	}
 	componentDidMount() {
-
 		var self = this;
 		var log_ipNumber = document.querySelector('#log_ipNumber');
 		var form_tips = document.querySelectorAll('#createbox .form_tip');
@@ -88,7 +88,8 @@ export default class CreateaddressComponent extends React.Component {
 		btn_login.onclick = function() {
 			var _ipNumber = log_ipNumber.value * 1;
 			var _adderss = log_address.value;
-			var _userName = log_ipName.value
+			var _userName = log_ipName.value;
+			console.log(1+_adderss)
 
 			var tips = document.querySelectorAll('.login_main .tip');
 
@@ -101,17 +102,18 @@ export default class CreateaddressComponent extends React.Component {
 					_alert.style.display = 'none'
 				}
 			}
-			console.log(_ipNumber, _adderss, _userName)
-			//
-			//          http.post('login',{username:_ipNumber,password:_password}).then((res) => {
-			//              if(res.status){
-			//                  window.localStorage.setItem('access_token',res.data)
-			//                  self.props.router.push('/')
-			//              }else{
-			//                  _alert.style.display = 'inline-block'
-			//                  _alert.children[1].innerText = '用户名或密码错误'
-			//              }
-			//          })
+
+
+			http.post('addAddress', {
+				userName: _userName,
+				ipNumber: _ipNumber,
+				address: _adderss
+			}).then((res) => {
+				if(res.status){
+					self.props.router.push('owner/address')
+				}
+			
+			})
 		}
 
 	}
