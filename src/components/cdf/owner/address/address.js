@@ -1,8 +1,36 @@
 import React from 'react'
 import './address.scss'
 import { Link } from 'react-router'
+import http from '../../../../utils/httpclient'
 
 export default class AddressComponent extends React.Component {
+	state={
+		data:[]
+	}
+	
+	componentDidMount(){
+		let ss = window.localStorage.getItem('access_token')
+		if(!ss){
+			alert('请先登陆');
+			  this.props.router.push('login')
+		}else{
+			//发起请求拿到地址记录,渲染下面的界面
+			
+			
+			console.log(666)
+		}
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	render() {
 		return(
 			<div id="address" className="animate-route">

@@ -1,6 +1,7 @@
 import React from 'react'
 import './createaddress.scss'
 import { Link } from 'react-router'
+import http from '../../../../utils/httpclient'
 
 export default class CreateaddressComponent extends React.Component {
 	state = {
@@ -15,8 +16,7 @@ export default class CreateaddressComponent extends React.Component {
 			[target]: content
 		})
 	}
-	componentDidMount() {
-
+	componentDidMount(){
 		var self = this;
 		var log_ipNumber = document.querySelector('#log_ipNumber');
 		var form_tips = document.querySelectorAll('#createbox .form_tip');
@@ -102,16 +102,14 @@ export default class CreateaddressComponent extends React.Component {
 				}
 			}
 			console.log(_ipNumber, _adderss, _userName)
-			//
-			//          http.post('login',{username:_ipNumber,password:_password}).then((res) => {
-			//              if(res.status){
-			//                  window.localStorage.setItem('access_token',res.data)
-			//                  self.props.router.push('/')
-			//              }else{
-			//                  _alert.style.display = 'inline-block'
-			//                  _alert.children[1].innerText = '用户名或密码错误'
-			//              }
-			//          })
+
+//			http.post('addAddress', {
+//				userName: _userName,
+//				ipNumber: _ipNumber,
+//				adderss: _adderss
+//			}).then((res) => {
+//				console.log(res)
+//			})
 		}
 
 	}
