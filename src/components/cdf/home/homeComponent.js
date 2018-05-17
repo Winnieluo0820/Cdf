@@ -185,7 +185,7 @@ export default class HomeComponent extends React.Component{
                                 {
                                     this.state.product_nine.map((item)=>{
                                         return (
-                                            <li>
+                                            <li key={item.name}>
                                                 <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
                                                     <img src={item.pic} />
                                                     <p>{item.name}</p>
@@ -219,7 +219,7 @@ export default class HomeComponent extends React.Component{
                                 {
                                     this.state.product_nine.map((item)=>{
                                         return (
-                                            <li>
+                                            <li key={item.name}> 
                                                 <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
                                                     <img src={item.pic} />
                                                     <p>{item.name}</p>
@@ -255,7 +255,7 @@ export default class HomeComponent extends React.Component{
                                 {
                                     this.state.product_nine.map((item)=>{
                                         return (
-                                            <li>
+                                            <li key={item.name}>
                                                 <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
                                                     <img src={item.pic} />
                                                     <p>{item.name}</p>
@@ -289,7 +289,7 @@ export default class HomeComponent extends React.Component{
                                {
                                     this.state.product_shoushi.map((item)=>{
                                         return (
-                                            <li>
+                                            <li key={item.name}>
                                                 <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
                                                     <img src={item.pic} />
                                                     <p>{item.name}</p>
@@ -323,7 +323,7 @@ export default class HomeComponent extends React.Component{
                                 {
                                     this.state.product_nine.map((item)=>{
                                         return (
-                                            <li>
+                                            <li key={item.name}>
                                                 <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
                                                     <img src={item.pic} />
                                                     <p>{item.name}</p>
@@ -357,7 +357,7 @@ export default class HomeComponent extends React.Component{
                                 {
                                     this.state.product_sunglass.map((item)=>{
                                         return (
-                                            <li>
+                                            <li key={item.name}>
                                                 <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
                                                     <img src={item.pic} />
                                                     <p>{item.name}</p>
@@ -418,7 +418,7 @@ export default class HomeComponent extends React.Component{
                                 {
                                     this.state.products.map((item)=>{
                                         return (
-                                            <li>
+                                            <li key={item.name}>
                                                 <img src={item.pic} />
                                                 <p>{item.name}</p>
                                                 <p>免税价：<span>￥{item.discountPrice}</span></p>
