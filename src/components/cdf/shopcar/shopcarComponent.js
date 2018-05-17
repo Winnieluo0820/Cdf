@@ -14,6 +14,7 @@ class ShopcarComponent extends React.Component{
         goodsData:[]
     }
     componentDidMount(){
+<<<<<<< HEAD
         let self = this;        
         jQuery(function($){
             http.post('showShopcart').then((res) => {
@@ -37,6 +38,10 @@ class ShopcarComponent extends React.Component{
  
         
                 console.log(this.props.data)
+=======
+        let self = this;
+             //   console.log(this.props.data)
+>>>>>>> upstream/master
         jQuery(function($){
             var $goodCars = $('#cdf_shopcar .shopcar_main .goodCars')
             var $shopcar_footer = $('#cdf_shopcar .shopcar_footer')
@@ -53,7 +58,7 @@ class ShopcarComponent extends React.Component{
                     $goodCars.css('display','block')
                     $shopcar_footer.css('display','flex')
                 } else {
-                    console.log($empty)
+                  //  console.log($empty)
                     $empty.css('display','block')
                 } 
                 

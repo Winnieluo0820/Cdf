@@ -94,15 +94,21 @@
                 overflow-y: hidden;
                 ul {
                     float: left;
+                    width: 2000px;
                     overflow-x: auto;
                     li {
                         float: left;
+                        position: relative;
                         height: 1.981481rem;
                         width: 1.981481rem;
-                        background-color: gold;
+                        background-color: transparent;
+                        //background-color: gold;
                         margin-right: 0.555555rem;
                         img{
-                                 height: 1.981481rem;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 1.981481rem;
                         }
                     }
                 }
