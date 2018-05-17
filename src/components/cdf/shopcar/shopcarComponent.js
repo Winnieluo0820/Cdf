@@ -1,18 +1,23 @@
 import React from 'react'
 import {Link} from 'react-router'
+import {connect} from 'react-redux'
+
+import * as actions from './shopcarAction.js'
 
 import './shopcar.scss'
 import http from '../../../utils/httpclient.js'
 import jQuery from 'jquery'
 
-export default class ShopcarComponent extends React.Component{
+class ShopcarComponent extends React.Component{
     state = {
         checkbox:{'all':true},
         goodsData:[]
     }
-
     componentDidMount(){
         let self = this;
+        this.props.requestData({
+            url:'showShopcart'
+        }) 
         jQuery(function($){
             var $goodCars = $('#cdf_shopcar .shopcar_main .goodCars')
             var $shopcar_footer = $('#cdf_shopcar .shopcar_footer')
@@ -123,12 +128,24 @@ export default class ShopcarComponent extends React.Component{
                 } else {
                     $delSingle.css('transform','translateX(100%)')
                 }
+            }).on('click', '.delSingle', function(){
+                let id = $(this).closest('li').attr('id');
+                let arr = self.state.goodsData;
+                let idx;
+                for(let i=0; i<arr.length; i++){
+                    if(arr[i]._id == id){
+                        idx = i ;
+                        break;
+                    }
+                }
+                arr.splice(idx,1);
+                self.setState({goodsData: arr})
+                http.post('del_shop_cart', {product_id:id}).then((res) => {
+                    console.log(res)
+                })
             })
-
-            
-
         })
- 
+
     }
 
     counting(data){
@@ -207,6 +224,7 @@ export default class ShopcarComponent extends React.Component{
 
 
     render(){
+        console.log(this.props.data)
         return(
             <div id="cdf_shopcar" className="animate-route">
                 <div className="shopcar_header"><span className="base"></span><span className="content">我的购物袋</span></div>
@@ -263,3 +281,11 @@ export default class ShopcarComponent extends React.Component{
 
     }
 }
+
+const mapStatesToProps = (state) => {
+    return {
+        data: state.shopcar
+    }
+}
+
+export default connect(mapStatesToProps, actions)(ShopcarComponent)
