@@ -182,4 +182,25 @@
             }
         }
     }
+    .shopTip{
+        display:none;
+        z-index:200;
+        width: 60%;
+        height: 20%;
+        background:pink;
+        border:0.013333rem solid #ccc;
+        position:absolute;
+        left:50%;
+        top:30%;
+        transform:translate(-50%,-50%);
+        border-radius:0.4rem 0.4rem;
+        text-align:center;
+        font-size:0.533333rem;
+    }
+    .shopTip::before{
+        content:"";
+        height: 100%;
+        display:inline-block;
+        vertical-align:middle;
+    }
 }

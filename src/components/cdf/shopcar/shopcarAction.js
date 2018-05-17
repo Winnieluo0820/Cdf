@@ -8,3 +8,4 @@ export function requestData(config){
         name: config.name
     }
 }
+

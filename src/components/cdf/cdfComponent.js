@@ -9,9 +9,6 @@ import jQuery from 'jquery'
 
 class CdfComponent extends React.Component{
     componentDidMount(){
-        this.props.requestData({
-            url:'showShopcart'
-        }) 
         jQuery(function($){
             var $cdf_footer = $('#cdf_footer');
             $cdf_footer.on('click','li',function(){
@@ -42,7 +39,7 @@ class CdfComponent extends React.Component{
 
 const mapStatesToProps = (state) => {
     return {
-        data: state.shopcar
+        
     }
 }
 

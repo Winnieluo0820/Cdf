@@ -26,8 +26,9 @@ export default class GoodsDetailComponent extends React.Component{
             var $countsJia = $('#countsJia')
             var $confirm = $('#confirm')
             var $addCar = $('#addCar')
-            var $myCar= $('myCar')
+            var $myCar= $('#myCar')
             var $text = $countsJian.next();
+            var $shopTip = $('#cfd_goodsDetail .shopTip');
 
             let id = self.props.location.query.id;
             http.post('addTowatch_history',{product_id:id}).then((res)=>{
@@ -105,7 +106,13 @@ export default class GoodsDetailComponent extends React.Component{
                         return;
                     }
                     if(res.status){
-                        alert('已添加到购物车')
+                        $shopTip.fadeIn(1000)
+                        $detail.animate({bottom:'-31%'},function(){
+                            $detail.css('display','none')
+                            $shopTip.fadeOut(1000,function(){
+                                $overlay.fadeOut(300)                                 
+                            })
+                        })
                     }
                 })
             })
@@ -152,6 +159,7 @@ export default class GoodsDetailComponent extends React.Component{
                         <button id="confirm">确认</button>
                     </div>
                 </div>
+                <div className="shopTip"><span>已添加到购物车</span></div>
             </div>
         )
     }

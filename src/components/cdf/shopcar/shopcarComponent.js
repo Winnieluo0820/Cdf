@@ -15,8 +15,8 @@ class ShopcarComponent extends React.Component{
     }
     componentDidMount(){
         let self = this;
-                console.log(this.props.data)
         jQuery(function($){
+            //获取页面元素
             var $goodCars = $('#cdf_shopcar .shopcar_main .goodCars')
             var $shopcar_footer = $('#cdf_shopcar .shopcar_footer')
             var $empty = $('#cdf_shopcar .shopcar_main .empty')  
@@ -24,10 +24,11 @@ class ShopcarComponent extends React.Component{
             var $discountPrice = $('.shopcar_footer .discountPrice')
             var $resultPrice = $('.shopcar_footer .resultPrice') 
             var $uls = $('.shopcar_main .goods')
+            var $jiesuan = $('.shopcar_footer .right a')
             
+            //第一进去获取页面购物车数据
             http.post('showShopcart').then((res) => {
                 self.setState({goodsData: res.data})
- 
                 if(self.state.goodsData.length > 0){
                     $goodCars.css('display','block')
                     $shopcar_footer.css('display','flex')
@@ -99,7 +100,8 @@ class ShopcarComponent extends React.Component{
                     console.log(res)
                 })
             })
-            
+
+            //删除按钮的动画滑动
             var $delSingle;
             var direction;
             $uls.on('touchstart', '.right', function(event){
@@ -126,7 +128,9 @@ class ShopcarComponent extends React.Component{
                 } else {
                     $delSingle.css('transform','translateX(100%)')
                 }
-            }).on('click', '.delSingle', function(){
+            })
+            //点击删除当前商品
+            .on('click', '.delSingle', function(){
                 let id = $(this).closest('li').attr('id');
                 let arr = self.state.goodsData;
                 let idx;
@@ -141,11 +145,26 @@ class ShopcarComponent extends React.Component{
                 http.post('del_shop_cart', {product_id:id}).then((res) => {
                     console.log(res)
                 })
+
+                if(self.state.goodsData.length > 0){
+                    $goodCars.css('display','block')
+                    $shopcar_footer.css('display','flex')
+                } else {
+                    console.log($empty)
+                    $empty.css('display','block')
+                } 
+            })
+
+            //点击结算
+            $jiesuan.on('click',function(){
+                self.props.requestData({url:'showShopcart'})
+
+                self.props.router.push('shopcar/orders')
             })
         })
 
     }
-
+    //计算总价
     counting(data){
         var totalPrice = 0;
         var discountTotal = 0;
@@ -161,7 +180,7 @@ class ShopcarComponent extends React.Component{
 
         return {totalPrice, discountTotal, shouldPrice}
     }
-
+    //多选框
     changeCheckbox(id,event){
         let self = this;
         jQuery(function($){  
@@ -222,7 +241,6 @@ class ShopcarComponent extends React.Component{
 
 
     render(){
-
         return(
             <div id="cdf_shopcar" className="animate-route">
                 <div className="shopcar_header"><span className="base"></span><span className="content">我的购物袋</span></div>
@@ -271,7 +289,7 @@ class ShopcarComponent extends React.Component{
                         <p>应付金额：￥<span className="resultPrice"></span></p>
                     </div>
                     <div className="right">
-                        <Link to="shopcar/orders">去结算(<span>0</span>)</Link>
+                        <Link to="">去结算(<span>0</span>)</Link>
                     </div>
                 </div>
             </div>
@@ -282,7 +300,7 @@ class ShopcarComponent extends React.Component{
 
 const mapStatesToProps = (state) => {
     return {
-        data: state.shopcar
+        data: state.shopcar 
     }
 }
 
