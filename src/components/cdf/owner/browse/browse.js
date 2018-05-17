@@ -9,32 +9,32 @@ export default class BrowseComponent extends React.Component {
 	}
 
 	componentDidMount() {
+		let span_btn = document.querySelector('.span_btn');
 		http.post('watch_history').then((res) => {
-			console.log(res.data)
+
 			if(res.status) {
 				this.setState({
 					browse: res.data
 				})
 			}
 		})
+		span_btn.onclick = () => {
+			http.post('del_watch_history').then((res) => {
+				if(res.status) {
+					this.setState({
+						browse: []
+					})
+				}
+			})
+		}
 	}
-
-	createall(){
-		console.log(666)
-	}
-
-
-
-
-
-
-render() {
+	render() {
 		return(
 			<div id="browse" className=" animate-route">
 					<div className="browse_top">
 					<Link to="owner"><i className="icon-jiantou iconfont "></i></Link>
 						浏览记录
-					<span onClick={this.createall}>清空</span>
+				<span className="span_btn" >清空</span>
 					</div>
 					<div className="browse_mian">
 						<ul>

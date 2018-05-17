@@ -21,7 +21,8 @@ import AddressComponent from '../components/cdf/owner/address/address.js'
 import CreateaddressComponent from '../components/cdf/owner/createaddress/createaddress.js'
 
 
-
+//购物车订单组件
+import OrdersComponent from  '../components/cdf/shopcar/orders/orders.js'
 
 
 //后面像跳到列表页的话就新建一个路由，不要多于2层嵌套
@@ -41,6 +42,7 @@ const routes = (
         <Route path="goodsDetail" component={GoodsDetailComponent}/>
         <Route path="owner/address" component={AddressComponent}/>
         <Route path="owner/address/createaddress" component={CreateaddressComponent}/>
+        <Route path="shopcar/orders" component={OrdersComponent}></Route>
 
     </Route>
 )

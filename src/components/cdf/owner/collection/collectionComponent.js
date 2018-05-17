@@ -10,23 +10,41 @@ export default class CollectionComponent extends React.Component {
 	}
 
 	componentDidMount() {
+		let span_btn = document.querySelector('.span_btn');
 		http.post('showLikes').then((res) => {
-			console.log(res.data)
 			if(res.status) {
 				this.setState({
 					likedate: res.data
 				})
 			}
 		})
-	}
 
+		span_btn.onclick = () => {
+
+			var msg = "您真的确定要删除吗？";
+			if(confirm(msg) == true) {
+				http.post('del_likes').then((res) => {
+				if(res.status) {
+					this.setState({
+						likedate: []
+					})
+				}
+			})
+	
+			} else {
+				return false;
+			}
+
+			
+		}
+	}
 	render() {
 		return(
 			<div id="Collection"  className="animate-route">
 					<div className="Collection_top">
 					<Link to="owner"><i className="icon-jiantou iconfont "></i></Link>
 						我的收藏
-					<span>清空</span>
+				<span className="span_btn" >清空</span>
 					</div>
 					<div className="Collection_mian">
 						<ul>{
@@ -49,10 +67,7 @@ export default class CollectionComponent extends React.Component {
 						</ul>
 					
 					</div>
-					
-					
-					
-				</div>
+			</div>
 		)
 	}
 }
