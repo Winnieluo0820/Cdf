@@ -19,7 +19,8 @@ import CollectionComponent from '../components/cdf/owner/collection/collectionCo
 import BrowseComponent from '../components/cdf/owner/browse/browse.js'
 import AddressComponent from '../components/cdf/owner/address/address.js'
 import CreateaddressComponent from '../components/cdf/owner/createaddress/createaddress.js'
-
+import SearchComponent from '../components/cdf/search/search.js'
+        
 
 //购物车订单组件
 import OrdersComponent from  '../components/cdf/shopcar/orders/orders.js'
@@ -42,8 +43,8 @@ const routes = (
         <Route path="goodsDetail" component={GoodsDetailComponent}/>
         <Route path="owner/address" component={AddressComponent}/>
         <Route path="owner/address/createaddress" component={CreateaddressComponent}/>
-        <Route path="shopcar/orders" component={OrdersComponent}></Route>
-
+        <Route path="shopcar/orders" component={OrdersComponent} />
+        <Route path="search" component={SearchComponent}/>
     </Route>
 )
 

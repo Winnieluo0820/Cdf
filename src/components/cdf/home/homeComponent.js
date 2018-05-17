@@ -28,6 +28,9 @@ export default class HomeComponent extends React.Component{
             this.refs.main_cont.scrollTop=this.refs.main_cont.scrollTop - speed;
         },30)
     }
+    toSearch(){
+        this.props.router.push('/search');
+    }
     componentDidMount(){      
         var mySwiper = new Swiper ('.swiper-container', {
             direction: 'horizontal',
@@ -52,14 +55,24 @@ export default class HomeComponent extends React.Component{
                 this.refs.toTop.classList.remove('active');
             }
         })
-        http.post('product_onQty',{qty:8,type:'太阳镜'}).then((res)=>{
+        http.post('product_onQty',{qty:9,type:'太阳镜'}).then((res)=>{
             this.setState({
                 product_sunglass:res.data
             })
         })
-        http.post('product_onQty',{qty:7,type:'首饰'}).then((res)=>{
+        http.post('product_onQty',{qty:9,type:'首饰'}).then((res)=>{
             this.setState({
                 product_shoushi:res.data
+            })
+        })
+        http.post('product_onQty',{qty:9,type:'女包'}).then((res)=>{
+            this.setState({
+                product_bags:res.data
+            })
+        })
+        http.post('product_onQty',{qty:9,type:'护肤'}).then((res)=>{
+            this.setState({
+                product_mask:res.data
             })
         })
         http.post('product_onQty',{qty:9}).then((res)=>{
@@ -105,7 +118,7 @@ export default class HomeComponent extends React.Component{
                     <h1>cdf</h1>
                     <div className="search">
                         <i className="iconfont icon-icon-"></i>
-                        <input type="text" placeholder="分类 品牌 系列 商品"/>
+                        <input type="text" placeholder="分类 品牌 系列 商品" onFocus={this.toSearch.bind(this)}/>
                     </div>
                 </header>
                 <div className="scrollToTop" ref="toTop" onClick={this.toTop.bind(this)}>
@@ -217,7 +230,7 @@ export default class HomeComponent extends React.Component{
                         <div className="goodslist" >
                             <ul className="goods_li" ref="goods" >
                                 {
-                                    this.state.product_nine.map((item)=>{
+                                    this.state.product_mask.map((item)=>{
                                         return (
                                             <li>
                                                 <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
@@ -321,7 +334,7 @@ export default class HomeComponent extends React.Component{
                         <div className="goodslist" >
                             <ul className="goods_li" ref="goods">
                                 {
-                                    this.state.product_nine.map((item)=>{
+                                    this.state.product_bags.map((item)=>{
                                         return (
                                             <li>
                                                 <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>

@@ -13,9 +13,7 @@ export default class GoodsDetailComponent extends React.Component{
         }
     }
     componentDidMount(){
-<<<<<<< HEAD
-        
-=======
+
         let self = this;
 
         jQuery(function($){
@@ -113,7 +111,6 @@ export default class GoodsDetailComponent extends React.Component{
                 })
             })
         })
->>>>>>> upstream/master
     }
     render(){
         return (
