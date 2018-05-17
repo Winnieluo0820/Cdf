@@ -46,7 +46,9 @@ export default class BrandComponent extends React.Component{
                     <div className="cdf_brand_img" ref="imgs">
                         <ul>
                             <li>
-                                <img src="http://pic.cdfgsanya.com/mobilemall/1525399068316GyNcc.jpg"/>
+                                <Link >
+                                    <img src="http://pic.cdfgsanya.com/mobilemall/1525399068316GyNcc.jpg"/>
+                                </Link>
                             </li>
                             <li>
                                 <img src="http://pic.cdfgsanya.com/mobilemall/1524041665155vyj0S.jpg"/>

@@ -1,0 +1,125 @@
+//body{
+//  background: #f3f3f3;
+//}
+.datalist {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .head {
+        height: 88px;
+        background: #fff;
+        display: flex;
+        font-size: 0.4rem;
+        justify-content: space-between;
+        padding: 0.1333rem;
+        .goback {
+            border: 0 none;
+            background: #fff;
+            line-height: 0.9067rem;
+            font-size: 0.8rem;
+        }
+        i {
+            font-size: 0.8rem;
+        }
+    }
+    .option {
+        height: 80px;
+        background: #fff;
+        display: flex;
+        margin-bottom: 0.5333rem;
+       
+        div {
+            border: 0 none;
+            background: #fff;
+            flex: 1;
+            text-align: center;
+            border-bottom: 1px solid black;
+            height: 1.0667rem;
+            font-size: 0.4rem;
+            color: #b2b2b2;
+            background-color:transparent;
+            span {
+                display: inline-block;
+                width: 0.2rem;
+                height: 0.24rem;
+                font-size: 0.1333rem;
+                line-height: 0.1333rem;
+                vertical-align: middle;
+                color: #d7d7d7;
+                position: relative;
+                top: -0.0267rem;
+                margin-left: -0.04rem;
+                i {
+                    display: block;
+                    width: 0.4rem;
+                    height: 0.2667rem;
+                    font-size: 0.4533rem;
+                  
+                }
+            }
+            .shaixuan {
+                width: 0.4rem;
+                height: 0.4rem;
+                font-size: 0.4rem;
+            }
+        }
+        .btn_action {
+            background: bottom center/100% 0.0967rem no-repeat linear-gradient(180deg, #b81c22, #b81c22 100%);
+            border: none;
+            color: #b81c22;
+            i{
+               color: #b81c22;
+            }
+        }
+    }
+    .goodslist {
+        flex: 1;
+        overflow-x: hidden;
+        ul {
+            display: flex;
+            background: #fff;
+            flex-wrap: wrap;
+            li {
+                width: 49%;
+                padding: 0.2667rem;
+                margin: 0.2667rem 0;
+                border-bottom: 2px solid #ddd;
+                &:nth-child(2n-1) {
+                    border-right: 2px solid #ddd;
+                }
+                a {
+                    display: block;
+                    img {
+                        width: 90%;
+                        height: 60%;
+                    }
+                    .goods_name {
+                        margin: 0.32rem 0 0.16rem 0;
+                        color: #333;
+                        font-size: 24px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                    .goods_sale {
+                        color: #666;
+                        font-size: 14px;
+                        span {
+                            color: #b81c22;
+                            padding-left: 0.2667rem;
+                            font-size: 20px;
+                            font-weight: bold;
+                        }
+                    }
+                    .goods_price {
+                        color: #ccc;
+                        font-size: 14px;
+                        span {
+                            padding-left: 0.2667rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
