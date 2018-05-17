@@ -1,5 +1,6 @@
 import React from 'react'
 import http from '../../../utils/httpclient'
+import {Link} from 'react-router'
 import './brand.scss'
 
 export default class BrandComponent extends React.Component{

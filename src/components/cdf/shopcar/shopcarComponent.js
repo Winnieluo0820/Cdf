@@ -15,6 +15,7 @@ class ShopcarComponent extends React.Component{
     }
     componentDidMount(){
         let self = this;
+
         jQuery(function($){
             //获取页面元素
             var $goodCars = $('#cdf_shopcar .shopcar_main .goodCars')
@@ -33,7 +34,7 @@ class ShopcarComponent extends React.Component{
                     $goodCars.css('display','block')
                     $shopcar_footer.css('display','flex')
                 } else {
-                    console.log($empty)
+                  //  console.log($empty)
                     $empty.css('display','block')
                 } 
                 
