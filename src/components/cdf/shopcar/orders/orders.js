@@ -4,9 +4,6 @@ import './orders.scss'
 import { Link } from 'react-router';
 import http from '../../../../utils/httpclient'
 
-<<<<<<< HEAD
-export default class OrdersComponent extends React.Component {
-=======
  class OrdersComponent extends React.Component {
 		state={
 			order:[],
@@ -16,7 +13,7 @@ export default class OrdersComponent extends React.Component {
 		}
 		
 		
->>>>>>> upstream/master
+
 	componentDidMount() {
 		let uls = document.querySelector('.uls');
 		let qty =0;

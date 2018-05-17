@@ -196,9 +196,9 @@ export default class HomeComponent extends React.Component{
                         <div className="goodslist" >
                             <ul className="goods_li" ref="goods">
                                 {
-                                    this.state.product_nine.map((item)=>{
+                                    this.state.product_nine.map((item, idx)=>{
                                         return (
-                                            <li key={item.name}>
+                                            <li key={item + idx}>
                                                 <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
                                                     <img src={item.pic} />
                                                     <p>{item.name}</p>

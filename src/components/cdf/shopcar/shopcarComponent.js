@@ -14,7 +14,6 @@ class ShopcarComponent extends React.Component{
         goodsData:[]
     }
     componentDidMount(){
-<<<<<<< HEAD
         let self = this;        
         jQuery(function($){
             http.post('showShopcart').then((res) => {
@@ -38,10 +37,7 @@ class ShopcarComponent extends React.Component{
  
         
                 console.log(this.props.data)
-=======
-        let self = this;
-             //   console.log(this.props.data)
->>>>>>> upstream/master
+
         jQuery(function($){
             var $goodCars = $('#cdf_shopcar .shopcar_main .goodCars')
             var $shopcar_footer = $('#cdf_shopcar .shopcar_footer')
