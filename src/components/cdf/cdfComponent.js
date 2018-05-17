@@ -1,11 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router'
+import {connect} from 'react-redux'
+
+import * as actions from './shopcar/shopcarAction.js'
 
 import './cdf.scss'
 import jQuery from 'jquery'
 
-export default class CdfComponent extends React.Component{
+class CdfComponent extends React.Component{
     componentDidMount(){
+        this.props.requestData({
+            url:'showShopcart'
+        }) 
         jQuery(function($){
             var $cdf_footer = $('#cdf_footer');
             $cdf_footer.on('click','li',function(){
@@ -34,3 +40,10 @@ export default class CdfComponent extends React.Component{
     }
 } 
 
+const mapStatesToProps = (state) => {
+    return {
+        data: state.shopcar
+    }
+}
+
+export default connect(mapStatesToProps, actions)(CdfComponent)

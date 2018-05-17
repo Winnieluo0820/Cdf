@@ -39,6 +39,7 @@ i {
 #app{
     height: 100%;
     width: 100%;
+    overflow:hidden;
 
 }
 
@@ -79,6 +80,8 @@ i {
     transform:translateY(0.0rem)
   }
 }
+
+
 
 
 
@@ -216,4 +219,5 @@ i {
 .icon-wode:before { content: "\e610"; }
 
 .icon-changjianwenti1:before { content: "\e6c8"; }
+
 

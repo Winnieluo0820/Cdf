@@ -13,6 +13,7 @@ import ClassifyComponent from '../components/cdf/classify/classifyComponent.js'
 import ShopcarComponent from '../components/cdf/shopcar/shopcarComponent.js'
 import OwnerComponent from '../components/cdf/owner/ownerComponent.js'
 import GoodsDetailComponent from '../components/cdf/goodsDetail/goodsDetail.js'
+import DatalistComponent from '../components/datalist/datalist.js'
 
 //我的中兔的组件
 import CollectionComponent from '../components/cdf/owner/collection/collectionComponent.js'
@@ -22,6 +23,8 @@ import CreateaddressComponent from '../components/cdf/owner/createaddress/create
 import SearchComponent from '../components/cdf/search/search.js'
         
 
+
+>>>>>>> upstream/master
 //购物车订单组件
 import OrdersComponent from  '../components/cdf/shopcar/orders/orders.js'
 
@@ -45,6 +48,11 @@ const routes = (
         <Route path="owner/address/createaddress" component={CreateaddressComponent}/>
         <Route path="shopcar/orders" component={OrdersComponent} />
         <Route path="search" component={SearchComponent}/>
+        <Route path="datalist" component={DatalistComponent}/>	
+        <Route path="goodsDetail" component={GoodsDetailComponent}/>
+        <Route path="owner/address" component={AddressComponent}/>
+        <Route path="owner/address/createaddress" component={CreateaddressComponent}/>
+        <Route path="shopcar/orders" component={OrdersComponent}></Route>
     </Route>
 )
 

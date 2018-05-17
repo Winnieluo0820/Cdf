@@ -50,6 +50,8 @@ export default class ClassfyComponent extends React.Component {
                     <div className="search">
                         <i className="iconfont icon-icon-"></i>
                         <input type="text" placeholder="分类 品牌 系列 商品" onFocus={this.toSearch.bind(this)}/>
+
+ 
                     </div>
                 </header>
                  <div className="classify_left">

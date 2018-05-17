@@ -1,3 +1,241 @@
+<<<<<<< HEAD
 h1{
    color: red;
 }
+=======
+#orders {
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+    .orders_top {
+        display: flex;
+        justify-content: space-between;
+        background-color: #FFFFFF;
+        flex-direction: row;
+        height: 1.203703rem;
+        width: 100%;
+        line-height: 1.203703rem;
+        font-size: 0.426667rem;
+        a {
+            display: inline-block;
+            width: 1.111111rem;
+            height: 1.203703rem;
+            height: 1.203703rem;
+            text-align: center;
+            i {
+                display: inline-block;
+                font-size: 0.453333rem;
+                font-weight: bold;
+                transform: rotate(180deg);
+            }
+        }
+        span {
+            font-size: 0.426667rem;
+            margin-right: 0.2rem;
+        }
+    }
+    .orders_main {
+        height: 15.324080rem;
+        overflow-x: hidden;
+        width: 100%;
+        background-color: #F7F7F7;
+        ul {
+            li {
+                height: 3.148148rem;
+                position: relative;
+                color: white;
+                font-family: "宋体";
+                width: 100%;
+                box-sizing: border-box;
+                padding-left: 1.755555rem;
+                padding-top: 0.462962rem;
+                border-bottom: 2px solid #F7F7F7;
+                margin-bottom: 0.416666rem;
+                background-color: #B81C22;
+                .icon-lianxiwomendibiao {
+                    position: absolute;
+                    display: inline-block;
+                    top: 0.74074rem;
+                    left: 0.277777rem;
+                    font-size: 0.887037rem;
+                }
+                h2 {
+                    font-size: 0.314814rem;
+                    span {
+                        font-size: 0.462962rem;
+                    }
+                }
+                h3 {
+                    line-height: 1.203703rem;
+                    i {
+                        font-size: 0.37037rem;
+                    }
+                }
+                h4 {
+                    i {
+                        font-size: 0.37037rem;
+                    }
+                    span {
+                        font-size: 0.354074rem;
+                    }
+                }
+            }
+        }
+        .orders_box {
+            height: 9.166666rem;
+            background-color: white;
+            position: relative;
+            box-sizing: border-box;
+            padding-left: 0.555555rem;
+            margin-bottom: 0.277777rem;
+            h4 {
+                line-height: 1.481481rem;
+                font-size: 0.351851rem;
+            }
+            .show_pic {
+                width: 8.018518rem;
+                height: 1.981481rem;
+       
+                overflow-y: hidden;
+                ul {
+                    float: left;
+                    overflow-x: auto;
+                    li {
+                        float: left;
+                        height: 1.981481rem;
+                        width: 1.981481rem;
+                        background-color: gold;
+                        margin-right: 0.555555rem;
+                        img{
+                                 height: 1.981481rem;
+                        }
+                    }
+                }
+            }
+            a {
+                display: inline-block;
+                position: absolute;
+                right: 0.49074rem;
+                top: 1.462962rem;
+                width: 0.861111rem;
+                height: 1.981481rem;
+                text-align: center;
+                line-height: 1.981481rem;
+                .icon-jiantou {
+                    font-size: 0.555555rem;
+                    font-weight: bold;
+                }
+            }
+            h3 {
+                font-family: "宋体";
+                line-height: 1.111111rem;
+                height: 1.111111rem;
+                color: #9B9B9B;
+                font-size: 0.333333rem;
+                span {
+                    color: #454545;
+                }
+            }
+            h2 {
+                line-height: 1.666666rem;
+                height: 1.666666rem;
+            }
+            .pay_way {
+                position: relative;
+                width: 8.888888rem;
+                height: 1.111111rem;
+                border: 2px solid #B81C22;
+                margin-bottom: 0.277777rem;
+                a {
+                    display: inline-block;
+                    color: #B81C22;
+                    font-weight: bold;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 8.888888rem;
+                    height: 1.111111rem;
+                    line-height: 1.111111rem;
+                    text-align: center;
+                }
+            }
+            h5 {
+                line-height: 0.555555rem;
+                font-size: 0.333333rem;
+            }
+        }
+        .orders_other {
+            height: 1.388888rem;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 0.555555rem;
+            margin-bottom: 0.555555rem;
+            line-height: 1.388888rem;
+            background: white;
+            span {
+                float: right;
+                font-size: 0.277777rem;
+            }
+            i {
+                float: right;
+                display: inline-block;
+                width: 0.601851rem;
+                font-size: 0.509259rem;
+                margin-left: 0.138888rem;
+                font-weight: bold;
+            }
+        }
+        .orders_pays {
+            height: 4.166666rem;
+            width: 100%;
+            padding-right: 0.509259rem;
+            h3 {
+                line-height: 0.694444rem;
+                height: 0.694444rem;
+                span {
+                    font-family: "宋体";
+                    display: block;
+                    color: #ADADAD;
+                    float: right;
+                    i {
+                        color: #333333;
+                        margin-left: 0.185185rem;
+                    }
+                }
+            }
+        }
+    }
+    .orders_footer {
+        height: 1.231481rem;
+        display: flex;
+        bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 85px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        background-color: gold;
+        a {
+            position: absolute;
+            display: inline-block;
+            height: 1.231481rem;
+            width: 4.166666rem;
+            right: 0;
+            text-align: center;
+            line-height: 1.231481rem;
+            background-color: #CECECE;
+            color: white;
+        }
+        h3 {
+            font-size: 0.252222rem;
+            line-height: 0.555555rem;
+        }
+        h4 {
+            font-size: 0.324074rem;
+            color: #B81C22;
+            padding-left: 1.481481rem;
+            line-height: 0.62037rem;
+        }
+    }
+}
+>>>>>>> upstream/master
