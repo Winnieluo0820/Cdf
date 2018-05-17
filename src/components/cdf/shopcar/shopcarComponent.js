@@ -158,8 +158,9 @@ class ShopcarComponent extends React.Component{
 
             //点击结算
             $jiesuan.on('click',function(){
-                self.props.requestData({url:'showShopcart'})
 
+                self.props.createOrder(self.state.goodsData)
+                
                 self.props.router.push('shopcar/orders')
             })
         })

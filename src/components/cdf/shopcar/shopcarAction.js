@@ -9,3 +9,9 @@ export function requestData(config){
     }
 }
 
+export function createOrder(data){
+    return {
+        type: 'order',
+        data: data
+    }
+}

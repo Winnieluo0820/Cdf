@@ -19,6 +19,9 @@ export default (state = {}, action) => {
             _state.loading = false;
             _state.error = action.error;
             break;
+        case 'order':
+            _state.data = action.data;
+            break;
     }
     return _state;
 }
