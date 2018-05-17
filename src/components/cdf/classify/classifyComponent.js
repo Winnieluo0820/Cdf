@@ -39,19 +39,21 @@ export default class ClassfyComponent extends React.Component {
 			box: n
 		})
 	}
-
+    toSearch(){
+        this.props.router.push('/search');
+    }
 	render() {
 		return(
 			<div id="cdf_classfy"  className="animate-route">
-                <div className="classify_top">
-                    <img src="http://www.cdfgsanya.com/mobile/resources/images/logo@3x.4b0359e3.png"/>
-                    <div className="classify_find">
-                    	<i className="icon-fangdajing iconfont"></i>
-                    	<Link to=""><span>分类</span><span>品牌</span><span>系列</span><span>商品</span></Link>
+                <header className="cdf_home_header" ref="head">
+                    <h1>cdf</h1>
+                    <div className="search">
+                        <i className="iconfont icon-icon-"></i>
+                        <input type="text" placeholder="分类 品牌 系列 商品" onFocus={this.toSearch.bind(this)}/>
+
+ 
                     </div>
-                </div>
-                
-                
+                </header>
                  <div className="classify_left">
                  	<ul>
                  		{

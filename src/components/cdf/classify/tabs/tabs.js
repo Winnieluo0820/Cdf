@@ -35,7 +35,10 @@ class Tabs extends React.Component {
 									item.other_type.map((key)=>{
 										return (
 											<li key={key.pic}>
+
+											
 												<Link to={ `/datalist?type=` + item.type}  id={item.type}>
+
 													<img src={key.pic}/>
 													<p>{key.types_name}</p>
 												</Link>

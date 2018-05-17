@@ -1,40 +1,42 @@
 #cdf_classfy {
     height: 100%;
     background: #F7F7F7;
-    .classify_top {
-        box-sizing: border-box;
-        padding-top: 0.166666rem;
-        padding-left: 0.166666rem;
-        height: 1.203703rem;
-        background-color: #FFFFFF;
-        line-height: 1.203703rem;
-        img {
-            float: left;
-            height: 0.888888rem;
-            margin-right: 0.231481rem;
+    header{
+        height:6.5%;
+        padding:0.133333rem;
+        display:flex;
+        background-color:#b81c22;
+        h1{
+            text-indent:-100em;
+            background:url(http://www.cdfgsanya.com/mobile/resources/images/logo-white@3x.d59a5566.png);
+            width: 12%;
+            height: 0.746667rem;
+            margin: 0.053333rem 0 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 1.066667rem 0.8rem;
         }
-        .classify_find {
-            width: 8rem;
-            height: 0.888888rem;
-            line-height: 0.888888rem;
-            background-color: #F7F7F7;
-            float: left;
-            padding: 0;
-            i {
-                font-size: 0.462962rem;
+        .search{
+            width: 85%;
+            font-size:0.346667rem;
+            margin-left: 0.266667rem;
+            border-radius:0.053333rem;
+            color:#ccc;
+            line-height:0.8rem;
+            background-color: #FFF;
+            i{
+                width: 10%;
+                font-size:0.666667rem;
                 float: left;
-                margin-left: 0.277777rem;
+                margin-left: 0.2rem;
                 margin-right: 0.092592rem;
             }
-            a {
-                display: inline-block;
-                background-color: #F7F7F7;
-                height: 0.888888rem;
-                width: 7rem;
-                span {
-                    margin-right: 0.092592rem;
-                    color: #CCCCCC;
-                }
+            input{
+                width: 85%;
+                border:0 none;
+                outline:none;
+                font-size:0.346667rem;
+
             }
         }
     }

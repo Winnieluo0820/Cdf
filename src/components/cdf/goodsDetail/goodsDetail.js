@@ -13,6 +13,7 @@ export default class GoodsDetailComponent extends React.Component{
         }
     }
     componentDidMount(){
+
         let self = this;
 
         jQuery(function($){
