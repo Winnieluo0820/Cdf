@@ -5,77 +5,117 @@ import './datalist.scss'
 
 import http from '../../utils/httpclient'
 
-export default class Datalist extends React.Component{
-    state = {
-        data:[]
-    }
-    componentDidMount(){
-        let type = this.props.location.query.type;
-        console.log(type);
-        http.post('list',{type}).then((res) => {
-            this.setState({
-                data: res.data
-            })
-        })
-    }
+export default class Datalist extends React.Component {
+	state = {
+		data: [],
+		normal: [],
+		types: '',
+		num: 0
+	}
+	componentDidMount() {
+		let type = this.props.location.query.type;
+		let query_product_up = document.querySelector('#query_product_up');
+		let query_product_down = document.querySelector('#query_product_down');
+		let btn_action = document.querySelector('#btn_action');
+		this.setState({
+			types: type
+		})
 
-    //跳转
-    goods(e){
-        if(e.target.parentNode.parentNode.tagName.toLowerCase() == 'li'){
-            
-        }
-    }
+		http.post('query_product', {
+			type
+		}).then((res) => {
+			this.setState({
+				data: res.data,
+				normal: res.data
+			})
+		})
 
-    goback(){
-        history.back();
-    }
+		query_product_up.onclick = () => {
+			this.setState({
+				num: 1
+			})
+			http.post('query_product_priceDesc', {
+				type
+			}).then((res) => {
+				this.setState({
+					data: res.data,
 
-    render(){
-        return (
-            <div className="datalist animate-route">
+				})
+			})
+		}
+
+		query_product_down.onclick = () => {
+			this.setState({
+				num: 2
+			})
+			http.post('query_product_priceAsc', {
+				type
+			}).then((res) => {
+				this.setState({
+					data: res.data,
+
+				})
+			})
+		}
+
+		btn_action.onclick = () => {this.setState({
+				num: 0,
+				data: this.state.normal
+			})
+		}
+
+	}
+
+	//跳转
+	
+
+	goback() {
+		history.back();
+	}
+
+	render() {
+		return(
+			<div className="datalist animate-route">
                 <div className="head">
-                    <button className="iconfont icon-jiantou2 goback" onClick={this.goback.bind(this)}></button>
+                    <div className="iconfont icon-jiantou2 goback" onClick={this.goback.bind(this)}></div>
                     <div className="datalist_title">
-                        <span>美妆 > </span>
-                        <span>护肤 > </span>
-                        <span>套装</span>
+                        <span>{this.state.types}</span>
                     </div>
                     <i className="iconfont icon-icon-"></i>
                 </div>
                 <div className="option">
-                    <button className="btn_action">销量</button>
-                    <button>价格<span><i className="iconfont icon-sanjiaoxing-up"></i><i className="iconfont icon-sanjiaoxing-down"></i></span></button>
-                    <button>显示有货</button>
-                    <button>筛选<i className="iconfont icon-shaixuan shaixuan"></i></button>
+                    <div id="btn_action"  className={this.state.num==0 ? 'btn_action':null}>销量</div>
+                    <div  id="query_product_up" className={this.state.num==1 ? 'btn_action':null}>价格<span><i className="iconfont icon-sanjiaoxing-up"></i></span></div>
+                    <div id="query_product_down" className={this.state.num==2 ? 'btn_action':null}>价格<span><i className="iconfont icon-sanjiaoxing-down"></i></span></div>
+                    <div>筛选<i className="iconfont icon-shaixuan shaixuan"></i></div>
                 </div>
                 <div className="goodslist">
-                    <ul onClick={this.goods.bind(this)}>
+                    <ul >
                         {
                             this.state.data ? this.state.data.map((item) => {
                                     return (
                                         <li key={item._id} data-id={item._id}>
-                                            <Link to={{pathname: '/details', query:{id: item._id}}}>
-                                                <img src={item.images} />
+                                            <Link to={{pathname: '/goodsDetail', query:{id: item._id}}}>
+                                                <img src={item.pic} />
                                                 <p className="goods_name">{item.name}</p>
                                                 <p className="goods_sale">
                                                     免税价:
-                                                    <span>￥{item.sale}</span>
+                                                    <span>￥{item.discountPrice}</span>
                                                 </p>
                                                 <p className="goods_price">
                                                     <del>
                                                         市场价:
-                                                        <span>￥{item.price}</span>
+                                                        <span>￥{item.salesPrice}</span>
                                                     </del>
                                                 </p>
                                             </Link>
                                         </li>
-                                    )
-                                }) : null
-                            
+                                 )
+                            }) : null
                         }
                     </ul>
                 </div>
             </div>
-        )
-    }
+		)
+	}
 }
