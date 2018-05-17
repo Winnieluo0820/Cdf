@@ -50,9 +50,6 @@ export default class AddressComponent extends React.Component {
 							})
 						}	
 					</ul>
-					
-					
-					
 				</div>
 				
 				
