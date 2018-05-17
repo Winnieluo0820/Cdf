@@ -15,7 +15,7 @@ class ShopcarComponent extends React.Component{
     }
     componentDidMount(){
         let self = this;
-                console.log(this.props.data)
+             //   console.log(this.props.data)
         jQuery(function($){
             var $goodCars = $('#cdf_shopcar .shopcar_main .goodCars')
             var $shopcar_footer = $('#cdf_shopcar .shopcar_footer')
@@ -32,7 +32,7 @@ class ShopcarComponent extends React.Component{
                     $goodCars.css('display','block')
                     $shopcar_footer.css('display','flex')
                 } else {
-                    console.log($empty)
+                  //  console.log($empty)
                     $empty.css('display','block')
                 } 
                 
