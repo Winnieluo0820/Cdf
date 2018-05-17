@@ -35,7 +35,7 @@ class ShopcarComponent extends React.Component{
         })
 
  
-        let self = this;
+        
                 console.log(this.props.data)
         jQuery(function($){
             var $goodCars = $('#cdf_shopcar .shopcar_main .goodCars')

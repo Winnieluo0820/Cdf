@@ -24,7 +24,7 @@ import SearchComponent from '../components/cdf/search/search.js'
         
 
 
->>>>>>> upstream/master
+
 //购物车订单组件
 import OrdersComponent from  '../components/cdf/shopcar/orders/orders.js'
 

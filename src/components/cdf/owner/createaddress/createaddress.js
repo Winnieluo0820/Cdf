@@ -2,12 +2,9 @@ import React from 'react'
 import './createaddress.scss'
 import { Link } from 'react-router'
 import http from '../../../../utils/httpclient'
-<<<<<<< HEAD
 import SelectArea from '../../../select_area/select_area.jsx'
 import jQuery from 'jquery'
-=======
 
->>>>>>> upstream/master
 export default class CreateaddressComponent extends React.Component {
 	state = {
 		ipNumber: '',
@@ -94,10 +91,9 @@ export default class CreateaddressComponent extends React.Component {
 			var _adderss = log_address.value;
 			var _userName = log_ipName.value;
 			console.log(1+_adderss)
-<<<<<<< HEAD
-=======
 
->>>>>>> upstream/master
+
+
 			var tips = document.querySelectorAll('.login_main .tip');
 
 			for(var i = 0; i < tips.length; i++) {
@@ -109,11 +105,10 @@ export default class CreateaddressComponent extends React.Component {
 					_alert.style.display = 'none'
 				}
 			}
-<<<<<<< HEAD
-=======
 
 
->>>>>>> upstream/master
+
+
 			http.post('addAddress', {
 				userName: _userName,
 				ipNumber: _ipNumber,
