@@ -180,9 +180,7 @@ export default class CreateaddressComponent extends React.Component {
                   
                 </main>
 				</div>
-				<div className="select_city">
-					<SelectArea province="广东省" city="广州市" district="海珠区" />
-				</div>
+
 			</div>
 		)
 

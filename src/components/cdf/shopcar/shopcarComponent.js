@@ -14,28 +14,7 @@ class ShopcarComponent extends React.Component{
         goodsData:[]
     }
     componentDidMount(){
-
         let self = this;        
-        jQuery(function($){
-            http.post('showShopcart').then((res) => {
-                self.setState({goodsData: res.data})
-
-                let changeObj = {};
-                for(let i=0; i<self.state.goodsData.length;i++){
-                    changeObj[self.state.goodsData[i]._id] = true;
-                    self.setState({checkbox:changeObj})           
-                }
-
-                if(self.state.goodsData.length > 0){
-                    $('#cdf_shopcar .shopcar_main .goodCars').css('display','block')
-                    $('#cdf_shopcar .shopcar_footer').css('display','flex')
-                } else {
-                    $('#cdf_shopcar .shopcar_main .empty').css('display','block')
-                } 
-            })
-        })
-
-
 
         jQuery(function($){
             //获取页面元素
@@ -55,7 +34,6 @@ class ShopcarComponent extends React.Component{
                     $goodCars.css('display','block')
                     $shopcar_footer.css('display','flex')
                 } else {
-                  //  console.log($empty)
                     $empty.css('display','block')
                 } 
                 
@@ -179,9 +157,7 @@ class ShopcarComponent extends React.Component{
 
             //点击结算
             $jiesuan.on('click',function(){
-
-                self.props.createOrder(self.state.goodsData)
-                
+                self.props.createOrder(self.state.goodsData)                
                 self.props.router.push('shopcar/orders')
             })
         })
