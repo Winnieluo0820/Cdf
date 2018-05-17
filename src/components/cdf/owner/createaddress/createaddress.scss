@@ -26,8 +26,6 @@
             width: 0.462962rem;
         }
     }
-    
-    
     //主体
     .createbox_mian {
         height: 15.962962rem;
@@ -86,7 +84,27 @@
                     }
                 }
             }
-            .form_group:nth-of-type(4) {
+            .form_group:nth-of-type(3){
+                input {
+                    height: 0.8rem;
+                    border: 0 none;
+                    border-bottom: 0.013333rem solid #ddd;
+                    width: 97%;
+                    color: #000;
+                    font-size: 0.293333rem;
+                    padding-left: 0.266667rem;
+                }
+                span{
+                    display: inline-block;height:60px;
+                    text-align:center;
+                    line-height: 60px;
+                    margin-bottom: 0;
+                    i{
+                        font-size:20px;
+                    }
+                }
+            }
+            .form_group:nth-of-type(5) {
                 button {
                     width: 100%;
                     height: 0.933333rem;
@@ -120,12 +138,33 @@
                     }
                 }
             }
-            .form_group:nth-of-type(4) {
+            .form_group:nth-of-type(5) {
                 margin-top: 0.266667rem;
                 a {
                     color: red;
                 }
             }
         }
+    }
+    .overlay{
+            display:none;
+            background-color:#000;
+            opacity:.5;
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            z-index:10;
+        }
+    .select_city{
+        display:none;
+        background-color:#fff;
+        position:absolute;
+        bottom:0;
+        height: 240px;
+        width: 100%;
+        z-index:100;
+        bottom:-30%;
     }
 }

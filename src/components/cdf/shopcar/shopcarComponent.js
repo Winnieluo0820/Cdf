@@ -14,7 +14,28 @@ class ShopcarComponent extends React.Component{
         goodsData:[]
     }
     componentDidMount(){
-        let self = this;
+
+        let self = this;        
+        jQuery(function($){
+            http.post('showShopcart').then((res) => {
+                self.setState({goodsData: res.data})
+
+                let changeObj = {};
+                for(let i=0; i<self.state.goodsData.length;i++){
+                    changeObj[self.state.goodsData[i]._id] = true;
+                    self.setState({checkbox:changeObj})           
+                }
+
+                if(self.state.goodsData.length > 0){
+                    $('#cdf_shopcar .shopcar_main .goodCars').css('display','block')
+                    $('#cdf_shopcar .shopcar_footer').css('display','flex')
+                } else {
+                    $('#cdf_shopcar .shopcar_main .empty').css('display','block')
+                } 
+            })
+        })
+
+
 
         jQuery(function($){
             //获取页面元素
@@ -181,7 +202,9 @@ class ShopcarComponent extends React.Component{
 
         return {totalPrice, discountTotal, shouldPrice}
     }
+
     //多选框
+
     changeCheckbox(id,event){
         let self = this;
         jQuery(function($){  
@@ -267,7 +290,10 @@ class ShopcarComponent extends React.Component{
                                                 <h3>免税价：<span>￥{item.discountPrice}</span></h3>
                                                 <del><span>市场价：￥{item.salesPrice}</span></del>
                                                 <div className="changeQty">
+
+                                                   
                                                     <button className="jian">-</button><span>{item.qty}</span><button className="jia">+</button>
+
                                                 </div>
                                             </div>
                                             <div className="right">

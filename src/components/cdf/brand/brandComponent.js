@@ -33,6 +33,9 @@ export default class BrandComponent extends React.Component{
             if(anchorElement) { anchorElement.scrollIntoView();}
         }
     }
+    toSearch(){
+        this.props.router.push('/search');
+    }
     render(){
         return(
             <div id="cdf_brand" className="animate-route">
@@ -40,7 +43,7 @@ export default class BrandComponent extends React.Component{
                     <h1>cdf</h1>
                     <div className="search">
                         <i className="iconfont icon-icon-"></i>
-                        <input type="text" placeholder="分类 品牌 系列 商品"/>
+                        <input type="text" placeholder="分类 品牌 系列 商品" onFocus={this.toSearch.bind(this)}/>
                     </div>
                 </header>
                 <div className="cdf_brand_main" ref="main_cont">
