@@ -15,9 +15,7 @@ class ShopcarComponent extends React.Component{
     }
     componentDidMount(){
         let self = this;
-        this.props.requestData({
-            url:'showShopcart'
-        }) 
+                console.log(this.props.data)
         jQuery(function($){
             var $goodCars = $('#cdf_shopcar .shopcar_main .goodCars')
             var $shopcar_footer = $('#cdf_shopcar .shopcar_footer')
@@ -224,7 +222,7 @@ class ShopcarComponent extends React.Component{
 
 
     render(){
-        console.log(this.props.data)
+
         return(
             <div id="cdf_shopcar" className="animate-route">
                 <div className="shopcar_header"><span className="base"></span><span className="content">我的购物袋</span></div>
