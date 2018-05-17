@@ -18,7 +18,7 @@ export default (state = {}, action) => {
         case constants.REQUESTERROR:
             _state.loading = false;
             _state.error = action.error;
-            break;   
+            break;
     }
     return _state;
 }

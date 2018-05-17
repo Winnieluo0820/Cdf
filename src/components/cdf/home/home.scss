@@ -66,6 +66,7 @@
         flex:1;
         overflow-x:hidden;
         background-color: #eee;
+        position:relative;
         .cdf_banner{
             img{
                 height:6.0rem;
@@ -261,6 +262,29 @@
                 }
             }
         }
-        
+        .loadingTop{
+            position:absolute;
+            width: 100%;
+            top:0.266667rem;
+            img{
+                height: 0.933333rem;
+                margin:0 auto;
+            }
+        }
+        .loadingBottom{
+            position:absolute;
+
+        }
+        .overlay{
+            display:none;
+            position:fixed;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            background-color:#666;
+            opacity:0.3;
+            z-index:1000;
+        }
     }
 }

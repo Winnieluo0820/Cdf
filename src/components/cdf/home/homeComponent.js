@@ -28,10 +28,13 @@ export default class HomeComponent extends React.Component{
             this.refs.main_cont.scrollTop=this.refs.main_cont.scrollTop - speed;
         },30)
     }
+
     toSearch(){
         this.props.router.push('/search');
     }
-    componentDidMount(){      
+
+    componentDidMount(){     
+        var self = this; 
         var mySwiper = new Swiper ('.swiper-container', {
             direction: 'horizontal',
             loop: true,
@@ -106,6 +109,94 @@ export default class HomeComponent extends React.Component{
         http.post('product_onQty',{qty:40}).then((res)=>{
             this.setState({
                 products:res.data
+            })
+        })
+
+        $(function($){
+            var $main  =  $('#cdf_home .main')
+            var $cdf_banner = $main.find('.cdf_banner')
+            var $overlay = $('#cdf_home .overlay')
+ 
+            $cdf_banner.on('touchstart',function(event){
+                var x = event.touches[0].clientY;
+                if($main.get(0).scrollTop === 0){
+                    $cdf_banner.on('touchend',function(event){
+                        var ox = event.changedTouches[0].clientY - x;
+                        if(ox > $main.height()* 0.1){  
+                            $main.animate({'padding-top':$main.height()*0.1 + 'px'},300,function(){
+                                $overlay.fadeIn(300);
+                                var p1 = new Promise((resolved, rejected) => {
+                                    http.post('product_onQty',{qty:8,type:'太阳镜'}).then((res)=>{
+                                        self.setState({
+                                            product_sunglass:res.data
+                                        })
+                                        resolved('p1');
+                                    })                               
+                                })
+                                var p2 = new Promise((resolved, rejected) => {
+                                    http.post('product_onQty',{qty:7,type:'首饰'}).then((res)=>{
+                                        self.setState({
+                                            product_shoushi:res.data
+                                        })
+                                        resolved('p2');
+                                    })
+                                })
+                                var p3 = new Promise((resolved, rejected) => {
+                                    http.post('product_onQty',{qty:9}).then((res)=>{
+                                        self.setState({
+                                            product_nine:res.data
+                                        })
+                                        ;(function(){
+                                            let uls=$('.goods_li');
+                                            for(let i=0;i<$('.goods_li').length;i++){
+                                                $(uls[i]).width(($(uls[i].children[0]).width()+50)*$(uls[i].children).length);
+                                                var ul_width = $(uls[i]).width();
+                                                var li_with = $(uls[i].children[0]).width();
+                                                $(uls[i].parentNode).on('touchstart',function(event){
+                                                    var ox = event.touches[0].pageX;
+                                                    var left = $(uls[i]).position().left;
+                                                    $(uls[i].parentNode).on('touchmove',function(event){
+                                                        $(uls[i]).css('left', event.touches[0].pageX - ox + left)
+                                                    })
+                                                })
+                                                .on('touchend',function(){
+                                                    if($(uls[i]).position().left > 0){
+                                                        $(uls[i]).animate({left:0},300)
+                                                    }
+                                                    if($(uls[i]).position().left < -ul_width+li_with*3){
+                                                        $(uls[i]).animate({left:-ul_width+li_with*3},300)
+                                                    }
+                                                })
+                                            }
+                                        })();
+                                        resolved('p3')
+                                    })
+                                })  
+                                var p4 = new Promise((resolved, rejected) => {
+                                    http.post('product_onQty',{qty:40}).then((res)=>{
+                                        self.setState({
+                                            products:res.data
+                                        })
+                                        resolved('p4')
+                                    })   
+                                })
+
+                                Promise.all([p1,p2,p3,p4]).then((res) => {
+                                    if(!Array.isArray(res)){
+                                        window.alert('刷新失败')
+                                    }
+                                    $main.animate({'padding-top':'0px'},300,function(){
+                                        $overlay.fadeOut(300)    
+                                    });
+                                })
+                                
+                            })
+                        }
+                        
+                    })                    
+                } else {
+                    return;
+                }
             })
         })
     }
@@ -368,7 +459,7 @@ export default class HomeComponent extends React.Component{
                         <div className="goodslist" >
                             <ul className="goods_li" ref="goods" >
                                 {
-                                    this.state.product_sunglass.map((item, idx)=>{
+                                    this.state.product_sunglass.map((item,idx)=>{
                                         return (
                                             <li key={item + idx}>
                                                 <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
@@ -432,6 +523,7 @@ export default class HomeComponent extends React.Component{
                                     this.state.products.map((item, idx)=>{
                                         return (
                                             <li key={item + idx}>
+
                                                 <Link to={{pathname:'/goodsDetail',query:{id:item._id}}}>
                                                     <img src={item.pic} />
                                                     <p>{item.name}</p>
@@ -439,7 +531,7 @@ export default class HomeComponent extends React.Component{
                                                     <del>市场价：￥{item.salesPrice}</del>
                                                 </Link>
 
-                
+
                                             </li>
                                         )
                                     })
@@ -452,6 +544,9 @@ export default class HomeComponent extends React.Component{
                             <div className="right_line"></div>
                         </div>
                     </div>
+                    <div className="loadingTop"><img src="http://img.lanrentuku.com/img/allimg/1307/5-130H2191323.gif"/></div>
+                    <div className="loadingBottom"><img src="http://img.lanrentuku.com/img/allimg/1307/5-130H2191323.gif" /></div>
+                    <div className="overlay"></div>
                 </div>
             </div>
         )
