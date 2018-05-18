@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     .head {
-        height: 88px;
+        height: 1.173333rem;
         background: #fff;
         display: flex;
         font-size: 0.4rem;
@@ -23,7 +23,7 @@
         }
     }
     .option {
-        height: 80px;
+        height: 1.066667rem;
         background: #fff;
         display: flex;
         margin-bottom: 0.5333rem;
@@ -33,7 +33,7 @@
             background: #fff;
             flex: 1;
             text-align: center;
-            border-bottom: 1px solid black;
+            border-bottom: 0.013333rem solid black;
             height: 1.0667rem;
             font-size: 0.4rem;
             color: #b2b2b2;
@@ -73,6 +73,7 @@
         }
     }
     .goodslist {
+        border-top:0.013333rem solid #ccc;
         flex: 1;
         overflow-x: hidden;
         ul {
@@ -96,14 +97,14 @@
                     .goods_name {
                         margin: 0.32rem 0 0.16rem 0;
                         color: #333;
-                        font-size: 24px;
+                        font-size: 0.32rem;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         white-space: nowrap;
                     }
                     .goods_sale {
                         color: #666;
-                        font-size: 14px;
+                        font-size: 0.186667rem;
                         span {
                             color: #b81c22;
                             padding-left: 0.2667rem;
@@ -113,13 +114,37 @@
                     }
                     .goods_price {
                         color: #ccc;
-                        font-size: 14px;
+                        font-size: 0.186667rem;
                         span {
                             padding-left: 0.2667rem;
                         }
                     }
                 }
             }
+        }
+    }
+    .overlay{
+        display:none;
+        position:fixed;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        z-index:1000;
+        img{
+            position:absolute;
+            height: 0.933333rem;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            z-index:100;
+        }
+        .show{
+            position:absolute;
+            width: 100%;
+            height: 100%;
+            background-color:#fff;
+            opacity:0.8;
         }
     }
 }

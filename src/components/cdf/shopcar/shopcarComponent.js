@@ -26,9 +26,13 @@ class ShopcarComponent extends React.Component{
             var $resultPrice = $('.shopcar_footer .resultPrice') 
             var $uls = $('.shopcar_main .goods')
             var $jiesuan = $('.shopcar_footer .right a')
-            
+            var $main  =  $('#cdf_shopcar .shopcar_main')
+            var $overlay = $('#cdf_shopcar .overlay')
+
             //第一进去获取页面购物车数据
+            $overlay.fadeIn(300);
             http.post('showShopcart').then((res) => {
+
                 self.setState({goodsData: res.data})
                 if(self.state.goodsData.length > 0){
                     $goodCars.css('display','block')
@@ -46,7 +50,71 @@ class ShopcarComponent extends React.Component{
                     return item.check;
                 })
                 self.setState({checkbox:{all:changeSelect}});
+
+                $overlay.fadeOut(300);
             })
+
+            //下拉刷新
+            ;(function($){
+                var previousTop;
+                var paddingTop = 0;
+                var start;
+                var move;
+                var target = $main.height() * 0.1;
+                var status = false;
+                $main.on('touchstart',function(event){
+                    start = event.touches[0].clientY;
+                    $main.on('touchmove',function(event){
+                        if($main.get(0).scrollTop == 0){
+                            status = true;
+                            move = event.touches[0].clientY;
+                            paddingTop = (move - start)
+                            if(paddingTop > target){
+                                paddingTop = target;
+                            }
+                            $main.css({'padding-top':paddingTop +'px'})                       
+                        }
+                    })
+                })
+                $main.on('touchend',function(){
+                    if(status){
+                        status = false;
+                        if(paddingTop == target){
+                            $overlay.fadeIn(300);
+                            http.post('showShopcart').then((res) => {
+                                self.setState({goodsData: res.data})
+                                if(self.state.goodsData.length > 0){
+                                    $goodCars.css('display','block')
+                                    $shopcar_footer.css('display','flex')
+                                } else {
+                                    $empty.css('display','block')
+                                } 
+                                
+                                let result = self.counting(self.state.goodsData)
+                                $totalPrice.text(result.totalPrice)
+                                $discountPrice.text(result.discountTotal)
+                                $resultPrice.text(result.shouldPrice)
+
+                                let changeSelect = self.state.goodsData.every(function(item){
+                                    return item.check;
+                                })
+                                self.setState({checkbox:{all:changeSelect}});
+
+                    
+                                $main.animate({'padding-top':0},300,function(){
+                                    $overlay.fadeOut(300); 
+                                })                     
+                                
+                            })
+                        }else{
+                            $overlay.css({display:'block',opacity:0})
+                            $main.animate({'padding-top': '0px'}, 300, function(){
+                                $overlay.css({display:'none',opacity:0.5})
+                            })
+                        }
+                    } 
+                })              
+            })($);
 
             $uls.on('click', '.jian' ,function(){
                 var $text = $(this).next();
@@ -72,8 +140,14 @@ class ShopcarComponent extends React.Component{
                 $discountPrice.text(result.discountTotal)
                 $resultPrice.text(result.shouldPrice)
                 
+                $overlay.find('img').css('display','none')
+                $overlay.css({display:'block',opacity:0})
                 http.post('update_qty',{product_id:id, qty:$text.text() * 1}).then((res) => {
-                    console.log(res)
+                    $overlay.css({display:'none',opacity:0.8})
+                    $overlay.find('img').css('display','block')
+                    if(!res.status){
+                        alert('更新失败')
+                    }
                 })
             })
             .on('click', '.jia', function(){
@@ -96,8 +170,14 @@ class ShopcarComponent extends React.Component{
                 $discountPrice.text(result.discountTotal)
                 $resultPrice.text(result.shouldPrice)
 
+                $overlay.find('img').css('display','none')
+                $overlay.css({display:'block',opacity:0})
                 http.post('update_qty',{product_id:id, qty:$text.text() * 1}).then((res) => {
-                    console.log(res)
+                    $overlay.css({display:'none',opacity:0.8})
+                    $overlay.find('img').css('display','block')
+                    if(!res.status){
+                        alert('更新失败')
+                    }
                 })
             })
 
@@ -142,8 +222,15 @@ class ShopcarComponent extends React.Component{
                 }
                 arr.splice(idx,1);
                 self.setState({goodsData: arr})
+
+                $overlay.find('img').css('display','none')
+                $overlay.css({display:'block',opacity:0})
                 http.post('del_shop_cart', {product_id:id}).then((res) => {
-                    console.log(res)
+                    $overlay.css({display:'none',opacity:0.8})
+                    $overlay.find('img').css('display','block')
+                    if(!res.status){
+                        alert('更新失败')
+                    }
                 })
 
                 if(self.state.goodsData.length > 0){
@@ -157,8 +244,15 @@ class ShopcarComponent extends React.Component{
 
             //点击结算
             $jiesuan.on('click',function(){
-                self.props.createOrder(self.state.goodsData)                
-                self.props.router.push('shopcar/orders')
+                self.props.createOrder(self.state.goodsData)
+                let result = self.state.goodsData.some(function(item){
+                    return item.check;
+                })
+                if(result){
+                    self.props.router.push('shopcar/orders')
+                } else {
+                    window.alert('请勾选商品')
+                }                
             })
         })
 
@@ -181,13 +275,13 @@ class ShopcarComponent extends React.Component{
     }
 
     //多选框
-
     changeCheckbox(id,event){
         let self = this;
         jQuery(function($){  
             let $totalPrice = $('.shopcar_footer .totalPrice');
             let $discountPrice = $('.shopcar_footer .discountPrice')
-            let $resultPrice = $('.shopcar_footer .resultPrice') 
+            let $resultPrice = $('.shopcar_footer .resultPrice')
+            let $overlay = $('#cdf_shopcar .overlay') 
 
             let goodsData = self.state.goodsData;
             let check;
@@ -207,8 +301,14 @@ class ShopcarComponent extends React.Component{
                 $discountPrice.text(result.discountTotal)
                 $resultPrice.text(result.shouldPrice)
                 
+                $overlay.find('img').css('display','none')
+                $overlay.css({display:'block',opacity:0})
                 http.post('all_check',{allcheck:self.state.checkbox.all}).then((res) => {
-                    console.log(res)
+                    $overlay.css({display:'none',opacity:0.8})
+                    $overlay.find('img').css('display','block')
+                    if(!res.status){
+                        alert('更新失败')
+                    }
                 })
 
 
@@ -221,9 +321,15 @@ class ShopcarComponent extends React.Component{
                 }
 
                 self.setState({goodsData:goodsData})
-                
+
+                $overlay.find('img').css('display','none')
+                $overlay.css({display:'block',opacity:0})
                 http.post('update_shopcart_check',{product_id:id, check: check}).then((res) => {
-                    console.log(res)
+                    $overlay.css({display:'none',opacity:0.8})
+                    $overlay.find('img').css('display','block')
+                    if(!res.status){
+                        alert('更新失败')
+                    }
                 })
 
                 let result = self.counting(goodsData)
@@ -237,10 +343,8 @@ class ShopcarComponent extends React.Component{
                 self.setState({checkbox:{all:changeSelect}});
             }
         })
-
     }
-
-
+    
     render(){
         return(
             <div id="cdf_shopcar" className="animate-route">
@@ -296,9 +400,12 @@ class ShopcarComponent extends React.Component{
                         <Link to="">去结算(<span>0</span>)</Link>
                     </div>
                 </div>
+                <div className="overlay">
+                    <img src="http://img.lanrentuku.com/img/allimg/1307/5-130H2191323.gif" />
+                    <div className="show"></div>    
+                </div>
             </div>
         )
-
     }
 }
 
