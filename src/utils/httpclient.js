@@ -16,7 +16,6 @@ const errorHandler = (err) => {
     str += err.response.statusText
     str += '<br/>请求路径：<br/>'
     str += err.response.error.url
-    console.log(str);
 }
 const HttpClient = {
     get: (path, query) => new Promise((resolve, reject) => {
