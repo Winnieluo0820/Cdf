@@ -5,6 +5,7 @@ import http from '../../../utils/httpclient'
 
 import './home.scss'
 import $ from '../../../libs/jquery-3.2.1'
+import jQuery from 'jquery'
 export default class HomeComponent extends React.Component{
     constructor() { 
         super();
@@ -106,25 +107,45 @@ export default class HomeComponent extends React.Component{
                 }
             })();
         })
-        http.post('product_onQty',{qty:40}).then((res)=>{
+        http.post('product_onQty',{qty:10}).then((res)=>{
             this.setState({
                 products:res.data
             })
         })
 
-        $(function($){
+            //下拉刷新
+        jQuery(function($){
             var $main  =  $('#cdf_home .main')
-            var $cdf_banner = $main.find('.cdf_banner')
             var $overlay = $('#cdf_home .overlay')
- 
-            $cdf_banner.on('touchstart',function(event){
-                var x = event.touches[0].clientY;
-                if($main.get(0).scrollTop === 0){
-                    $cdf_banner.on('touchend',function(event){
-                        var ox = event.changedTouches[0].clientY - x;
-                        if(ox > $main.height()* 0.1){  
-                            $main.animate({'padding-top':$main.height()*0.1 + 'px'},300,function(){
-                                $overlay.fadeIn(300);
+            ;(function($){
+                var previousTop;
+                var marginTop = 0;
+                var start;
+                var move;
+                var target = $main.height() * 0.1;
+                var status = false;
+                $main.on('touchstart',function(event){
+                    start = event.touches[0].clientY;
+                    $main.on('touchmove',function(event){
+                        if($main.get(0).scrollTop == 0){
+                            status = true;
+                            move = event.touches[0].clientY;
+                            marginTop = (move - start)
+                            if(marginTop < 0){
+                                marginTop = 0;
+                            }
+                            if(marginTop > target){
+                                marginTop = target;
+                            }
+                            $main.css({'margin-top':marginTop +'px'})                       
+                        }
+                    })
+                })
+                $main.on('touchend',function(){
+                    if(status){
+                        status = false;
+                        if(marginTop == target){
+                            $overlay.fadeIn(300);
                                 var p1 = new Promise((resolved, rejected) => {
                                     http.post('product_onQty',{qty:8,type:'太阳镜'}).then((res)=>{
                                         self.setState({
@@ -185,19 +206,19 @@ export default class HomeComponent extends React.Component{
                                     if(!Array.isArray(res)){
                                         window.alert('刷新失败')
                                     }
-                                    $main.animate({'padding-top':'0px'},300,function(){
-                                        $overlay.fadeOut(300)    
-                                    });
+                                    $main.animate({'margin-top':0},300,function(){
+                                        $overlay.fadeOut(300); 
+                                    }) 
                                 })
-                                
+                        }else{
+                            $overlay.css({display:'block',opacity:0})
+                            $main.animate({'margin-top': '0px'}, 300, function(){
+                                $overlay.css({display:'none',opacity:0.5})
                             })
                         }
-                        
-                    })                    
-                } else {
-                    return;
-                }
-            })
+                    } 
+                })              
+            })($);
         })
     }
     render(){
@@ -544,9 +565,11 @@ export default class HomeComponent extends React.Component{
                             <div className="right_line"></div>
                         </div>
                     </div>
-                    <div className="loadingTop"><img src="http://img.lanrentuku.com/img/allimg/1307/5-130H2191323.gif"/></div>
                     <div className="loadingBottom"><img src="http://img.lanrentuku.com/img/allimg/1307/5-130H2191323.gif" /></div>
-                    <div className="overlay"></div>
+                    <div className="overlay">
+                        <img src="http://img.lanrentuku.com/img/allimg/1307/5-130H2191323.gif" />
+                        <div className="show"></div>    
+                    </div>
                 </div>
             </div>
         )

@@ -30,6 +30,7 @@ class ShopcarComponent extends React.Component{
             var $overlay = $('#cdf_shopcar .overlay')
 
             //第一进去获取页面购物车数据
+            $overlay.fadeIn(300);
             http.post('showShopcart').then((res) => {
                 self.setState({goodsData: res.data})
                 if(self.state.goodsData.length > 0){
@@ -48,6 +49,8 @@ class ShopcarComponent extends React.Component{
                     return item.check;
                 })
                 self.setState({checkbox:{all:changeSelect}});
+
+                $overlay.fadeOut(300);
             })
 
             //下拉刷新
@@ -61,13 +64,15 @@ class ShopcarComponent extends React.Component{
                 $main.on('touchstart',function(event){
                     start = event.touches[0].clientY;
                     $main.on('touchmove',function(event){
-                        status = true;
-                        move = event.touches[0].clientY;
-                        paddingTop = (move - start)
-                        if(paddingTop > target){
-                            paddingTop = target;
+                        if($main.get(0).scrollTop == 0){
+                            status = true;
+                            move = event.touches[0].clientY;
+                            paddingTop = (move - start)
+                            if(paddingTop > target){
+                                paddingTop = target;
+                            }
+                            $main.css({'padding-top':paddingTop +'px'})                       
                         }
-                        $main.css({'padding-top':paddingTop +'px'})
                     })
                 })
                 $main.on('touchend',function(){
