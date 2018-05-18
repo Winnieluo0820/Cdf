@@ -18,21 +18,25 @@ import http from '../../../../utils/httpclient'
 
 	componentDidMount() {
 		let uls = document.querySelector('.uls');
+		let addToOrder = document.querySelector('.addToOrder');
 		let qty =0;
 		let total=0;
 		let lists=0;
 		let distotal=0;
 		let alltotal = 0;
 		
-		console.log(this.props.data.data)
-			http.post('showAddress').then((res) => {
+		
+		http.post('showAddress').then((res) => {
+				console.log(res)
 				if(res.status) {
 					this.setState({
 						address_data: res.data[0]
 					})
+				}else{
+					alert('请先添加地址');
+					this.props.router.push('owner/address/createaddress');
 				}
-				console.log(this.state.address_data)
-			})
+		})
 		
 		
 		
@@ -55,6 +59,21 @@ import http from '../../../../utils/httpclient'
 		
 	
 		uls.style.width = this.props.data.data.length * 2.537036 + 'rem';
+		
+		
+		
+		
+		addToOrder.onclick = ()=>{
+			http.post('addToOrder').then((res)=>{
+				if(res){
+					alert('以生成订单')
+					this.props.router.push('owner/Pay_order');
+				}	
+			})
+		}
+		
+		
+		
 		
 	}
 
@@ -112,7 +131,7 @@ import http from '../../../../utils/httpclient'
 							<h3>商品总价￥{this.state.alltotal}-折扣金额￥{this.state.distotal}</h3>
 							
 							<h4>应付金额  ￥{this.state.total}</h4>
-							<Link to="">提交订单</Link>
+							<Link to="" className="addToOrder">提交订单</Link>
 						</div>
 					
 

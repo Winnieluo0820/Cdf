@@ -21,7 +21,7 @@ import BrowseComponent from '../components/cdf/owner/browse/browse.js'
 import AddressComponent from '../components/cdf/owner/address/address.js'
 import CreateaddressComponent from '../components/cdf/owner/createaddress/createaddress.js'
 import SearchComponent from '../components/cdf/search/search.js'
-        
+import Pay_orederComponent from '../components/cdf/owner/pay_order/pay_order.js' 
 
 
 
@@ -43,6 +43,7 @@ const routes = (
         <Route path="register" component={RegisterComponent}/>
         <Route path="owner/browse" component={BrowseComponent}/>
         <Route path="owner/collection" component={CollectionComponent}/>
+         <Route path="owner/pay_order" component={Pay_orederComponent}/>
         <Route path="goodsDetail" component={GoodsDetailComponent}/>
         <Route path="owner/address" component={AddressComponent}/>
         <Route path="owner/address/createaddress" component={CreateaddressComponent}/>

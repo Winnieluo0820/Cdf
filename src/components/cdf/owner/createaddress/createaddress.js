@@ -3,14 +3,13 @@ import './createaddress.scss'
 import { Link } from 'react-router'
 import http from '../../../../utils/httpclient'
 import SelectArea from '../../../select_area/select_area.jsx'
-import jQuery from 'jquery'
+
 
 export default class CreateaddressComponent extends React.Component {
 	state = {
 		ipNumber: '',
 		adderss: '',
-		userName: '',
-		address_1:''
+		userName: ''
 	}
 
 	inputChange(target, event) {
@@ -27,6 +26,7 @@ export default class CreateaddressComponent extends React.Component {
 		var log_address = document.querySelector('#log_address');
 		var btn_login = document.querySelector('#btn_login')
 		var _alert = btn_login.nextElementSibling;
+		
 		log_ipNumber.onchange = function() {
 			var text = this.value.trim() * 1;
 			var tip = log_ipNumber.nextElementSibling;
@@ -90,9 +90,6 @@ export default class CreateaddressComponent extends React.Component {
 			var _ipNumber = log_ipNumber.value * 1;
 			var _adderss = log_address.value;
 			var _userName = log_ipName.value;
-			console.log(1+_adderss)
-
-
 
 			var tips = document.querySelectorAll('.login_main .tip');
 
@@ -105,10 +102,6 @@ export default class CreateaddressComponent extends React.Component {
 					_alert.style.display = 'none'
 				}
 			}
-
-
-
-
 			http.post('addAddress', {
 				userName: _userName,
 				ipNumber: _ipNumber,
@@ -117,27 +110,10 @@ export default class CreateaddressComponent extends React.Component {
 				if(res.status){
 					self.props.router.push('owner/address')
 				}
-			
 			})
 		}
-		jQuery(function($){
-			$('.select').on('click', function(){
-                $('.overlay').css('display','block');
-                $('.select_city').css('display','block').animate({bottom:0},500);
-            })
-            $('.cancel').on('click',function(){
-            	$('.select_city').animate({bottom:'-31px'},function(){
-                    $('.overlay').css('display','none')
-                    $('.select_city').css('display','none')
-                })
-            })
-            // $('.confirm').on('click',function(){
-            // 	let province=$('.ul-area').eq(0).find('.selected').text();
-            // 	let city=$('.ul-area').eq(1).find('.selected').text();
-            // 	let county=$('.ul-area').eq(2).find('.selected').text();
-            // 	address_1=province+city+county;
-            // })
-		})
+
+		
 
 
 	}
@@ -163,13 +139,9 @@ export default class CreateaddressComponent extends React.Component {
                         <i className="iconfont icon-icon-2 tip"></i>
                         <div className="form_tip"><i></i><span></span></div>
                     </div>
+                    
                     <div className="form_group">
-                      <input type="text" placeholder="所在地区" id="log_address"   value={this.state.adderss_1} onChange={this.inputChange.bind(this,'adderss_1')} />
-                        <span className="select"><i className="iconfont icon-jiantou1"></i></span>
-                        <div className="form_tip"><i></i><span></span></div>
-                    </div>
-                    <div className="form_group">
-                      <input type="text" placeholder="请输入提货人的详细地址" id="address"   value={this.state.adderss} onChange={this.inputChange.bind(this,'adderss')} />
+                      <input type="text" placeholder="请输入提货人的详细地址" id="log_address" value={this.state.adderss} onChange={this.inputChange.bind(this,'adderss')} />
                         <i className="iconfont icon-icon-2 tip"></i>
                         <div className="form_tip"><i></i><span></span></div>
                     </div>

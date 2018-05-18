@@ -1,0 +1,122 @@
+#Pay_order{
+    .pay_top{
+         display: flex;
+        justify-content: space-between;
+        background-color: #FFFFFF;
+        flex-direction: row;
+        height: 1.203703rem;
+        width: 100%;
+        line-height: 1.203703rem;
+        font-size:0.426667rem;
+        a {
+            display: inline-block;
+            width: 1.111111rem;
+            height: 1.203703rem;
+            height: 1.203703rem;
+            text-align: center;
+            i {
+                display: inline-block;
+                font-size:0.453333rem;
+                font-weight: bold;
+                transform: rotate(180deg);
+            }
+        }
+        span {
+            font-size:0.426667rem;
+            margin-right:0.2rem;
+        }
+    }
+    
+    
+    .pay_main{
+//      font-family: "宋体";
+          height: 16.546296rem;
+        width: 100%;
+       // background-color: #F7F7F7;
+       background-color: #F4F4F4;
+        overflow-x: hidden;
+        
+        
+        .orders{
+            overflow: hidden;
+            margin-top: 0.185185rem;
+            background-color: #FFFFFF;
+            h3{
+                line-height: 1.111111rem;
+                padding-left: 0.231481rem;
+                font-weight:400;
+                font-size:26px;
+                i{
+                    font-size: 32px;
+                    margin-right: 0.092592rem;
+                }
+                span{
+                    margin-left: 0.231481rem;
+                   
+                }
+            }
+            
+            ul{
+                li{
+                    height: 2.407407rem;
+                    position: relative;
+                    background-color: olive;
+                    box-sizing: border-box;
+                    background-color: #FAFAFA;
+                    padding: 0.129629rem 0.231481rem 0 0.333333rem;
+                    img{
+                        height: 2.129629rem;
+                        float: left;
+                        margin-right: 0.277777rem;
+                    }    
+                    p{
+                        width: 5.046296rem;
+                        font-size: 24px;
+                        float: left;
+                    }
+                      h3{
+                        
+                          float: right;
+                          font-size:0.351851rem;
+                          line-height: 0.559259rem;
+                          margin-bottom: 0.092592rem;
+                      } 
+                      h5{
+                           position: absolute;
+                            top:0.7rem;
+                              font-size:0.351851rem;
+                           right: 0.4rem;
+                          line-height: 0.559259rem;
+                          font-weight:400;
+                          text-decoration:  line-through;
+                          color:#ccc;
+                         
+                      }
+                      h4{
+                           position: absolute;
+                           top:1.25rem;
+                           right: 0.416666rem;
+                           line-height: 0.559259rem;
+                           color: #b81c22;
+                 
+                          font-size:0.342592rem;
+                      }
+                       
+                       
+                }
+                
+            }
+            h5{
+                padding-left: 3rem;
+                line-height: 0.925925rem;
+                font-size: 0.277777rem;
+            }
+            
+            
+        }
+        
+        
+        
+        
+    }
+}
