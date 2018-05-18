@@ -51,7 +51,7 @@ export default class CollectionComponent extends React.Component {
 							this.state.likedate.map((item)=>{
 								return (
 									<li key={item.id}>
-										<Link to="">
+										<Link to={{pathname: '/goodsDetail', query:{id: item._id}}}>
 											<img src={item.pic}/>
 											<p>{item.name}</p>
 											<h3>免税价:<span>￥{item.discountPrice}</span></h3>

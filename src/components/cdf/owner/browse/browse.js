@@ -11,7 +11,7 @@ export default class BrowseComponent extends React.Component {
 	componentDidMount() {
 		let span_btn = document.querySelector('.span_btn');
 		http.post('watch_history').then((res) => {
-
+			
 			if(res.status) {
 				this.setState({
 					browse: res.data
@@ -40,16 +40,18 @@ export default class BrowseComponent extends React.Component {
 						<ul>
 							{
 							this.state.browse.map((item)=>{
-								return (
+								if(item){
+									return (
 									<li key={item.id}>
-										<Link to="">
+										<Link to={{pathname: '/goodsDetail', query:{id: item._id}}}>
 											<img src={item.pic}/>
 											<p>{item.name}</p>
 											<h3>免税价:<span>￥{item.discountPrice}</span></h3>
 											<h4>市场价:<span>￥{item.salesPrice}</span></h4>
 										</Link>
-								</li>
-								)
+									</li>)
+								}
+								
 							})
 							
 							
