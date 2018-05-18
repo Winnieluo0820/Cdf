@@ -6,7 +6,8 @@ import http from '../../../utils/httpclient'
 
 export default class OwnerComponent extends React.Component {
 	state = {
-		username: '注册/登录'
+		username: '注册/登录',
+		login_s: 0
 	}
 
 	componentDidMount() {
@@ -14,32 +15,32 @@ export default class OwnerComponent extends React.Component {
 		//如果有就添加到登录的框，然后添加到名字框
 		var self = this;
 		let loginout = document.querySelector('.icon-tuichu');
-		
+		let login_btn = document.querySelector('.login_btn');
+		//console.log(login_btn)
+
 		http.post('islogin').then((res) => {
 			if(res.status) {
 				this.setState({
-					username: res.data
+					username: res.data,
+					login_s: 1
 				})
-				loginout.style.display='block'
+				loginout.style.display = 'block';
 			}
 		})
-		
-		loginout.onclick =function(){
-			window.localStorage.setItem('access_token','') 
-			 self.props.router.push('/')
+
+		loginout.onclick = function() {
+			window.localStorage.setItem('access_token', '')
+			self.props.router.push('/')
 		}
-		
-		
-		
 	}
 
 	render() {
 		return(
 			<div id="cdf_owner" className="animate-route">
             	<div className="owner_top">
-            		<Link to="login"><i className="icon-wode iconfont "></i>
+            		<Link to={this.state.login_s ==0 ? 'login' : ''} className="login_btn"><i className="icon-wode iconfont "></i>
             		<p>{this.state.username}</p>
-            		</Link>
+            			</Link>
             		<img src="http://pic.cdfgsanya.com/upload/2016/8/2/20160802095348455.jpg"/>
             		<i className="icon-tuichu iconfont"></i>
             	</div>

@@ -9,7 +9,9 @@ import http from '../../../../utils/httpclient'
 			order:[],
 			qty:0,
 			total:0,
-			
+			distotal:0,
+			alltotal:0,
+			address_data:[]
 		}
 		
 		
@@ -19,26 +21,40 @@ import http from '../../../../utils/httpclient'
 		let qty =0;
 		let total=0;
 		let lists=0;
-		
+		let distotal=0;
+		let alltotal = 0;
 		
 		console.log(this.props.data.data)
+			http.post('showAddress').then((res) => {
+				if(res.status) {
+					this.setState({
+						address_data: res.data[0]
+					})
+				}
+				console.log(this.state.address_data)
+			})
+		
+		
+		
+		
 		this.props.data.data.map((item,index)=>{
 			if(item.check){
 				qty += item.qty*1;
-				total += item.qty*item.salesPrice;
+				total += item.qty*item.discountPrice;
+				distotal += (item.salesPrice-item.discountPrice)*item.qty;
+				alltotal += item.qty*item.salesPrice
 			}
-			
-		
 		})
-		console.log(qty)
 		this.setState({
 			order:this.props.data.data,
 			qty:qty,
-			total:total.toFixed(2)
+			total:total.toFixed(2),
+			distotal:distotal.toFixed(2),
+			alltotal:alltotal.toFixed(2)
 		})
 		
 	
-		uls.style.width = (this.props.data.data.length+1) * 2.537036 + 'rem';
+		uls.style.width = this.props.data.data.length * 2.537036 + 'rem';
 		
 	}
 
@@ -53,11 +69,12 @@ import http from '../../../../utils/httpclient'
 					<div className="orders_main">
 						<ul>
 							<li >
-							<i className="icon-lianxiwomendibiao  iconfont"></i>
-								<h2>提货人:<span>小花花</span></h2>
-								<h3><i className="icon-lianxiwomendianhua iconfont"></i>13106728392</h3>
-								<h4><i className="icon-daitihuo iconfont"></i>详细地址:<span>过程花开了会计师考虑对方</span></h4>
-							</li>		
+								<i className="icon-lianxiwomendibiao  iconfont"></i>
+								<h2>提货人:<span>{this.state.address_data.userName}</span></h2>
+								<h3><i className="icon-lianxiwomendianhua iconfont"></i>{this.state.address_data.ipNumber}</h3>
+								<h4><i className="icon-daitihuo iconfont"></i>详细地址:<span>{this.state.address_data.address}</span></h4>
+							</li>			
+									
 						</ul>
 						<div className="orders_box">
 							<h4>商品详情</h4>
@@ -67,8 +84,7 @@ import http from '../../../../utils/httpclient'
 									this.state.order.map((item)=>{
 										if(item.check){
 											return (<li className="lis" key={item.id}><img src={item.pic}/></li>)
-										}
-										
+										}			
 									})
 								}
 								
@@ -85,7 +101,7 @@ import http from '../../../../utils/httpclient'
 						<div className="orders_other">我的优惠券<i className="icon-jiantou iconfont "></i><span>0张可用</span></div>
 						<div className="orders_pays">
 							<h3><span>商品总价:<i>￥{this.state.total}</i></span></h3>
-							<h3><span>折扣优惠:<i>-￥0.00</i></span></h3>
+							<h3><span>折扣优惠:<i>-￥{this.state.distotal}</i></span></h3>
 							<h3><span>行邮税:<i>+￥0.00</i></span></h3>
 							<h3><span>行邮税优惠:<i>-￥0.00</i></span></h3>
 							<h3><span>应付金额:<i>￥{this.state.total}</i></span></h3>
@@ -93,7 +109,7 @@ import http from '../../../../utils/httpclient'
 					</div>
 					
 						<div className="orders_footer">
-							<h3>商品总价￥{this.state.total}-折扣金额￥0.00</h3>
+							<h3>商品总价￥{this.state.alltotal}-折扣金额￥{this.state.distotal}</h3>
 							
 							<h4>应付金额  ￥{this.state.total}</h4>
 							<Link to="">提交订单</Link>
