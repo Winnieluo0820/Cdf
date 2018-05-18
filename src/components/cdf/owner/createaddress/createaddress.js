@@ -3,7 +3,7 @@ import React from 'react'
 import './createaddress.scss'
 import { Link } from 'react-router'
 import http from '../../../../utils/httpclient'
-import SelectArea from '../../../select_area/select_area.jsx'
+
 
 
 export default class CreateaddressComponent extends React.Component {
