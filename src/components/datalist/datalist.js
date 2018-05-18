@@ -16,11 +16,13 @@ export default class Datalist extends React.Component {
 	}
 	componentDidMount() {
         let self = this;
+        let LoadingStatus = false;
 		let type = this.props.location.query.type;
 		let query_product_up = document.querySelector('#query_product_up');
 		let query_product_down = document.querySelector('#query_product_down');
 		let btn_action = document.querySelector('#btn_action');
         var $goodslist =jQuery('.datalist .goodslist');
+        var $goodslist_ul = $goodslist.find('ul');
         var $overlay = jQuery('.datalist .overlay')
 
 		this.setState({
@@ -54,6 +56,7 @@ export default class Datalist extends React.Component {
 				})
                 $overlay.fadeOut(300);
 			})
+            LoadingStatus = false;
 		}
 
 		query_product_down.onclick = () => {
@@ -71,16 +74,20 @@ export default class Datalist extends React.Component {
 				})
                 $overlay.fadeOut(300);
 			})
+            LoadingStatus = false;
+
 		}
 
 		btn_action.onclick = () => {this.setState({
 				num: 0,
 				data: this.state.normal
 			})
-		}
-            //下拉刷新
-        jQuery(function($){
+            LoadingStatus = false;
 
+		}
+            
+        jQuery(function($){
+            //下拉刷新
             ;(function($){
                 var previousTop;
                 var marginTop = 0;
@@ -162,6 +169,67 @@ export default class Datalist extends React.Component {
                         }
                     } 
                 })              
+            })($);
+
+            //懒加载
+            ;(function($){
+                var qty = 10;
+                $goodslist.on('touchend',function(event){ 
+                    if(LoadingStatus){
+                        return;
+                    }
+                    var scrollBig = this.scrollHeight * ( $goodslist.height() /  $goodslist_ul.height())
+
+                    if(this.scrollTop + scrollBig > this.scrollHeight * 0.9){
+                        LoadingStatus = true;
+                        qty += 10;
+                        switch(self.state.num){
+                            case 0:
+                                    http.post('query_product', {
+                                        type,
+                                        qty:qty
+                                    }).then((res) => {
+                                        self.setState({
+                                            data: res.data,
+                                            normal: res.data
+                                        })
+                                        LoadingStatus = false;
+                                        if(res.data.length < qty){
+                                            LoadingStatus = true;
+                                        }           
+                                    })
+                                break;
+                            case 1:
+                                    http.post('query_product_priceDesc', {
+                                        type,
+                                        qty:qty
+                                    }).then((res) => {
+                                        self.setState({
+                                            data: res.data,
+                                        })
+                                        LoadingStatus = false;
+                                        if(res.data.length < qty){
+                                            LoadingStatus = true;
+                                        }    
+                                    })      
+                                break;
+                            case 2:
+                                    http.post('query_product_priceAsc', {
+                                        type,
+                                        qty:qty
+                                    }).then((res) => {
+                                        self.setState({
+                                            data: res.data,
+                                        })
+                                        status = false;
+                                        if(res.data.length < qty){
+                                            status = true;
+                                        }    
+                                    })
+                                break;
+                        }
+                    }
+                })
             })($);
         })
 

@@ -32,6 +32,7 @@ class ShopcarComponent extends React.Component{
             //第一进去获取页面购物车数据
             $overlay.fadeIn(300);
             http.post('showShopcart').then((res) => {
+
                 self.setState({goodsData: res.data})
                 if(self.state.goodsData.length > 0){
                     $goodCars.css('display','block')
