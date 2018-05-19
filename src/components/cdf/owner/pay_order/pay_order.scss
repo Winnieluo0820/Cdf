@@ -1,13 +1,13 @@
-#Pay_order{
-    .pay_top{
-         display: flex;
+#Pay_order {
+    .pay_top {
+        display: flex;
         justify-content: space-between;
         background-color: #FFFFFF;
         flex-direction: row;
         height: 1.203703rem;
         width: 100%;
         line-height: 1.203703rem;
-        font-size:0.426667rem;
+        font-size: 0.426667rem;
         a {
             display: inline-block;
             width: 1.111111rem;
@@ -16,107 +16,165 @@
             text-align: center;
             i {
                 display: inline-block;
-                font-size:0.453333rem;
+                font-size: 0.453333rem;
                 font-weight: bold;
                 transform: rotate(180deg);
             }
         }
         span {
-            font-size:0.426667rem;
-            margin-right:0.2rem;
+            font-size: 0.426667rem;
+            margin-right: 0.2rem;
         }
     }
-    
-    
-    .pay_main{
-//      font-family: "宋体";
-          height: 16.546296rem;
+    .pay_main {
+        //      font-family: "宋体";
+        height: 16.546296rem;
         width: 100%;
-       // background-color: #F7F7F7;
-       background-color: #F4F4F4;
+        // background-color: #F7F7F7;
+        background-color: #F4F4F4;
         overflow-x: hidden;
-        
-        
-        .orders{
+        .orders {
             overflow: hidden;
             margin-top: 0.185185rem;
             background-color: #FFFFFF;
-            h3{
+            h3 {
                 line-height: 1.111111rem;
+                height: 1.111111rem;
                 padding-left: 0.231481rem;
-                font-weight:400;
-                font-size:26px;
-                i{
+                font-weight: 400;
+                position: relative;
+                font-size: 26px;
+                i {
                     font-size: 32px;
                     margin-right: 0.092592rem;
                 }
-                span{
+                span {
                     margin-left: 0.231481rem;
-                   
+                }
+                .pay_status {
+                    position: absolute;
+                    display: inline-block;
+                    right: 0.138888rem;
+                    top: 0.4rem;
+                    font-size: 0.277777rem;
+                    width: 1.203703rem;
+                    background-color: #FBA844;
+                    border-radius: 0.074074rem;
+                    height: 0.37037rem;
+                    text-align: center;
+                    line-height: 0.37037rem;
                 }
             }
-            
-            ul{
-                li{
+            ul {
+                li {
                     height: 2.407407rem;
                     position: relative;
                     background-color: olive;
                     box-sizing: border-box;
                     background-color: #FAFAFA;
                     padding: 0.129629rem 0.231481rem 0 0.333333rem;
-                    img{
+                    img {
                         height: 2.129629rem;
                         float: left;
                         margin-right: 0.277777rem;
-                    }    
-                    p{
+                    }
+                    p {
                         width: 5.046296rem;
                         font-size: 24px;
                         float: left;
                     }
-                      h3{
-                        
-                          float: right;
-                          font-size:0.351851rem;
-                          line-height: 0.559259rem;
-                          margin-bottom: 0.092592rem;
-                      } 
-                      h5{
-                           position: absolute;
-                            top:0.7rem;
-                              font-size:0.351851rem;
-                           right: 0.4rem;
-                          line-height: 0.559259rem;
-                          font-weight:400;
-                          text-decoration:  line-through;
-                          color:#ccc;
-                         
-                      }
-                      h4{
-                           position: absolute;
-                           top:1.25rem;
-                           right: 0.416666rem;
-                           line-height: 0.559259rem;
-                           color: #b81c22;
-                 
-                          font-size:0.342592rem;
-                      }
-                       
-                       
+                    h3 {
+                        float: right;
+                        font-size: 0.351851rem;
+                        line-height: 0.559259rem;
+                        margin-bottom: 0.092592rem;
+                    }
+                    h5 {
+                        position: absolute;
+                        top: 0.7rem;
+                        font-size: 0.351851rem;
+                        right: 0.4rem;
+                        line-height: 0.559259rem;
+                        font-weight: 400;
+                        text-decoration: line-through;
+                        color: #ccc;
+                    }
+                    h4 {
+                        position: absolute;
+                        top: 1.25rem;
+                        right: 0.416666rem;
+                        line-height: 0.559259rem;
+                        color: #b81c22;
+                        font-size: 0.342592rem;
+                    }
                 }
-                
             }
-            h5{
+            h5 {
                 padding-left: 3rem;
                 line-height: 0.925925rem;
+                position: relative;
                 font-size: 0.277777rem;
+                .sure_pay {
+                    display: inline-block;
+                    position: absolute;
+                    width: 1.203703rem;
+                    top: 0.277777rem;
+                    height: 0.601851rem;
+                    right: 0.138888rem;
+                    text-align: center;
+                    color: white;
+                    line-height: 0.601851rem;
+                    border-radius: 0.074074rem;
+                    background-color: darkred;
+                }
             }
-            
-            
         }
-        
-        
-        
-        
+    }
+    .is_pay {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.7);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 999;
+        .is_payss {
+           
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 6.666666rem;
+            height: 1.574074rem;
+            border-radius: 20px;
+             text-align: center;
+             line-height:1.574074rem;
+                font-size: 0.6rem;
+            background-color: cornflowerblue;
+            #label {
+                width: 1.111111rem;
+                position: absolute;
+                left: 0;
+                top: 0;
+                 border-radius: 20px;
+                height: 100%;
+                background: #FBA844;
+                z-index: 999;
+                cursor: pointer;
+            }
+            #labelTip {
+                z-index: 9;
+            }
+            @media screen and (max-width: 640px) {
+                #slide-wrapper {
+                    width: 64%;
+                }
+            }
+            p {
+                padding: 0 10px;
+                word-wrap: break-word;
+            }
+        }
     }
 }
