@@ -26,6 +26,12 @@ export default class BrandComponent extends React.Component{
             })
 
         }) 
+        let brands=document.querySelector('.brand_all');
+        brands.onclick=(e)=>{
+            if(e.target.tagName.toLowerCase()=='dd'){
+                this.props.router.push({pathname:'/datalist',query:{brand:e.target.innerText}})
+            }
+        }
     }
     scrollToAnchor = (anchorName) => {
         if (anchorName) {
@@ -50,30 +56,44 @@ export default class BrandComponent extends React.Component{
                     <div className="cdf_brand_img" ref="imgs">
                         <ul>
                             <li>
-                                <Link >
+                                <Link to={{pathname:'/datalist',query:{brand:'LANCOME 兰蔻'}}}>
                                     <img src="http://pic.cdfgsanya.com/mobilemall/1525399068316GyNcc.jpg"/>
                                 </Link>
                             </li>
                             <li>
-                                <img src="http://pic.cdfgsanya.com/mobilemall/1524041665155vyj0S.jpg"/>
+                                <Link to={{pathname:'/datalist',query:{brand:'Dior 迪奥'}}}>
+                                    <img src="http://pic.cdfgsanya.com/mobilemall/1524041665155vyj0S.jpg"/>
+                                </Link>    
                             </li>
                             <li>
-                                <img src="http://pic.cdfgsanya.com/mobilemall/1525107840098oGMLk.jpg"/>
+                                <Link to={{pathname:'/datalist',query:{brand:'LA MER  海蓝之谜'}}}>
+                                    <img src="http://pic.cdfgsanya.com/mobilemall/1525107840098oGMLk.jpg"/>
+                                </Link>
                             </li>
                             <li>
-                                <img src="http://pic.cdfgsanya.com/mobilemall/1523606783782etj7h.png"/>
+                                <Link to={{pathname:'/datalist',query:{brand:'CLINIQUE 倩碧'}}}>
+                                    <img src="http://pic.cdfgsanya.com/mobilemall/1523606783782etj7h.png"/>
+                                </Link>
                             </li>
                             <li>
-                                <img src="http://pic.cdfgsanya.com/mobilemall/1525683094865BbN6o.jpg"/>
+                                <Link to={{pathname:'/datalist',query:{brand:'A.H.C 爱和纯'}}}>
+                                    <img src="http://pic.cdfgsanya.com/mobilemall/1525683094865BbN6o.jpg"/>
+                                </Link>
                             </li>
                             <li>
-                                <img src="http://pic.cdfgsanya.com/mobilemall/1523844645026hMz1h.jpg"/>
+                                <Link to={{pathname:'/datalist',query:{brand:'SHISEIDO 资生堂'}}}>
+                                    <img src="http://pic.cdfgsanya.com/mobilemall/1523844645026hMz1h.jpg"/>
+                                </Link>
                             </li>
                             <li>
-                                <img src="http://pic.cdfgsanya.com/mobilemall/1523844527357l6ORD.jpg"/>
+                                <Link to={{pathname:'/datalist',query:{brand:'YSL 圣罗兰'}}}>
+                                    <img src="http://pic.cdfgsanya.com/mobilemall/1523844527357l6ORD.jpg"/>
+                                </Link>
                             </li>
                             <li>
-                                <img src="http://pic.cdfgsanya.com/mobilemall/1523844752477HAjx8.jpg"/>
+                                <Link to={{pathname:'/datalist',query:{brand:'Ray-Ban  雷朋'}}}>
+                                    <img src="http://pic.cdfgsanya.com/mobilemall/1523844752477HAjx8.jpg"/>
+                                </Link>
                             </li>
                         </ul>
                     </div>

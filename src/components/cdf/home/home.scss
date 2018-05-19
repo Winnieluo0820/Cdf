@@ -100,10 +100,13 @@
         .img0{
             display:flex;background-color: #fff;
             justify-content:space-between;
-            img{
+             a {
                 width: 49%;
                 height: 5.733333rem;
                 border-radius:0.053333rem;
+                img{
+                    width: 100%;
+                }
             }
         }
         .img1{
