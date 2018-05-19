@@ -4,65 +4,234 @@ import { Link } from 'react-router';
 import './datalist.scss'
 
 import http from '../../utils/httpclient'
+import jQuery from 'jquery'
 
 export default class Datalist extends React.Component {
 	state = {
 		data: [],
 		normal: [],
 		types: '',
-		num: 0
+		num: 0 ,
+        qty: 10
 	}
 	componentDidMount() {
+        let self = this;
+        let LoadingStatus = false;
 		let type = this.props.location.query.type;
 		let query_product_up = document.querySelector('#query_product_up');
 		let query_product_down = document.querySelector('#query_product_down');
 		let btn_action = document.querySelector('#btn_action');
+        var $goodslist =jQuery('.datalist .goodslist');
+        var $goodslist_ul = $goodslist.find('ul');
+        var $overlay = jQuery('.datalist .overlay')
+
 		this.setState({
 			types: type
 		})
 
+        $overlay.fadeIn(300);
 		http.post('query_product', {
-			type
+			type,
+            qty:this.state.qty
 		}).then((res) => {
 			this.setState({
 				data: res.data,
 				normal: res.data
 			})
+            $overlay.fadeOut(300);
 		})
 
 		query_product_up.onclick = () => {
 			this.setState({
 				num: 1
 			})
+
+            $overlay.fadeIn(300);
 			http.post('query_product_priceDesc', {
-				type
+				type,
+                qty:this.state.qty
 			}).then((res) => {
 				this.setState({
 					data: res.data,
-
 				})
+                $overlay.fadeOut(300);
 			})
+            LoadingStatus = false;
 		}
 
 		query_product_down.onclick = () => {
 			this.setState({
 				num: 2
 			})
+
+            $overlay.fadeIn(300);
 			http.post('query_product_priceAsc', {
-				type
+				type,
+                qty:this.state.qty
 			}).then((res) => {
 				this.setState({
 					data: res.data,
-
 				})
+                $overlay.fadeOut(300);
 			})
+            LoadingStatus = false;
+
 		}
 
 		btn_action.onclick = () => {this.setState({
 				num: 0,
 				data: this.state.normal
 			})
+            LoadingStatus = false;
+
 		}
+            
+        jQuery(function($){
+            //下拉刷新
+            ;(function($){
+                var previousTop;
+                var marginTop = 0;
+                var start;
+                var move;
+                var target = $goodslist.height() * 0.1;
+                var status = false;
+                $goodslist.on('touchstart',function(event){
+                    start = event.touches[0].clientY;
+                    $goodslist.on('touchmove',function(event){
+                        if($goodslist.get(0).scrollTop == 0){
+                            status = true;
+                            move = event.touches[0].clientY;
+                            marginTop = (move - start)
+                            if(marginTop < 0){
+                                marginTop = 0;
+                            }
+                            if(marginTop > target){
+                                marginTop = target;
+                            }
+                            $goodslist.css({'margin-top':marginTop +'px'})                       
+                        }
+                    })
+                })
+                $goodslist.on('touchend',function(){
+                    if(status){
+                        status = false;
+                        if(marginTop == target){
+                            $overlay.fadeIn(300);
+
+                            switch(self.state.num){
+                                case 0:
+                                        http.post('query_product', {
+                                            type,
+                                            qty:self.state.qty
+                                        }).then((res) => {
+                                            self.setState({
+                                                data: res.data,
+                                                normal: res.data
+                                            })  
+                                            $goodslist.animate({'margin-top':0},300,function(){
+                                                $overlay.fadeOut(300); 
+                                            })           
+                                        })
+                                    break;
+                                case 1:
+                                        http.post('query_product_priceDesc', {
+                                            type,
+                                            qty:self.state.qty
+                                        }).then((res) => {
+                                            self.setState({
+                                                data: res.data,
+                                            })
+                                            $goodslist.animate({'margin-top':0},300,function(){
+                                                $overlay.fadeOut(300); 
+                                            }) 
+                                        })      
+                                    break;
+                                case 2:
+                                        http.post('query_product_priceAsc', {
+                                            type,
+                                            qty:self.state.qty
+                                        }).then((res) => {
+                                            self.setState({
+                                                data: res.data,
+                                            })
+                                            $goodslist.animate({'margin-top':0},300,function(){
+                                                $overlay.fadeOut(300); 
+                                            }) 
+                                        })
+                                    break;
+                            }
+          
+                        }else{
+                            $overlay.css({display:'block',opacity:0})
+                            $goodslist.animate({'margin-top': '0px'}, 300, function(){
+                                $overlay.css({display:'none',opacity:0.5})
+                            })
+                        }
+                    } 
+                })              
+            })($);
+
+            //懒加载
+            ;(function($){
+                var qty = 10;
+                $goodslist.on('touchend',function(event){ 
+                    if(LoadingStatus){
+                        return;
+                    }
+                    var scrollBig = this.scrollHeight * ( $goodslist.height() /  $goodslist_ul.height())
+
+                    if(this.scrollTop + scrollBig > this.scrollHeight * 0.9){
+                        LoadingStatus = true;
+                        qty += 10;
+                        switch(self.state.num){
+                            case 0:
+                                    http.post('query_product', {
+                                        type,
+                                        qty:qty
+                                    }).then((res) => {
+                                        self.setState({
+                                            data: res.data,
+                                            normal: res.data
+                                        })
+                                        LoadingStatus = false;
+                                        if(res.data.length < qty){
+                                            LoadingStatus = true;
+                                        }           
+                                    })
+                                break;
+                            case 1:
+                                    http.post('query_product_priceDesc', {
+                                        type,
+                                        qty:qty
+                                    }).then((res) => {
+                                        self.setState({
+                                            data: res.data,
+                                        })
+                                        LoadingStatus = false;
+                                        if(res.data.length < qty){
+                                            LoadingStatus = true;
+                                        }    
+                                    })      
+                                break;
+                            case 2:
+                                    http.post('query_product_priceAsc', {
+                                        type,
+                                        qty:qty
+                                    }).then((res) => {
+                                        self.setState({
+                                            data: res.data,
+                                        })
+                                        status = false;
+                                        if(res.data.length < qty){
+                                            status = true;
+                                        }    
+                                    })
+                                break;
+                        }
+                    }
+                })
+            })($);
+        })
 
 	}
 
@@ -114,6 +283,10 @@ export default class Datalist extends React.Component {
                             }) : null
                         }
                     </ul>
+                </div>
+                <div className="overlay">
+                    <img src="http://img.lanrentuku.com/img/allimg/1307/5-130H2191323.gif" />
+                    <div className="show"></div>    
                 </div>
             </div>
 		)

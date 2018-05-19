@@ -9,11 +9,33 @@ import jQuery from 'jquery'
 
 class CdfComponent extends React.Component{
     componentDidMount(){
+        var self = this;
         this.props.requestData({
             url:'showShopcart',
         })
         jQuery(function($){
             var $cdf_footer = $('#cdf_footer');
+            //更新根据路由跳转
+            var type = self.props.location.pathname;
+            switch(type){
+                case '/':
+                    $cdf_footer.find('li').eq(0).addClass('active').siblings().removeClass('active')
+                    break;
+                case '/brand':
+                    $cdf_footer.find('li').eq(1).addClass('active').siblings().removeClass('active')
+                    break;
+                case '/classify':
+                    $cdf_footer.find('li').eq(2).addClass('active').siblings().removeClass('active')
+                    break;
+                case '/shopcar':
+                    $cdf_footer.find('li').eq(3).addClass('active').siblings().removeClass('active')
+                    break;
+                case '/owner':
+                    $cdf_footer.find('li').eq(4).addClass('active').siblings().removeClass('active')
+                    break;                    
+            }
+
+            //点击跳转
             $cdf_footer.on('click','li',function(){
                 $(this).addClass('active');
                 $(this).siblings().removeClass('active');
