@@ -1,5 +1,6 @@
 #createbox {
     background-color: #F7F7F7;
+    position:relative;
     .createbox_top {
         display: flex;
         flex-direction: row;
@@ -104,7 +105,7 @@
                     }
                 }
             }
-            .form_group:nth-of-type(4) {
+            .form_group:nth-of-type(5) {
                 button {
                     width: 100%;
                     height: 0.933333rem;
@@ -138,13 +139,103 @@
                     }
                 }
             }
-            .form_group:nth-of-type(4) {
+            .form_group:nth-of-type(5) {
                 margin-top: 0.266667rem;
                 a {
                     color: red;
                 }
             }
+            .defaultsAddress{
+                display:flex;
+                justify-content:space-around;
+                .right{
+                    flex:1;
+                    text-align:center;
+                    button{
+                        display:inline-block;
+                        font-size:0.346667rem;
+                        width: 100px;
+                        height: 0.533333rem;
+                        border:0 none;
+                        border-radius:0.133333rem 0.133333rem;
+
+                    }
+                    button:focus{
+                        outline:none;
+                    }
+                }
+                .left{
+                    flex:1;
+                    padding-left:0.666667rem;
+                }
+            }
         }
     }
+    .overlay{
+        display:none;
+        position:absolute;
+        background:#666;
+        left:0;right:0;
+        top:0;bottom:0;
+        opacity:0.5;
+    }
+    .selectDefault{
+        display:none;
+        position:absolute;
+        background:#fff;
+        height: 40%;
+        width: 100%;
+        bottom:10%;
+        opacity:0.8;
+        // display:flex;
+        padding:1.066667rem 0.666667rem;
+        .select{
+            flex:1;
+            background:#f7f7f7;
+            margin: 0 0.133333rem;
+            overflow-x:hidden;  
+            li{
+                height: (100%/3);
+                border-bottom:0.04rem solid #fff;
+                background:#eee;
+                text-align:center;
+                vertical-align:middle;
+                font-size:0.426667rem;
+            }
+            li::after{
+                content:"";
+                display:inline-block;
+                vertical-align:middle;
+                height: 100%;
+            }
+            .active{
+                color:orange;
+            }
+        }
 
+    }
+    .confirmArea{
+        display:none;
+        position:absolute;
+        background:#fff;
+        opacity:0.8;
+        height: 10%;
+        width: 100%;
+        bottom:0;
+        button{
+            display:block;
+            width: 80%;
+            margin:0.133333rem auto;
+            height: 80%;
+            border:0 none;
+            border-radius:20px 20px;
+            font-size:0.4rem;
+            background:#b81c22;
+            color:#fff;
+
+        }
+        button:focus{
+            outline:none;
+        }
+    }
 }
