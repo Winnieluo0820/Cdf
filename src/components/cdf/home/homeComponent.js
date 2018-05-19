@@ -33,7 +33,12 @@ export default class HomeComponent extends React.Component{
     toSearch(){
         this.props.router.push('/search');
     }
-
+    toBack(){
+        window.history.back();
+    }
+    toRank(){
+        this.props.router.push('/rank');
+    }
     componentDidMount(){     
         var self = this; 
         var mySwiper = new Swiper ('.swiper-container', {
@@ -288,7 +293,7 @@ export default class HomeComponent extends React.Component{
                             <div className="swiper-container">
                                 <div className="swiper-wrapper">
                                     <div className="swiper-slide" data-swiper-autoplay="2000">
-                                        <img src="http://pic.cdfgsanya.com/mobilemall/1525680820786s1Eou.jpg"/>
+                                        <img src="http://pic.cdfgsanya.com/mobilemall/1526440257041WFkZG.jpg"/>
                                     </div>
                                     <div className="swiper-slide" data-swiper-autoplay="2000">
                                         <img src="http://pic.cdfgsanya.com/mobilemall/1525958825495bvvkY.jpg"/>
@@ -303,43 +308,47 @@ export default class HomeComponent extends React.Component{
                                         <img src="http://pic.cdfgsanya.com/mobilemall/1525959173919Z81ig.jpg"/>
                                     </div>
                                     <div className="swiper-slide" data-swiper-autoplay="2000">
-                                        <img src="http://pic.cdfgsanya.com/mobilemall/15245613946744tNlG.jpg"/>
+                                        <img src="http://pic.cdfgsanya.com/mobilemall/1526462857735NsYtG.jpg"/>
                                     </div>
                                     <div className="swiper-slide" data-swiper-autoplay="2000">
-                                        <img src="http://pic.cdfgsanya.com/mobilemall/1523326998285BQXht.jpg"/>
+                                        <img src="http://pic.cdfgsanya.com/mobilemall/1526441805583uDsUr.jpg"/>
                                     </div>
                                 </div>
                                 <div className="swiper-pagination"></div>
                             </div>
                         </div>
                         <div className="cdf_home_menu" ref="menu">
-                            <ul>
-                                <li>
-                                    <i className="iconfont icon-paihangbang-"></i>
-                                    <span>排行榜</span>
-                                </li>
-                                <li>
-                                    <i className="iconfont icon-dingdan"></i>
-                                    <span>我的订单</span>
-                                </li>
-                                <li>
-                                    <i className="iconfont icon-youhuiquan-01"></i>
-                                    <span>优惠券</span>
-                                </li>
-                                <li>
-                                    <i className="iconfont icon-liulanjilu"></i>
-                                    <span>购物流程</span>
-                                </li>
-                                <li>
-                                    <i className="iconfont icon-changjianwenti"></i>
-                                    <span>常见问题</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="img0" ref="img0">
+                        <ul>
+                            <li onClick={this.toRank.bind(this)}>
+                                <i className="iconfont icon-paihangbang-"></i>
+                                <span>排行榜</span>
+                            </li>
+                            <li>
+                                <i className="iconfont icon-dingdan"></i>
+                                <span>我的订单</span>
+                            </li>
+                            <li>
+                                <i className="iconfont icon-youhuiquan-01"></i>
+                                <span>优惠券</span>
+                            </li>
+                            <li>
+                                <i className="iconfont icon-liulanjilu"></i>
+                                <span>购物流程</span>
+                            </li>
+                            <li>
+                                <i className="iconfont icon-changjianwenti"></i>
+                                <span>常见问题</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="img0" ref="img0">
+                        <Link to={{pathname:'/datalist',query:{brand:'Estée Lauder 雅诗兰黛'}}}>
                             <img src="http://pic.cdfgsanya.com/mobilemall/1525397920969VptSp.jpg" />
+                        </Link>
+                        <Link to={{pathname:'/datalist',query:{brand:'Whoo  后'}}}>
                             <img src="http://pic.cdfgsanya.com/mobilemall/1525103670603kDiot.jpg" />
-                        </div>
+                        </Link>
+                    </div>
                         <div className="img1" ref="img1">
                             <img src="http://pic.cdfgsanya.com/mobilemall/1525103144774tLi3Y.jpg" alt=""/>
                         </div>

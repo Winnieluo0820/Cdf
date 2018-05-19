@@ -22,6 +22,8 @@ import AddressComponent from '../components/cdf/owner/address/address.js'
 import CreateaddressComponent from '../components/cdf/owner/createaddress/createaddress.js'
 import SearchComponent from '../components/cdf/search/search.js'
 import Pay_orederComponent from '../components/cdf/owner/pay_order/pay_order.js' 
+import RankComponent from '../components/cdf/rank/rank.js'        
+import BestComponent from '../components/cdf/rank/best/best.js'
 
 
 
@@ -50,6 +52,8 @@ const routes = (
         <Route path="shopcar/orders" component={OrdersComponent} />
         <Route path="search" component={SearchComponent}/>
         <Route path="datalist" component={DatalistComponent}/>	
+        <Route path="rank" component={RankComponent} />    
+        <Route path="rank/best" component={BestComponent} />
         <Route path="goodsDetail" component={GoodsDetailComponent}/>
         <Route path="owner/address" component={AddressComponent}/>
         <Route path="owner/address/createaddress" component={CreateaddressComponent}/>

@@ -11,6 +11,7 @@ export default class Datalist extends React.Component {
 		data: [],
 		normal: [],
 		types: '',
+        brand:'',
 		num: 0 ,
         qty: 10
 	}
@@ -18,66 +19,97 @@ export default class Datalist extends React.Component {
         let self = this;
         let LoadingStatus = false;
 		let type = this.props.location.query.type;
+        let brand = this.props.location.query.brand||this.props.router.params.brand;
 		let query_product_up = document.querySelector('#query_product_up');
 		let query_product_down = document.querySelector('#query_product_down');
 		let btn_action = document.querySelector('#btn_action');
         var $goodslist =jQuery('.datalist .goodslist');
         var $goodslist_ul = $goodslist.find('ul');
         var $overlay = jQuery('.datalist .overlay')
-
-		this.setState({
-			types: type
-		})
-
-        $overlay.fadeIn(300);
-		http.post('query_product', {
-			type,
-            qty:this.state.qty
-		}).then((res) => {
-			this.setState({
-				data: res.data,
-				normal: res.data
-			})
-            $overlay.fadeOut(300);
-		})
-
-		query_product_up.onclick = () => {
-			this.setState({
-				num: 1
-			})
-
+        if(type){
+            this.setState({
+                types: type
+            })
             $overlay.fadeIn(300);
-			http.post('query_product_priceDesc', {
-				type,
-                qty:this.state.qty
-			}).then((res) => {
-				this.setState({
-					data: res.data,
-				})
+            http.post('query_product', {type,qty:this.state.qty}).then((res) => {
+                this.setState({
+                    data: res.data,
+                    normal: res.data
+                })
                 $overlay.fadeOut(300);
-			})
+            })
+        query_product_up.onclick = () => {
+            this.setState({
+                num: 1
+            })
+            $overlay.fadeIn(300);
+            http.post('query_product_priceDesc', {
+                type,
+                qty:this.state.qty
+            }).then((res) => {
+                this.setState({
+                    data: res.data,
+                })
+                $overlay.fadeOut(300);
+            })
             LoadingStatus = false;
-		}
-
-		query_product_down.onclick = () => {
-			this.setState({
-				num: 2
-			})
-
+        }
+        query_product_down.onclick = () => {
+            this.setState({
+                num: 2
+            })
             $overlay.fadeIn(300);
-			http.post('query_product_priceAsc', {
-				type,
+            http.post('query_product_priceAsc', {
+                type,
                 qty:this.state.qty
-			}).then((res) => {
-				this.setState({
-					data: res.data,
-				})
+            }).then((res) => {
+                this.setState({
+                    data: res.data,
+                })
                 $overlay.fadeOut(300);
-			})
+            })
             LoadingStatus = false;
 
-		}
-
+        }
+        }else if(brand){
+            this.setState({
+                brand:brand
+            })
+            $overlay.fadeIn(300);
+            http.post('query_product', {brandName:brand,qty:this.state.qty}).then((res) => {
+                this.setState({
+                    data: res.data,
+                    normal: res.data
+                })
+                $overlay.fadeOut(300);
+            })
+            query_product_up.onclick = () => {
+                this.setState({
+                    num: 1
+                })
+                $overlay.fadeIn(300);
+                http.post('query_product_priceDesc', {brandName:brand,qty:this.state.qty}).then((res) => {
+                    this.setState({
+                        data: res.data,
+                    })
+                    $overlay.fadeOut(300);
+                })
+                 LoadingStatus = false;
+            }
+            query_product_down.onclick = () => {
+                this.setState({
+                    num: 2
+                })
+                $overlay.fadeIn(300);
+                http.post('query_product_priceAsc', {brandName:brand,qty:this.state.qty}).then((res) => {
+                    this.setState({
+                        data: res.data,
+                    })
+                    $overlay.fadeOut(300);
+                })
+                LoadingStatus = false;
+            }
+        }
 		btn_action.onclick = () => {this.setState({
 				num: 0,
 				data: this.state.normal
@@ -117,47 +149,89 @@ export default class Datalist extends React.Component {
                         status = false;
                         if(marginTop == target){
                             $overlay.fadeIn(300);
-
                             switch(self.state.num){
                                 case 0:
-                                        http.post('query_product', {
-                                            type,
-                                            qty:self.state.qty
-                                        }).then((res) => {
-                                            self.setState({
-                                                data: res.data,
-                                                normal: res.data
+                                        if(type){
+                                            http.post('query_product', {
+                                                type,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                    normal: res.data
+                                                })  
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                })           
                                             })  
-                                            $goodslist.animate({'margin-top':0},300,function(){
-                                                $overlay.fadeOut(300); 
-                                            })           
-                                        })
+                                        }else if(brand){
+                                            http.post('query_product', {
+                                                brandName:brand,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                    normal: res.data
+                                                })  
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                })           
+                                            })  
+                                        }
                                     break;
                                 case 1:
-                                        http.post('query_product_priceDesc', {
-                                            type,
-                                            qty:self.state.qty
-                                        }).then((res) => {
-                                            self.setState({
-                                                data: res.data,
-                                            })
-                                            $goodslist.animate({'margin-top':0},300,function(){
-                                                $overlay.fadeOut(300); 
-                                            }) 
-                                        })      
+                                        if(type){
+                                            http.post('query_product_priceDesc', {
+                                                type,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                })
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                }) 
+                                            })          
+                                        }else if(brand){
+                                            http.post('query_product_priceDesc', {
+                                                brandName:brand,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                })
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                }) 
+                                            })  
+                                        }
                                     break;
                                 case 2:
-                                        http.post('query_product_priceAsc', {
-                                            type,
-                                            qty:self.state.qty
-                                        }).then((res) => {
-                                            self.setState({
-                                                data: res.data,
+                                        if(type){
+                                            http.post('query_product_priceAsc', {
+                                                type,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                })
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                }) 
                                             })
-                                            $goodslist.animate({'margin-top':0},300,function(){
-                                                $overlay.fadeOut(300); 
-                                            }) 
-                                        })
+                                        }else if(brand){
+                                            http.post('query_product_priceAsc', {
+                                                brandName:brand,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                })
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                }) 
+                                            })
+                                        }
                                     break;
                             }
           
@@ -185,48 +259,88 @@ export default class Datalist extends React.Component {
                         qty += 10;
                         switch(self.state.num){
                             case 0:
-                                    http.post('query_product', {
-                                        type,
-                                        qty:qty
-                                    }).then((res) => {
-                                        self.setState({
-                                            data: res.data,
-                                            normal: res.data
-                                        })
-                                        LoadingStatus = false;
-                                        if(res.data.length < qty){
-                                            LoadingStatus = true;
-                                        }           
-                                    })
-                                break;
-                            case 1:
-                                    http.post('query_product_priceDesc', {
-                                        type,
-                                        qty:qty
-                                    }).then((res) => {
-                                        self.setState({
-                                            data: res.data,
-                                        })
-                                        LoadingStatus = false;
-                                        if(res.data.length < qty){
-                                            LoadingStatus = true;
-                                        }    
-                                    })      
-                                break;
-                            case 2:
-                                    http.post('query_product_priceAsc', {
-                                        type,
-                                        qty:qty
-                                    }).then((res) => {
-                                        self.setState({
-                                            data: res.data,
-                                        })
-                                        status = false;
-                                        if(res.data.length < qty){
-                                            status = true;
-                                        }    
-                                    })
-                                break;
+                                        if(type){
+                                            http.post('query_product', {
+                                                type,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                    normal: res.data
+                                                })  
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                })           
+                                            })  
+                                        }else if(brand){
+                                            http.post('query_product', {
+                                                brandName:brand,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                    normal: res.data
+                                                })  
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                })           
+                                            })  
+                                        }
+                                    break;
+                                case 1:
+                                        if(type){
+                                            http.post('query_product_priceDesc', {
+                                                type,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                })
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                }) 
+                                            })          
+                                        }else if(brand){
+                                            http.post('query_product_priceDesc', {
+                                                brandName:brand,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                })
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                }) 
+                                            })  
+                                        }
+                                    break;
+                                case 2:
+                                        if(type){
+                                            http.post('query_product_priceAsc', {
+                                                type,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                })
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                }) 
+                                            })
+                                        }else if(brand){
+                                            http.post('query_product_priceAsc', {
+                                                brandName:brand,
+                                                qty:self.state.qty
+                                            }).then((res) => {
+                                                self.setState({
+                                                    data: res.data,
+                                                })
+                                                $goodslist.animate({'margin-top':0},300,function(){
+                                                    $overlay.fadeOut(300); 
+                                                }) 
+                                            })
+                                        }
+                                    break;
                         }
                     }
                 })
