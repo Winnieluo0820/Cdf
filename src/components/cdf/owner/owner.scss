@@ -52,6 +52,7 @@
         }
     }
     .owner_second {
+        position: relative;
         height: 3.518518rem;
         width: 100%;
         background-color: white;
@@ -95,6 +96,24 @@
                 }
             }
         }
+        .willpay,.didpay{
+            position: absolute;
+            top: 1.574074rem;
+            left: 1.203703rem;
+            display: block;
+            width: 0.74074rem;
+            line-height:0.74074rem;
+            text-align: center;
+            color: white;
+            height: 0.74074rem;
+            border-radius: 50%;
+            background-color: darkred;
+        }
+        .didpay{
+             top: 1.574074rem;
+            left:3.796296rem;
+        }
+        
     }
     .owner_third,
     .owner_fourth,
