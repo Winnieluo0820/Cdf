@@ -1,4 +1,6 @@
 #orders {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
     overflow:hidden;
@@ -30,7 +32,7 @@
         }
     }
     .orders_main {
-        height: 15.324080rem;
+        flex: 1;
         overflow-x: hidden;
         width: 100%;
         background-color: #F7F7F7;
@@ -143,7 +145,10 @@
             }
             .pay_way {
                 position: relative;
+                text-align: center;
                 width: 8.888888rem;
+                left: 50%;
+                transform: translateX(-50%);
                 height: 1.111111rem;
                 border: 2px solid #B81C22;
                 margin-bottom: 0.277777rem;

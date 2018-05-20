@@ -1,14 +1,19 @@
 #cdf_classfy {
     height: 100%;
     background: #F7F7F7;
-    header{
-        height:6.5%;
-        padding:0.133333rem;
-        display:flex;
-        background-color:#b81c22;
-        h1{
-            text-indent:-100em;
-            background:url(http://www.cdfgsanya.com/mobile/resources/images/logo-white@3x.d59a5566.png);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    header {
+        height: 6.5%;
+        width: 100%;
+        padding: 0.133333rem;
+        display: flex;
+        background-color: #b81c22;
+        h1 {
+            text-indent: -100em;
+            background: url(http://www.cdfgsanya.com/mobile/resources/images/logo-white@3x.d59a5566.png);
             width: 12%;
             height: 0.746667rem;
             margin: 0.053333rem 0 0;
@@ -16,102 +21,110 @@
             background-repeat: no-repeat;
             background-size: 1.066667rem 0.8rem;
         }
-        .search{
+        .search {
             width: 85%;
-            font-size:0.346667rem;
+            font-size: 0.346667rem;
             margin-left: 0.266667rem;
-            border-radius:0.053333rem;
-            color:#ccc;
-            line-height:0.8rem;
+            border-radius: 0.053333rem;
+            color: #ccc;
+            line-height: 0.8rem;
             background-color: #FFF;
-            i{
+            i {
                 width: 10%;
-                font-size:0.666667rem;
+                font-size: 0.666667rem;
                 float: left;
                 margin-left: 0.2rem;
                 margin-right: 0.092592rem;
             }
-            input{
+            input {
                 width: 85%;
-                border:0 none;
-                outline:none;
-                font-size:0.346667rem;
-
+                border: 0 none;
+                outline: none;
+                font-size: 0.346667rem;
             }
         }
     }
-    .classify_left {
-        width: 2.5rem;
-        float: left;
-        overflow: hidden;
-        li {
-            a {
-                display: inline-block;
-                height: 1.173333rem;
-                width: 100%;
-                background-color: white;
-                font-size: 0.277777rem;
-                text-align: center;
-                line-height: 1.173333rem;
-                border-bottom: 2px solid #EEEEEE;
-                span {
-                    width: 100%;
-                    display: inline-block;
-                    line-height: 0.277777rem;
-                    font-size:0.373333rem;
-                }
-            }
-            .active {
-                background-color: #F7F7F7;
-                span {
-                    border-left: 5px solid #B81C22;
-                    color: #B81C22;
-                }
-            }
-        }
-    }
-    .classify_right {
-        width: 7.222222rem;
-        float: right;
-        height: 15.231481rem;
-        overflow-x: hidden;
-        background-color: white;
-        .classify_box {
-            overflow: auto;
-            background-color: white;
-            h2 {
-                height: 1.173333rem;
-                line-height: 1.173333rem;
-                background-color: #F7F7F7;
-                font-size:0.373333rem;
-                padding-left: 35px;
-                color:#666;
-                .icon-jiantou {
-                    float: right;
-                    font-size: 0.509259rem;
-                    margin-right: 0.37037rem;
-                }
-            }
+    .bigbox {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        justify-content: space-between;
+        .classify_left {
+            width: 30%;
+            overflow: hidden;
             li {
-                height: 2.935185rem;
-                width: 2.407407rem;
-                border: none;
-                background-color: white;
-                text-align: center;
-                float: left;
-                font-size: 0.296296rem;
-                color: #D0D0D0;
                 a {
                     display: inline-block;
-                    height: 2.935185rem;
+                    height: 1.173333rem;
+                    width: 100%;
+                    background-color: white;
+                    font-size: 0.277777rem;
                     text-align: center;
-                    width: 2.407407rem;
-                    font-size:0.32rem;
-                    img {
+                    line-height: 1.173333rem;
+                    border-bottom: 2px solid #EEEEEE;
+                    span {
+                        width: 100%;
                         display: inline-block;
-                        height: 1.666666rem;
-                        margin-top: 0.185185rem;
-                        margin-bottom: 0.416666rem;
+                        line-height: 0.277777rem;
+                        font-size: 0.373333rem;
+                    }
+                }
+                .active {
+                    background-color: #F7F7F7;
+                    span {
+                        border-left: 5px solid #B81C22;
+                        color: #B81C22;
+                    }
+                }
+            }
+        }
+        .classify_right {
+            width: 67%;
+            overflow-x: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            .classify_box {
+                background-color: white;
+                h2 {
+                    height: 1.173333rem;
+                    line-height: 1.173333rem;
+                    background-color: #F7F7F7;
+                    font-size: 0.373333rem;
+                    padding-left: 35px;
+                    color: #666;
+                    .icon-jiantou {
+                        float: right;
+                        font-size: 0.509259rem;
+                        margin-right: 0.37037rem;
+                    }
+                }
+                ul {
+                    
+                    li {
+                        
+                        height: 2.935185rem;
+                        width: 2.35rem;
+                        border: none;
+                        background-color: white;
+                        text-align: center;
+                        float: left;
+                        font-size: 0.296296rem;
+                        color: #D0D0D0;
+                        a {
+                            display: inline-block;
+                            height: 2.935185rem;
+                            text-align: center;
+                            width: 2.407407rem;
+                            font-size: 0.32rem;
+                            img {
+                                display: inline-block;
+                                height: 1.666666rem;
+                                margin-top: 0.185185rem;
+                                margin-bottom: 0.416666rem;
+                            }
+                        }
                     }
                 }
             }

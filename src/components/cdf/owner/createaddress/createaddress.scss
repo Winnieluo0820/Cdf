@@ -1,5 +1,8 @@
 #createbox {
     background-color: #F7F7F7;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
     position:relative;
     .createbox_top {
         display: flex;
@@ -29,7 +32,7 @@
     }
     //主体
     .createbox_mian {
-        height: 15.962962rem;
+        flex: 1;
         margin-top: 0.555555rem;
         background-color: white;
         .login_main {
