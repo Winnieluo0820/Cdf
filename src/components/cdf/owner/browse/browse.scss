@@ -1,10 +1,15 @@
 #browse {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+    
     .browse_top {
         display: flex;
         justify-content: space-between;
         background-color: #FFFFFF;
         flex-direction: row;
-        height: 1.203703rem;
+        height: 6.5%;
         width: 100%;
         line-height: 1.203703rem;
         font-size:0.426667rem;
@@ -27,11 +32,13 @@
         }
     }
     .browse_mian {
-        height: 16.546296rem;
+        flex: 1;
         width: 100%;
         background-color: #F7F7F7;
         overflow-x: hidden;
         ul {
+            
+            
             li {
                 height: 3.129629rem;
                 margin-top: 0.555555rem;

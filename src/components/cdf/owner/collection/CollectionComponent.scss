@@ -1,4 +1,9 @@
 #Collection {
+     display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+    
     .Collection_top {
         display: flex;
         justify-content: space-between;
@@ -27,7 +32,7 @@
         }
     }
     .Collection_mian {
-        height: 16.546296rem;
+      flex: 1;
         width: 100%;
         background-color: #F7F7F7;
         overflow-x: hidden;

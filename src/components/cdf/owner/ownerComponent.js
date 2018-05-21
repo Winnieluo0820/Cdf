@@ -7,7 +7,9 @@ import http from '../../../utils/httpclient'
 export default class OwnerComponent extends React.Component {
 	state = {
 		username: '注册/登录',
-		login_s: 0
+		login_s: 0,
+		willpay:0,
+		didpay:0
 	}
 
 	componentDidMount() {
@@ -27,11 +29,38 @@ export default class OwnerComponent extends React.Component {
 				loginout.style.display = 'block';
 			}
 		})
+		
+		http.post('showOrder').then((res)=>{
+			let wiilpays=0;
+			let didpays=0;
+			if(res.status){
+				res.data.map((item)=>{
+					if(item.payState){
+						
+						didpays++;
+					}else if(!item.payState){
+						wiilpays++;
+					}
+				})
+				this.setState({
+					willpay:wiilpays,
+					didpay:didpays
+				})
+			}
+		})
+		
+		
 
 		loginout.onclick = function() {
 			window.localStorage.setItem('access_token', '')
 			self.props.router.push('/')
 		}
+		
+			
+		
+		
+		
+		
 	}
 
 	render() {
@@ -68,8 +97,8 @@ export default class OwnerComponent extends React.Component {
             						<h5>已取消</h5></Link>          				
            			</li>
            			</ul>
-            	
-            	
+            		<i className={this.state.willpay >0 ? "willpay" :' '}>{this.state.willpay ? this.state.willpay: ' '}</i>
+            		<i className={this.state.didpay ? "didpay": ' '}>{this.state.didpay >0 ? this.state.didpay : ' '}</i>
             	</div>
             	
             	<div className="owner_third">

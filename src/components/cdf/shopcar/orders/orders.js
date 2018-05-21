@@ -66,7 +66,7 @@ import http from '../../../../utils/httpclient'
 		addToOrder.onclick = ()=>{
 			http.post('addToOrder').then((res)=>{
 				if(res){
-					alert('以生成订单')
+					alert('已生成订单')
 					this.props.router.push('owner/Pay_order');
 				}	
 			})
@@ -119,7 +119,7 @@ import http from '../../../../utils/httpclient'
 						<div className="orders_other">所要发票<i className="icon-jiantou iconfont "></i><span>否</span></div>
 						<div className="orders_other">我的优惠券<i className="icon-jiantou iconfont "></i><span>0张可用</span></div>
 						<div className="orders_pays">
-							<h3><span>商品总价:<i>￥{this.state.total}</i></span></h3>
+							<h3><span>商品总价:<i>￥{this.state.alltotal}</i></span></h3>
 							<h3><span>折扣优惠:<i>-￥{this.state.distotal}</i></span></h3>
 							<h3><span>行邮税:<i>+￥0.00</i></span></h3>
 							<h3><span>行邮税优惠:<i>-￥0.00</i></span></h3>

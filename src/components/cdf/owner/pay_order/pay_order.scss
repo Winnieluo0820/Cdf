@@ -1,10 +1,14 @@
 #Pay_order {
+    height: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
     .pay_top {
         display: flex;
         justify-content: space-between;
         background-color: #FFFFFF;
         flex-direction: row;
-        height: 1.203703rem;
+        height: 6.5%;
         width: 100%;
         line-height: 1.203703rem;
         font-size: 0.426667rem;
@@ -27,9 +31,9 @@
         }
     }
     .pay_main {
-        //      font-family: "宋体";
-        height: 16.546296rem;
+        height: 93.5%;
         width: 100%;
+        flex-direction: column;
         // background-color: #F7F7F7;
         background-color: #F4F4F4;
         overflow-x: hidden;
@@ -45,7 +49,7 @@
                 position: relative;
                 font-size: 26px;
                 i {
-                    font-size: 32px;
+                    font-size: 0.296296rem;
                     margin-right: 0.092592rem;
                 }
                 span {
@@ -80,7 +84,8 @@
                     }
                     p {
                         width: 5.046296rem;
-                        font-size: 24px;
+                        margin-top: 0.324074rem;
+                        font-size: 0.324074rem;
                         float: left;
                     }
                     h3 {
@@ -110,7 +115,7 @@
                 }
             }
             h5 {
-                padding-left: 3rem;
+                padding-left:1.5rem;
                 line-height: 0.925925rem;
                 position: relative;
                 font-size: 0.277777rem;
@@ -140,24 +145,23 @@
         bottom: 0;
         z-index: 999;
         .is_payss {
-           
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             width: 6.666666rem;
             height: 1.574074rem;
-            border-radius: 20px;
-             text-align: center;
-             line-height:1.574074rem;
-                font-size: 0.6rem;
-            background-color: cornflowerblue;
+            border-radius: 0.185185rem;
+            text-align: center;
+            line-height: 1.574074rem;
+            font-size: 0.6rem;
+            background-color: lightblue;
             #label {
                 width: 1.111111rem;
                 position: absolute;
                 left: 0;
                 top: 0;
-                 border-radius: 20px;
+                border-radius: 0.185185rem;
                 height: 100%;
                 background: #FBA844;
                 z-index: 999;
@@ -175,6 +179,16 @@
                 padding: 0 10px;
                 word-wrap: break-word;
             }
+        }
+        i {
+            position: absolute;
+            right: 0.185185rem;
+            top: 0.185185rem;
+            display: block;
+            width: 0.925925rem;
+            height: 0.925925rem;
+            font-size: 0.925925rem;
+            color: white;
         }
     }
 }

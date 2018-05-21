@@ -14,6 +14,8 @@ export default class Pay_orederComponent extends React.Component {
 	componentDidMount() {
 		let qtys = [];
 		let total = [];
+		let colost1 = document.querySelector('.colost1');
+		let $is_pay = $('.is_pay');
 
 		http.post('showOrder').then((res) => {
 			if(res.status) {
@@ -21,7 +23,7 @@ export default class Pay_orederComponent extends React.Component {
 					orders: res.data
 				})
 			}
-			res.data.map((item) => {
+			res.data.reverse().map((item) => {
 				let money = 0;
 				let num = 0;
 				item.goodslist.map((key) => {
@@ -35,56 +37,56 @@ export default class Pay_orederComponent extends React.Component {
 				total: total,
 				qtys: qtys
 			})
-		
-			
-			
+
 			let $orders = $('.orders');
 			let $pay_main = $('.pay_main')
-			let $is_pay = $('.is_pay');
-			let sure_pay =$('.sure_pay');
-			let order_id='';
-			
-			$pay_main.on('click','.sure_pay',function(){
-				order_id = 	$(this).closest('.orders').find('.orders_id').text();
-				$is_pay[0].style.display="block"
+		
+			let sure_pay = $('.sure_pay');
+			let order_id = '';
+
+			$pay_main.on('click', '.sure_pay', function() {
+				order_id = $(this).closest('.orders').find('.orders_id').text();
+				$is_pay[0].style.display = "block"
 			})
-			
-				
-				var slider = new SliderUnlock(".is_payss", {}, ()=>{
-					http.post('showOrder',{order_id:order_id}).then((res) => {
-						console.log(res)
-						if(res.status) {
-							this.setState({
-								orders: res.data
-							})
-						}
-						res.data.map((item) => {
-							let money = 0;
-							let num = 0;
-							item.goodslist.map((key) => {
-								num += key.product_qty * 1;
-								money += ((key.product_qty * 1) * (key.goodDetail.discountPrice * 1));
-							})
-							total.push(money)
-							qtys.push(num)
-						})
+			var slider = new SliderUnlock(".is_payss", {}, () => {
+				http.post('showOrder', {
+					order_id: order_id
+				}).then((res) => {
+					console.log(res)
+					if(res.status) {
 						this.setState({
-							total: total,
-							qtys: qtys
+							orders: res.data
 						})
-						$('.is_pay')[0].style.display = 'none'
-					slider.reset();
+					}
+					res.data.map((item) => {
+						let money = 0;
+						let num = 0;
+						item.goodslist.map((key) => {
+							num += key.product_qty * 1;
+							money += ((key.product_qty * 1) * (key.goodDetail.discountPrice * 1));
+						})
+						total.push(money)
+						qtys.push(num)
 					})
-				//alert('支付成功');
-				
-					}, () => {});
-				slider.init();
-			
-			
-			
+					this.setState({
+						total: total,
+						qtys: qtys
+					})
+					$('.is_pay')[0].style.display = 'none'
+					slider.reset();
+				})
+			}, () => {});
+			slider.init();
 		})
-
-
+		
+		
+		colost1.onclick= ()=>{
+			$is_pay[0].style.display='none'
+		}
+		
+		
+		
+		
 		
 
 	}
@@ -129,7 +131,7 @@ export default class Pay_orederComponent extends React.Component {
 							<span id="label"></span>
 							<span id="lableTip">滑动完成支付</span>
 						</div>
-						
+						<i className="icon-icon-2 iconfont colost1"></i>
 					</div>
 			</div>
 		)

@@ -39,9 +39,9 @@ export default class ClassfyComponent extends React.Component {
 			box: n
 		})
 	}
-    toSearch(){
-        this.props.router.push('/search');
-    }
+	toSearch() {
+		this.props.router.push('/search');
+	}
 	render() {
 		return(
 			<div id="cdf_classfy"  className="animate-route">
@@ -50,22 +50,20 @@ export default class ClassfyComponent extends React.Component {
                     <div className="search">
                         <i className="iconfont icon-icon-"></i>
                         <input type="text" placeholder="分类 品牌 系列 商品" onFocus={this.toSearch.bind(this)}/>
-
- 
                     </div>
                 </header>
-                 <div className="classify_left">
-                 	<ul>
-                 		{
-                 			this.state.title.map((key,index)=>{
-                 				return <li key={index}><Link to="" onClick={(e) => this.changes(e, index)} key={index}  className={index == this.state.box?"active":null}><span>{key}</span></Link></li>
-                 			})
-                 		}
-                 	</ul>
-                 </div>
-                 
-                 
-            	<Tabs  ref="c1" miansname={this.state.miansname}/>	
+                <div className='bigbox'> 
+	                 <div className="classify_left">
+	                 	<ul>
+	                 		{
+	                 			this.state.title.map((key,index)=>{
+	                 				return <li key={index}><Link to="" onClick={(e) => this.changes(e, index)} key={index}  className={index == this.state.box?"active":null}><span>{key}</span></Link></li>
+	                 			})
+	                 		}
+	                 	</ul>
+	                 </div>
+                 	<Tabs  ref="c1" miansname={this.state.miansname}/>	
+            	  </div>
             </div>
 		)
 
