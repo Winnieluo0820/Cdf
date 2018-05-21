@@ -101,11 +101,11 @@
                     }
                 }
                 ul {
-                    
+                    width: 100%;
                     li {
-                        
+                        width: 33.3%;
                         height: 2.935185rem;
-                        width: 2.35rem;
+//                      width: 2.35rem;
                         border: none;
                         background-color: white;
                         text-align: center;
@@ -116,7 +116,7 @@
                             display: inline-block;
                             height: 2.935185rem;
                             text-align: center;
-                            width: 2.407407rem;
+                            width: 100%;
                             font-size: 0.32rem;
                             img {
                                 display: inline-block;

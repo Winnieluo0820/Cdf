@@ -23,7 +23,7 @@ export default class Pay_orederComponent extends React.Component {
 					orders: res.data
 				})
 			}
-			res.data.map((item) => {
+			res.data.reverse().map((item) => {
 				let money = 0;
 				let num = 0;
 				item.goodslist.map((key) => {
